@@ -8,212 +8,299 @@
   <script src="/_sdk/3f2f54b34a214371.element_sdk.js" integrity="sha512-8xLF8/URn4B9vwrZpee3n9pRxqtX06GQyyIsX+0KC//ichP5ugyHDkZAIPNrIjpZIGJg7qjrtkCtiwqkjhk1Pw=="></script>
   <script src="/_sdk/8de366929c5f3b48.data_sdk.js" integrity="sha512-TyQ8k8cZj66xe/aENmn6RyZpdOFZXbAo5+KBG3PeFM+Q4qMTHU8xAqmq4ADClNfPrstgQYV6OzZHwLTnElzB2g=="></script>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <!-- KOD BAHARU: Ikon Vektor FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     * { font-family: 'Plus Jakarta Sans', sans-serif; }
     html, body, #app { height: 100%; }
-    .tab-active { background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); color: white; }
-    .tab-inactive { background: #e0e7ff; color: #4338ca; }
+    
+    /* KOD BAHARU: Tema Glassmorphism & UI Moden */
+    .glass-card { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.5); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01); }
+    .tab-active { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: white; box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4); transform: translateY(-2px); }
+    .tab-inactive { background: transparent; color: #4b5563; }
+    .tab-inactive:hover { background: rgba(224, 231, 255, 0.5); color: #4338ca; }
+    
     .btn-primary { background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); }
-    .btn-primary:hover { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); }
-    .btn-primary:disabled { background: #cbd5e1; cursor: not-allowed; opacity: 0.6; }
+    .btn-primary:hover { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4); }
+    .btn-primary:active { transform: translateY(0); }
+    .btn-primary:disabled { background: #cbd5e1; cursor: not-allowed; opacity: 0.6; transform: none; box-shadow: none; }
+    
     .btn-success { background: linear-gradient(135deg, #10b981 0%, #059669 100%); }
-    .btn-success:disabled { background: #cbd5e1; cursor: not-allowed; opacity: 0.6; }
+    .btn-success:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4); }
+    .btn-success:disabled { background: #cbd5e1; cursor: not-allowed; opacity: 0.6; transform: none; box-shadow: none; }
+    
     .btn-print { background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%); }
-    .btn-print:hover { background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%); }
-    .btn-print:disabled { background: #cbd5e1; cursor: not-allowed; opacity: 0.6; }
-    .table-header { background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); }
-    .fade-in { animation: fadeIn 0.3s ease-in-out; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+    .btn-print:hover { background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4); }
+    .btn-print:disabled { background: #cbd5e1; cursor: not-allowed; opacity: 0.6; transform: none; box-shadow: none; }
+    
+    .table-header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); }
+    
+    /* Animasi Mikro Teratur (Staggered) */
+    .fade-in { animation: fadeIn 0.4s ease-out forwards; }
+    .stagger-1 { opacity: 0; animation: fadeInUp 0.5s ease-out 0.1s forwards; }
+    .stagger-2 { opacity: 0; animation: fadeInUp 0.5s ease-out 0.2s forwards; }
+    .stagger-3 { opacity: 0; animation: fadeInUp 0.5s ease-out 0.3s forwards; }
+    .stagger-4 { opacity: 0; animation: fadeInUp 0.5s ease-out 0.4s forwards; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    
     input[type="date"]::-webkit-calendar-picker-indicator { cursor: pointer; }
-    .scroll-container { max-height: 300px; overflow-y: auto; }
+    .scroll-container { max-height: 300px; overflow-y: auto; padding-right: 4px; }
     .scroll-container::-webkit-scrollbar { width: 6px; }
     .scroll-container::-webkit-scrollbar-thumb { background: #c7d2fe; border-radius: 3px; }
-    .workload-badge { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; font-size: 11px; font-weight: bold; color: white; }
-    .workload-green { background-color: #10b981; }
-    .workload-yellow { background-color: #eab308; color: #1f2937; }
-    .workload-red { background-color: #ef4444; }
-    .conflict-highlight { background-color: #fee2e2 !important; border: 2px solid #ef4444; }
+    
+    .workload-badge { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; font-size: 11px; font-weight: bold; color: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: all 0.3s; }
+    .workload-green { background: linear-gradient(135deg, #34d399 0%, #10b981 100%); }
+    .workload-yellow { background: linear-gradient(135deg, #facc15 0%, #eab308 100%); color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,0.2); }
+    .workload-red { background: linear-gradient(135deg, #f87171 0%, #ef4444 100%); }
+    .conflict-highlight { background-color: #fee2e2 !important; border-left: 4px solid #ef4444 !important; }
+    
     .print-content { display: none; }
-    .bar-chart-item { display: flex; align-items: center; gap: 8px; }
-    .bar-chart-label { font-size: 11px; font-weight: 600; color: #1f2937; min-width: 80px; }
-    .bar-chart-bar { flex: 1; height: 20px; border-radius: 4px; }
+    .bar-chart-item { display: flex; align-items: center; gap: 8px; transition: all 0.3s; }
+    .bar-chart-item:hover { transform: translateX(5px); }
+    .bar-chart-label { font-size: 11px; font-weight: 600; color: #4b5563; min-width: 80px; }
+    .bar-chart-bar { flex: 1; height: 12px; border-radius: 6px; position: relative; overflow: hidden; }
     .bar-chart-value { font-size: 11px; font-weight: bold; min-width: 30px; text-align: right; }
+    
+    /* Jadual Moden Terapung */
+    .modern-table { border-collapse: separate; border-spacing: 0 8px; }
+    .modern-table tbody tr { background: white; box-shadow: 0 2px 4px rgba(0,0,0,0.02); transition: all 0.2s; border-radius: 8px; }
+    .modern-table tbody tr:hover { transform: scale(1.01); box-shadow: 0 4px 10px rgba(0,0,0,0.05); z-index: 10; position: relative; }
+    .modern-table td { padding: 12px 16px; border: none; }
+    .modern-table td:first-child { border-top-left-radius: 8px; border-bottom-left-radius: 8px; }
+    .modern-table td:last-child { border-top-right-radius: 8px; border-bottom-right-radius: 8px; }
   </style>
-  <style>body { box-sizing: border-box; }</style>
+   <style>
+    body { box-sizing: border-box; }
+    
+    /* KOD BAHARU: Kecerunan Aurora Dinamik */
+    .aurora-bg {
+        background: linear-gradient(-45deg, #f8fafc, #e0e7ff, #f3e8ff, #dbeafe);
+        background-size: 400% 400%;
+        animation: auroraMove 15s ease infinite;
+    }
+    @keyframes auroraMove {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+    
+    /* KOD BAHARU: Bebola Cahaya Aurora (Abstrak) */
+    .aurora-blob {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(90px);
+        opacity: 0.6;
+        z-index: 0;
+        animation: floatBlob 20s infinite alternate ease-in-out;
+        pointer-events: none;
+    }
+    .blob-1 { top: -10%; left: -10%; width: 50vw; height: 50vw; background: #c7d2fe; }
+    .blob-2 { bottom: -10%; right: -10%; width: 60vw; height: 60vw; background: #ddd6fe; animation-delay: -5s; }
+    .blob-3 { top: 30%; left: 40%; width: 45vw; height: 45vw; background: #bae6fd; animation-delay: -10s; }
+    
+    @keyframes floatBlob {
+        0% { transform: translate(0px, 0px) scale(1); }
+        33% { transform: translate(30px, -50px) scale(1.1); }
+        66% { transform: translate(-20px, 20px) scale(0.9); }
+        100% { transform: translate(0px, 0px) scale(1); }
+    }
+  </style>
  </head>
- <body class="h-full bg-gradient-to-br from-slate-50 to-indigo-50">
-  <div id="app" class="h-full w-full overflow-auto flex flex-col"><!-- Header -->
-   <header id="main-header" class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 px-4 shadow-lg flex-shrink-0">
-    <div class="text-center">
-     <h1 id="school-title-main" class="text-base md:text-lg font-bold tracking-wide">SISTEM GURU GANTI</h1>
-     <h2 id="school-title-sub" class="text-xs md:text-sm font-semibold tracking-wide mt-1 opacity-95">SEKOLAH KEBANGSAAN ULU PELAGUS</h2>
+ <body class="h-full text-gray-800 aurora-bg overflow-hidden relative">
+  
+  <!-- KOD BAHARU: Elemen Bebola Aurora Terapung di Latar Belakang -->
+  <div class="aurora-blob blob-1"></div>
+  <div class="aurora-blob blob-2"></div>
+  <div class="aurora-blob blob-3"></div>
+  
+  <div id="app" class="h-full w-full overflow-auto flex flex-col relative z-10">
+
+   
+      <!-- KOD BAHARU: Header Kaca & Menu Terapung Berbentuk Kapsul -->
+   <header id="main-header" class="bg-white/70 backdrop-blur-md border-b border-gray-200 py-4 px-6 shadow-sm flex-shrink-0 sticky top-0 z-40">
+    <div class="flex flex-col md:flex-row items-center justify-between max-w-7xl mx-auto gap-4">
+     <div class="flex items-center gap-4">
+      <div class="w-14 h-14 rounded-full flex items-center justify-center transform hover:scale-105 transition-all shadow-md bg-white border border-gray-100 overflow-hidden shrink-0">
+       <img src="https://iili.io/nRloUF9.png" alt="Logo SK Ulu Pelagus" class="w-full h-full object-contain p-1">
+      </div>
+      <div class="text-left">
+       <h1 id="school-title-main" class="text-lg md:text-xl font-extrabold tracking-tight text-gray-900 leading-tight">SISTEM GURU GANTI</h1>
+       <h2 id="school-title-sub" class="text-xs font-bold tracking-widest text-indigo-600 uppercase">SK ULU PELAGUS</h2>
+      </div>
+     </div>
+     
+     <nav class="flex bg-gray-100/80 backdrop-blur-sm p-1.5 rounded-2xl shadow-inner border border-gray-200/50 w-full md:w-auto overflow-x-auto hide-scroll">
+      <button id="tab1-btn" onclick="switchTab(1)" class="tab-active px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 flex items-center gap-2 flex-shrink-0"> <i class="fa-solid fa-pen-to-square"></i> Input Guru </button> 
+      <button id="tab2-btn" onclick="switchTab(2)" class="tab-inactive px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 flex items-center gap-2 flex-shrink-0"> <i class="fa-solid fa-chart-pie"></i> Dashboard </button>
+      <button id="tab3-btn" onclick="switchTab(3)" class="tab-inactive px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 flex items-center gap-2 flex-shrink-0"> <i class="fa-solid fa-tv"></i> TV Live </button>
+     </nav>
     </div>
-   </header><!-- Tab Navigation -->
-    <nav class="flex justify-center gap-2 p-3 bg-white shadow-sm flex-shrink-0">
-    <button id="tab1-btn" onclick="switchTab(1)" class="tab-active px-4 py-2 rounded-lg font-semibold text-sm transition-all duration-300 flex items-center gap-2"> <span>📝</span> Input Guru Tidak Hadir </button> 
-    <button id="tab2-btn" onclick="switchTab(2)" class="tab-inactive px-4 py-2 rounded-lg font-semibold text-sm transition-all duration-300 flex items-center gap-2"> <span>📊</span> Dashboard Analisis </button>
-    <button id="tab3-btn" onclick="switchTab(3)" class="tab-inactive px-4 py-2 rounded-lg font-semibold text-sm transition-all duration-300 flex items-center gap-2"> <span>📺</span> Paparan TV Live </button>
-   </nav><!-- Main Content -->
-   <main class="flex-1 overflow-auto"><!-- TAB 1: Input Guru Tidak Hadir -->
-    <section id="tab1" class="p-4 fade-in"><!-- Borang Input -->
-     <div class="bg-white rounded-xl shadow-lg p-4 mb-4 border border-indigo-100">
-      <h2 class="text-base font-bold text-indigo-700 mb-3 flex items-center gap-2"><span class="bg-indigo-100 p-1.5 rounded-lg">📋</span> Borang Input Ketidakhadiran</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
-       <div><label class="block text-xs font-semibold text-gray-600 mb-1">Tarikh</label> <input type="date" id="input-tarikh" onchange="updateHari()" class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-indigo-300 focus:border-indigo-400 outline-none">
+   </header>
+   
+   <!-- Main Content -->
+
+   <main class="flex-1 overflow-auto p-4 md:p-6"><!-- TAB 1: Input Guru Tidak Hadir -->
+    <section id="tab1" class="fade-in max-w-7xl mx-auto"><!-- Borang Input -->
+     <div class="glass-card rounded-2xl p-5 md:p-6 mb-6">
+      <h2 class="text-lg font-extrabold text-indigo-800 mb-4 flex items-center gap-3"><i class="fa-solid fa-clipboard-list text-indigo-500 text-xl"></i> Borang Input Ketidakhadiran</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+       <div><label class="block text-xs font-bold text-gray-600 mb-1.5 uppercase tracking-wide">Tarikh</label> <input type="date" id="input-tarikh" onchange="updateHari()" class="w-full px-4 py-2.5 border-2 border-indigo-100 rounded-xl text-sm font-semibold focus:ring-4 focus:ring-indigo-200 focus:border-indigo-500 outline-none transition-all shadow-sm">
        </div>
-       <div><label class="block text-xs font-semibold text-gray-600 mb-1">Hari</label> <input type="text" id="input-hari" readonly class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm bg-gray-50 text-gray-700">
+       <div><label class="block text-xs font-bold text-gray-600 mb-1.5 uppercase tracking-wide">Hari</label> <input type="text" id="input-hari" readonly class="w-full px-4 py-2.5 border-2 border-gray-100 rounded-xl text-sm font-bold bg-gray-50 text-gray-500 shadow-inner">
        </div>
-       <div><label class="block text-xs font-semibold text-gray-600 mb-1">Guru Asal</label> <select id="input-guru" class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-indigo-300 focus:border-indigo-400 outline-none"> <option value="">-- Pilih Guru --</option> </select>
+       <div><label class="block text-xs font-bold text-gray-600 mb-1.5 uppercase tracking-wide">Guru Asal</label> <select id="input-guru" class="w-full px-4 py-2.5 border-2 border-indigo-100 rounded-xl text-sm font-semibold focus:ring-4 focus:ring-indigo-200 focus:border-indigo-500 outline-none transition-all shadow-sm"> <option value="">-- Pilih Guru --</option> </select>
        </div>
-       <div><label class="block text-xs font-semibold text-gray-600 mb-1">Sebab Tidak Hadir</label> <select id="input-sebab" class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-indigo-300 focus:border-indigo-400 outline-none"> <option value="">-- Pilih Sebab --</option> </select>
+       <div><label class="block text-xs font-bold text-gray-600 mb-1.5 uppercase tracking-wide">Sebab Tidak Hadir</label> <select id="input-sebab" class="w-full px-4 py-2.5 border-2 border-indigo-100 rounded-xl text-sm font-semibold focus:ring-4 focus:ring-indigo-200 focus:border-indigo-500 outline-none transition-all shadow-sm"> <option value="">-- Pilih Sebab --</option> </select>
        </div>
-      </div><button onclick="tambahKeSenarai()" class="btn-primary mt-4 w-full py-2.5 rounded-lg text-white font-semibold text-sm shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2"> <span>➕</span> Tambah ke Senarai </button>
+      </div><button onclick="tambahKeSenarai()" class="btn-primary mt-5 w-full py-3 rounded-xl text-white font-bold tracking-wide text-sm flex items-center justify-center gap-2"> <i class="fa-solid fa-user-plus"></i> Tambah ke Senarai </button>
      </div><!-- Senarai Guru Tidak Hadir -->
-     <div class="bg-white rounded-xl shadow-lg p-4 mb-4 border border-indigo-100">
-      <h2 class="text-base font-bold text-indigo-700 mb-3 flex items-center gap-2"><span class="bg-red-100 p-1.5 rounded-lg">📑</span> Senarai Guru Tidak Hadir</h2>
-      <div id="senarai-header" class="bg-gradient-to-r from-amber-50 to-orange-50 p-3 rounded-lg mb-3 border border-amber-200 hidden">
-       <p class="text-sm font-semibold text-amber-800"><span id="header-tarikh"></span> | <span id="header-hari"></span></p>
+     <div class="glass-card rounded-2xl p-5 md:p-6 mb-6">
+      <h2 class="text-lg font-extrabold text-indigo-800 mb-4 flex items-center gap-3"><i class="fa-solid fa-users-slash text-rose-500 text-xl"></i> Senarai Guru Tidak Hadir</h2>
+      <div id="senarai-header" class="bg-gradient-to-r from-amber-50 to-orange-50 p-3.5 rounded-xl mb-4 border border-amber-200 hidden shadow-sm">
+       <p class="text-sm font-bold text-amber-900"><i class="fa-solid fa-calendar-day mr-2"></i><span id="header-tarikh"></span> | <span id="header-hari"></span></p>
       </div>
       <div class="scroll-container">
-       <table class="w-full text-sm">
-        <thead class="table-header text-white sticky top-0">
+       <table class="w-full text-sm modern-table">
+        <thead class="text-gray-500 text-xs uppercase tracking-wider sticky top-0 z-20 bg-white/90 backdrop-blur-sm">
          <tr>
-          <th class="py-2 px-3 text-left rounded-tl-lg">Guru Asal</th>
-          <th class="py-2 px-3 text-left">Sebab Tidak Hadir</th>
-          <th class="py-2 px-3 text-center rounded-tr-lg w-20">Tindakan</th>
+          <th class="py-3 px-4 text-left font-bold">Guru Asal</th>
+          <th class="py-3 px-4 text-left font-bold">Sebab Tidak Hadir</th>
+          <th class="py-3 px-4 text-center font-bold w-24">Tindakan</th>
          </tr>
         </thead>
-        <tbody id="senarai-tbody" class="divide-y divide-gray-100">
+        <tbody id="senarai-tbody">
          <tr id="empty-row">
-          <td colspan="3" class="py-6 text-center text-gray-400 italic">Tiada rekod</td>
+          <td colspan="3" class="py-10 text-center text-gray-400 font-medium italic bg-transparent shadow-none hover:transform-none hover:shadow-none"><i class="fa-solid fa-folder-open text-3xl mb-2 block opacity-30"></i>Tiada rekod dimasukkan</td>
          </tr>
         </tbody>
        </table>
-      </div><button onclick="janaGantiGuru()" id="btn-jana" class="btn-success mt-4 w-full py-3 rounded-lg text-white font-bold text-sm shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed" disabled> <span>⚡</span> JANA CADANGAN GURU GANTI </button>
+      </div><button onclick="janaGantiGuru()" id="btn-jana" class="btn-success mt-5 w-full py-3.5 rounded-xl text-white font-extrabold tracking-widest text-sm flex items-center justify-center gap-3" disabled> <i class="fa-solid fa-wand-magic-sparkles text-lg"></i> JANA CADANGAN GURU GANTI </button>
      </div><!-- Jadual Guru Ganti -->
-     <div id="jadual-ganti-section" class="bg-white rounded-xl shadow-lg p-4 border border-green-100 hidden">
-      <h2 class="text-base font-bold text-green-700 mb-3 flex items-center gap-2"><span class="bg-green-100 p-1.5 rounded-lg">✅</span> Jadual Guru Ganti (Pilih Manual)</h2><!-- Legend -->
-      <div class="bg-gray-50 p-3 rounded-lg mb-4 border border-gray-200">
-       <p class="text-xs font-semibold text-gray-700 mb-2">Penunjuk Beban Masa:</p>
-       <div class="flex flex-wrap gap-4 text-xs">
+     <div id="jadual-ganti-section" class="glass-card rounded-2xl p-5 md:p-6 border-l-4 border-emerald-500 hidden">
+      <h2 class="text-lg font-extrabold text-emerald-800 mb-4 flex items-center gap-3"><i class="fa-solid fa-calendar-check text-emerald-500 text-2xl"></i> Jadual Guru Ganti (Pilih Manual)</h2><!-- Legend -->
+      <div class="bg-gray-50/80 backdrop-blur-sm p-4 rounded-xl mb-5 border border-gray-200 shadow-sm">
+       <p class="text-xs font-bold text-gray-700 mb-3 uppercase tracking-wider">Penunjuk Beban Masa:</p>
+       <div class="flex flex-wrap gap-6 text-xs">
         <div class="flex items-center gap-2">
-         <div class="workload-badge workload-green">
-          0-3
-         </div><span class="text-gray-600">Ringan (0-3 masa)</span>
+         <div class="workload-badge workload-green">0-3</div><span class="font-semibold text-gray-600">Ringan</span>
         </div>
         <div class="flex items-center gap-2">
-         <div class="workload-badge workload-yellow">
-          4-5
-         </div><span class="text-gray-600">Sederhana (4-5 masa)</span>
+         <div class="workload-badge workload-yellow">4-5</div><span class="font-semibold text-gray-600">Sederhana</span>
         </div>
         <div class="flex items-center gap-2">
-         <div class="workload-badge workload-red">
-          6+
-         </div><span class="text-gray-600">Berat (6+ masa)</span>
+         <div class="workload-badge workload-red">6+</div><span class="font-semibold text-gray-600">Berat</span>
         </div>
        </div>
       </div>
-      <div class="overflow-x-auto">
-       <table class="w-full text-xs">
-        <thead class="bg-gradient-to-r from-green-500 to-emerald-500 text-white">
+      <div class="overflow-x-auto pb-4">
+       <table class="w-full text-xs modern-table min-w-[800px]">
+        <thead class="text-gray-500 text-[10px] uppercase tracking-wider">
          <tr>
-          <th class="py-2 px-2 text-left">Tarikh</th>
-          <th class="py-2 px-2 text-left">Hari</th>
-          <th class="py-2 px-2 text-left">Masa</th>
-          <th class="py-2 px-2 text-left">Kelas</th>
-          <th class="py-2 px-2 text-left">Subjek</th>
-          <th class="py-2 px-2 text-left">Guru Asal</th>
-          <th class="py-2 px-2 text-left">Sebab</th>
-          <th class="py-2 px-2 text-left">Guru Ganti (Pilih Manual)</th>
+          <th class="py-2 px-3 text-left font-extrabold">Tarikh</th>
+          <th class="py-2 px-3 text-left font-extrabold">Hari</th>
+          <th class="py-2 px-3 text-left font-extrabold">Masa</th>
+          <th class="py-2 px-3 text-left font-extrabold">Kelas</th>
+          <th class="py-2 px-3 text-left font-extrabold">Subjek</th>
+          <th class="py-2 px-3 text-left font-extrabold">Guru Asal</th>
+          <th class="py-2 px-3 text-left font-extrabold">Sebab</th>
+          <th class="py-2 px-3 text-left font-extrabold min-w-[200px]">Guru Ganti (Manual)</th>
          </tr>
         </thead>
-        <tbody id="jadual-ganti-tbody" class="divide-y divide-gray-100"></tbody>
+        <tbody id="jadual-ganti-tbody"></tbody>
        </table>
       </div><!-- Hidden Print Content -->
       <div class="print-content" id="print-content"></div>
-      <div class="flex gap-3 mt-4"><button onclick="simpanJadual()" id="btn-simpan" class="btn-primary flex-1 py-2.5 rounded-lg text-white font-semibold text-sm shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2" disabled> <span>💾</span> Simpan Jadual Guru Ganti </button> <button onclick="printReportGantiGuru()" id="btn-cetak" class="btn-print flex-1 py-2.5 rounded-lg text-white font-semibold text-sm shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2" disabled> <span>🖨️</span> Cetak Jadual Guru Ganti </button>
+      <div class="flex flex-col sm:flex-row gap-3 mt-5">
+        <button onclick="simpanJadual()" id="btn-simpan" class="btn-primary flex-1 py-3.5 rounded-xl text-white font-bold tracking-wide text-sm flex items-center justify-center gap-2" disabled> <i class="fa-solid fa-floppy-disk text-lg"></i> Simpan Pangkalan Data </button> 
+        <button onclick="printReportGantiGuru()" id="btn-cetak" class="btn-print flex-1 py-3.5 rounded-xl text-white font-bold tracking-wide text-sm flex items-center justify-center gap-2" disabled> <i class="fa-solid fa-print text-lg"></i> Cetak Dokumen Rasmi </button>
       </div>
      </div>
-    </section><!-- TAB 2: Dashboard Analisis -->
-    <section id="tab2" class="p-4 fade-in hidden"><!-- Filter Section -->
-     <div class="bg-white rounded-xl shadow-lg p-4 mb-4 border-l-4 border-purple-500">
+    </section>
+<!-- TAB 2: Dashboard Analisis -->
+    <section id="tab2" class="fade-in hidden max-w-7xl mx-auto"><!-- Filter Section -->
+     <div class="glass-card rounded-2xl p-5 mb-6">
       <div class="flex justify-between items-start gap-4 flex-col md:flex-row">
        <div class="flex-1 w-full">
-        <h3 class="text-xs font-bold text-gray-800 mb-3 uppercase tracking-wide">🔍 Penapis Data</h3>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-         <div><label class="block text-xs font-semibold text-gray-700 mb-2">Bulan</label> <select id="filter-bulan" onchange="updateDashboard()" class="w-full px-3 py-2 border-2 border-gray-300 rounded-lg text-xs font-semibold text-gray-800 focus:ring-2 focus:ring-purple-400 focus:border-purple-500 outline-none"> <option value="0">Semua Bulan</option> <option value="1">Januari</option> <option value="2">Februari</option> <option value="3">Mac</option> <option value="4">April</option> <option value="5">Mei</option> <option value="6">Jun</option> <option value="7">Julai</option> <option value="8">Ogos</option> <option value="9">September</option> <option value="10">Oktober</option> <option value="11">November</option> <option value="12">Disember</option> </select>
+        <h3 class="text-xs font-extrabold text-purple-700 mb-3 uppercase tracking-widest flex items-center gap-2"><i class="fa-solid fa-filter text-purple-500"></i> Penapis Analisis</h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+         <div><label class="block text-xs font-bold text-gray-600 mb-1.5 uppercase">Bulan</label> <select id="filter-bulan" onchange="updateDashboard()" class="w-full px-4 py-2 border-2 border-purple-100 rounded-xl text-sm font-bold text-gray-800 focus:ring-4 focus:ring-purple-200 outline-none shadow-sm"> <option value="0">Semua Bulan</option> <option value="1">Januari</option> <option value="2">Februari</option> <option value="3">Mac</option> <option value="4">April</option> <option value="5">Mei</option> <option value="6">Jun</option> <option value="7">Julai</option> <option value="8">Ogos</option> <option value="9">September</option> <option value="10">Oktober</option> <option value="11">November</option> <option value="12">Disember</option> </select>
          </div>
-         <div class="md:col-span-3"><label class="block text-xs font-semibold text-gray-700 mb-2">Tahun</label> <select id="filter-tahun" onchange="updateDashboard()" class="w-full px-3 py-2 border-2 border-gray-300 rounded-lg text-xs font-semibold text-gray-800 focus:ring-2 focus:ring-purple-400 focus:border-purple-500 outline-none"></select>
+         <div class="md:col-span-3"><label class="block text-xs font-bold text-gray-600 mb-1.5 uppercase">Tahun</label> <select id="filter-tahun" onchange="updateDashboard()" class="w-full px-4 py-2 border-2 border-purple-100 rounded-xl text-sm font-bold text-gray-800 focus:ring-4 focus:ring-purple-200 outline-none shadow-sm"></select>
          </div>
         </div>
-       </div><button onclick="printDashboard()" class="btn-print md:mt-6 px-5 py-2.5 rounded-lg text-white font-bold text-sm shadow-md hover:shadow-lg transition-all duration-300 flex items-center gap-2 whitespace-nowrap h-fit"> <span>🖨️</span> Cetak </button>
+       </div><button onclick="printDashboard()" class="btn-print md:mt-7 px-6 py-3 rounded-xl text-white font-bold text-sm flex items-center gap-2 shadow-lg"> <i class="fa-solid fa-print"></i> Cetak Laporan </button>
       </div>
      </div><!-- Stats Cards -->
-     <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-4">
-      <div class="bg-white rounded-lg shadow-md p-4 border-t-4 border-indigo-600">
-       <p class="text-xs font-bold text-gray-700 mb-2">JUMLAH KETIDAKHADIRAN</p>
-       <p id="stat-total" class="text-3xl font-bold text-gray-800">0</p>
+     <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+      <div class="glass-card rounded-2xl p-5 border-b-4 border-indigo-500 stagger-1 relative overflow-hidden">
+       <i class="fa-solid fa-calendar-xmark absolute -right-4 -bottom-4 text-6xl text-indigo-500/10"></i>
+       <p class="text-[10px] font-extrabold text-gray-500 mb-1 uppercase tracking-widest">Jumlah Cuti</p>
+       <p id="stat-total" class="text-4xl font-black text-indigo-900 drop-shadow-sm">0</p>
       </div>
-      <div class="bg-white rounded-lg shadow-md p-4 border-t-4 border-red-500">
-       <p class="text-xs font-bold text-gray-700 mb-2">GURU KERAP TIDAK HADIR</p>
-       <p id="stat-guru-top" class="text-sm font-bold text-gray-800 line-clamp-2">-</p>
+      <div class="glass-card rounded-2xl p-5 border-b-4 border-rose-500 stagger-2 relative overflow-hidden">
+       <i class="fa-solid fa-user-injured absolute -right-4 -bottom-4 text-6xl text-rose-500/10"></i>
+       <p class="text-[10px] font-extrabold text-gray-500 mb-1 uppercase tracking-widest">Paling Kerap Cuti</p>
+       <p id="stat-guru-top" class="text-sm font-bold text-rose-900 line-clamp-2 mt-2 leading-tight">-</p>
       </div>
-      <div class="bg-white rounded-lg shadow-md p-4 border-t-4 border-amber-500">
-       <p class="text-xs font-bold text-gray-700 mb-2">SEBAB UTAMA</p>
-       <p id="stat-sebab-top" class="text-sm font-bold text-gray-800 line-clamp-2">-</p>
+      <div class="glass-card rounded-2xl p-5 border-b-4 border-amber-500 stagger-3 relative overflow-hidden">
+       <i class="fa-solid fa-circle-question absolute -right-4 -bottom-4 text-6xl text-amber-500/10"></i>
+       <p class="text-[10px] font-extrabold text-gray-500 mb-1 uppercase tracking-widest">Sebab Utama</p>
+       <p id="stat-sebab-top" class="text-sm font-bold text-amber-900 line-clamp-2 mt-2 leading-tight">-</p>
       </div>
-      <div class="bg-white rounded-lg shadow-md p-4 border-t-4 border-green-500">
-       <p class="text-xs font-bold text-gray-700 mb-2">GURU GANTI AKTIF</p>
-       <p id="stat-ganti-top" class="text-sm font-bold text-gray-800 line-clamp-2">-</p>
+      <div class="glass-card rounded-2xl p-5 border-b-4 border-emerald-500 stagger-4 relative overflow-hidden">
+       <i class="fa-solid fa-user-shield absolute -right-4 -bottom-4 text-6xl text-emerald-500/10"></i>
+       <p class="text-[10px] font-extrabold text-gray-500 mb-1 uppercase tracking-widest">Guru Ganti Aktif</p>
+       <p id="stat-ganti-top" class="text-sm font-bold text-emerald-900 line-clamp-2 mt-2 leading-tight">-</p>
       </div>
      </div><!-- Charts Section -->
-     <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-4"><!-- Guru Tidak Hadir -->
-      <div class="bg-white rounded-xl shadow-lg p-4 border-l-4 border-red-500">
-       <h3 class="text-xs font-bold text-gray-800 mb-4 uppercase tracking-wide">📊 Kekerapan Ketidakhadiran Guru (per hari)</h3>
-       <div id="chart-guru" class="space-y-2 max-h-80 overflow-y-auto pr-2">
+     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+      <div class="glass-card rounded-2xl p-5 border-t border-white shadow-xl stagger-2">
+       <h3 class="text-[11px] font-extrabold text-gray-800 mb-5 uppercase tracking-widest flex items-center gap-2"><i class="fa-solid fa-chart-column text-rose-500 text-lg"></i> Kekerapan Cuti</h3>
+       <div id="chart-guru" class="space-y-3 max-h-80 overflow-y-auto pr-2">
         <p class="text-xs text-gray-400 text-center py-8">Pilih bulan dan tahun</p>
        </div>
-      </div><!-- Sebab Ketidakhadiran -->
-      <div class="bg-white rounded-xl shadow-lg p-4 border-l-4 border-amber-500">
-       <h3 class="text-xs font-bold text-gray-800 mb-4 uppercase tracking-wide">📋 Sebab Ketidakhadiran (per hari)</h3>
-       <div id="chart-sebab" class="space-y-2 max-h-80 overflow-y-auto pr-2">
+      </div>
+      <div class="glass-card rounded-2xl p-5 border-t border-white shadow-xl stagger-3">
+       <h3 class="text-[11px] font-extrabold text-gray-800 mb-5 uppercase tracking-widest flex items-center gap-2"><i class="fa-solid fa-clipboard-question text-amber-500 text-lg"></i> Punca Utama</h3>
+       <div id="chart-sebab" class="space-y-3 max-h-80 overflow-y-auto pr-2">
         <p class="text-xs text-gray-400 text-center py-8">Pilih bulan dan tahun</p>
        </div>
-      </div><!-- Guru Ganti Digunakan -->
-      <div class="bg-white rounded-xl shadow-lg p-4 border-l-4 border-green-500">
-       <h3 class="text-xs font-bold text-gray-800 mb-4 uppercase tracking-wide">🔄 Guru Ganti Digunakan</h3>
-       <div id="chart-ganti" class="space-y-2 max-h-80 overflow-y-auto pr-2">
+      </div>
+      <div class="glass-card rounded-2xl p-5 border-t border-white shadow-xl stagger-4">
+       <h3 class="text-[11px] font-extrabold text-gray-800 mb-5 uppercase tracking-widest flex items-center gap-2"><i class="fa-solid fa-rotate text-emerald-500 text-lg"></i> Analisis Ganti</h3>
+       <div id="chart-ganti" class="space-y-3 max-h-80 overflow-y-auto pr-2">
         <p class="text-xs text-gray-400 text-center py-8">Pilih bulan dan tahun</p>
        </div>
       </div>
      </div><!-- Padam Rekod Terkini Section -->
-     <div class="bg-white rounded-xl shadow-lg p-4 mb-4 border-l-4 border-red-600">
-      <h3 class="text-xs font-bold text-gray-800 mb-3 uppercase tracking-wide">🗑️ Padam Semua Rekod Bulanan</h3>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-3 items-end">
-       <div><label class="block text-xs font-semibold text-gray-700 mb-2">Bulan</label> <select id="delete-filter-bulan" class="w-full px-3 py-2 border-2 border-gray-300 rounded-lg text-xs font-semibold text-gray-800 focus:ring-2 focus:ring-red-400 outline-none"> <option value="0">-- Pilih Bulan --</option> <option value="1">Januari</option> <option value="2">Februari</option> <option value="3">Mac</option> <option value="4">April</option> <option value="5">Mei</option> <option value="6">Jun</option> <option value="7">Julai</option> <option value="8">Ogos</option> <option value="9">September</option> <option value="10">Oktober</option> <option value="11">November</option> <option value="12">Disember</option> </select>
+     <div class="glass-card rounded-2xl p-5 mb-6 border border-rose-200 bg-rose-50/50">
+      <h3 class="text-[11px] font-extrabold text-rose-800 mb-4 uppercase tracking-widest flex items-center gap-2"><i class="fa-solid fa-trash-can-arrow-up text-rose-600"></i> Padam Rekod Pukal</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
+       <div><label class="block text-xs font-bold text-gray-600 mb-1.5 uppercase">Bulan</label> <select id="delete-filter-bulan" class="w-full px-4 py-2.5 border-2 border-rose-200 rounded-xl text-sm font-bold focus:ring-4 focus:ring-rose-100 outline-none bg-white"> <option value="0">-- Pilih Bulan --</option> <option value="1">Januari</option> <option value="2">Februari</option> <option value="3">Mac</option> <option value="4">April</option> <option value="5">Mei</option> <option value="6">Jun</option> <option value="7">Julai</option> <option value="8">Ogos</option> <option value="9">September</option> <option value="10">Oktober</option> <option value="11">November</option> <option value="12">Disember</option> </select>
        </div>
-       <div><label class="block text-xs font-semibold text-gray-700 mb-2">Tahun</label> <select id="delete-filter-tahun" class="w-full px-3 py-2 border-2 border-gray-300 rounded-lg text-xs font-semibold text-gray-800 focus:ring-2 focus:ring-red-400 outline-none"></select>
-       </div><button onclick="deleteAllMonthlyRecords()" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg text-xs font-bold transition-all duration-300 flex items-center justify-center gap-2"> <span>🗑️</span> Padam Semua </button>
+       <div><label class="block text-xs font-bold text-gray-600 mb-1.5 uppercase">Tahun</label> <select id="delete-filter-tahun" class="w-full px-4 py-2.5 border-2 border-rose-200 rounded-xl text-sm font-bold focus:ring-4 focus:ring-rose-100 outline-none bg-white"></select>
+       </div><button onclick="deleteAllMonthlyRecords()" class="bg-gradient-to-r from-rose-500 to-red-600 hover:from-rose-600 hover:to-red-700 text-white px-5 py-3 rounded-xl text-sm font-bold transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2 transform active:scale-95"> <i class="fa-solid fa-triangle-exclamation"></i> Padam Semua </button>
       </div>
      </div><!-- Rekod Terkini Section -->
-     <div class="bg-white rounded-xl shadow-lg p-4 border-l-4 border-blue-500">
-      <h3 class="text-xs font-bold text-gray-800 mb-3 uppercase tracking-wide">📄 Rekod Terkini</h3>
-      <div class="overflow-x-auto max-h-96 overflow-y-auto rounded-lg border border-gray-200">
-       <table class="w-full text-xs">
-        <thead class="bg-gray-800 text-white sticky top-0">
+     <div class="glass-card rounded-2xl p-5">
+      <h3 class="text-[11px] font-extrabold text-blue-800 mb-4 uppercase tracking-widest flex items-center gap-2"><i class="fa-solid fa-file-lines text-blue-500"></i> Sejarah Rekod Terperinci</h3>
+      <div class="overflow-x-auto max-h-96 overflow-y-auto pr-2 rounded-xl">
+       <table class="w-full text-xs modern-table min-w-[700px]">
+        <thead class="text-gray-500 text-[10px] uppercase tracking-wider sticky top-0 z-20 bg-white/90 backdrop-blur-md">
          <tr>
-          <th class="py-2 px-3 text-left font-bold">Tarikh</th>
-          <th class="py-2 px-3 text-left font-bold">Masa</th>
-          <th class="py-2 px-3 text-left font-bold">Kelas</th>
-          <th class="py-2 px-3 text-left font-bold">Guru Asal</th>
-          <th class="py-2 px-3 text-left font-bold">Sebab</th>
-          <th class="py-2 px-3 text-left font-bold">Guru Ganti</th>
-          <th class="py-2 px-3 text-center font-bold">Tindakan</th>
+          <th class="py-3 px-4 text-left font-bold">Tarikh</th>
+          <th class="py-3 px-4 text-left font-bold">Masa</th>
+          <th class="py-3 px-4 text-left font-bold">Kelas</th>
+          <th class="py-3 px-4 text-left font-bold">Guru Asal</th>
+          <th class="py-3 px-4 text-left font-bold">Sebab</th>
+          <th class="py-3 px-4 text-left font-bold">Guru Ganti</th>
+          <th class="py-3 px-4 text-center font-bold">Tindakan</th>
          </tr>
         </thead>
-        <tbody id="rekod-tbody" class="divide-y divide-gray-200">
+        <tbody id="rekod-tbody">
          <tr>
-          <td colspan="7" class="py-6 text-center text-gray-400 italic text-xs">Pilih bulan dan tahun untuk melihat rekod</td>
+          <td colspan="7" class="py-10 text-center text-gray-400 font-medium bg-transparent shadow-none"><i class="fa-solid fa-clock-rotate-left text-3xl mb-2 block opacity-30"></i>Pilih bulan dan tahun untuk melihat rekod</td>
          </tr>
         </tbody>
        </table>
@@ -225,11 +312,12 @@
     <section id="tab3" class="p-2 md:p-4 fade-in hidden h-[85vh]">
      <div id="tv-container" class="bg-gray-900 rounded-2xl shadow-2xl p-4 md:p-8 border-4 border-indigo-500 flex flex-col h-full relative">
       
-      <!-- Kepala TV -->
+       <!-- Kepala TV -->
       <div class="flex justify-between items-center mb-6 border-b-2 border-gray-700 pb-4 shrink-0">
        <h2 class="text-2xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400 flex items-center gap-4 uppercase tracking-wider">
-        <span class="text-4xl">📺</span> JADUAL GURU GANTI (LIVE)
+        <i class="fa-solid fa-tv text-blue-400 text-3xl md:text-5xl"></i> JADUAL GURU GANTI (LIVE)
        </h2>
+
        <div class="flex items-center gap-4 bg-gray-800 p-2 rounded-xl">
         <label class="text-gray-400 font-bold text-sm tracking-widest uppercase hidden md:block">Tarikh:</label>
         <input type="date" id="tv-date" onchange="renderLiveTV()" class="px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white font-bold focus:ring-2 focus:ring-emerald-500 outline-none cursor-pointer">
@@ -1037,16 +1125,23 @@
 
       const yearSelect = document.getElementById('filter-tahun');
       const deleteYearSelect = document.getElementById('delete-filter-tahun');
-      for (let y = 2025; y <= 2036; y++) {
+      
+      // KOD BAHARU: Sistem tahun dinamik bermula dari Tahun Asas (2026) hingga Tahun Semasa
+      const tahunMula = 2026; 
+      const tahunSemasa = new Date().getFullYear();
+      const tahunAkhir = tahunSemasa >= tahunMula ? tahunSemasa : tahunMula;
+
+      for (let y = tahunMula; y <= tahunAkhir; y++) {
         const opt = document.createElement('option');
         opt.value = y;
         opt.textContent = y;
-        if (y === new Date().getFullYear()) opt.selected = true;
+        if (y === tahunSemasa) opt.selected = true; // Auto-pilih tahun semasa
         yearSelect.appendChild(opt);
 
         const opt2 = document.createElement('option');
         opt2.value = y;
         opt2.textContent = y;
+        if (y === tahunSemasa) opt2.selected = true; // Auto-pilih untuk bahagian padam
         deleteYearSelect.appendChild(opt2);
       }
 
@@ -1214,7 +1309,7 @@
       const btnJana = document.getElementById('btn-jana');
 
       if (senaraiTidakHadir.length === 0) {
-        tbody.innerHTML = '<tr id="empty-row"><td colspan="3" class="py-6 text-center text-gray-400 italic">Tiada rekod</td></tr>';
+        tbody.innerHTML = '<tr id="empty-row"><td colspan="3" class="py-10 text-center text-gray-400 font-medium italic bg-transparent shadow-none"><i class="fa-solid fa-folder-open text-3xl mb-2 block opacity-30"></i>Tiada rekod</td></tr>';
         header.classList.add('hidden');
         btnJana.disabled = true;
         return;
@@ -1226,17 +1321,18 @@
       btnJana.disabled = false;
 
       tbody.innerHTML = senaraiTidakHadir.map((item, idx) => `
-        <tr class="hover:bg-indigo-50 transition-colors">
-          <td class="py-2 px-3 font-medium text-gray-800">${item.guru}</td>
-          <td class="py-2 px-3 text-gray-600">${item.sebab}</td>
-          <td class="py-2 px-3 text-center">
-            <button onclick="hapusItem(${idx})" class="bg-red-100 hover:bg-red-200 text-red-600 px-2 py-1 rounded text-xs font-semibold transition-colors">
-              🗑️
+        <tr>
+          <td class="font-bold text-gray-800">${item.guru}</td>
+          <td class="font-medium text-gray-600">${item.sebab}</td>
+          <td class="text-center">
+            <button onclick="hapusItem(${idx})" class="w-8 h-8 bg-rose-100 hover:bg-rose-500 text-rose-600 hover:text-white rounded-full transition-all shadow-sm flex items-center justify-center mx-auto" title="Padam">
+              <i class="fa-solid fa-trash-can text-sm"></i>
             </button>
           </td>
         </tr>
       `).join('');
     }
+
 
     function hapusItem(idx) {
       senaraiTidakHadir.splice(idx, 1);
@@ -1587,7 +1683,7 @@
       }
     }
 
-    function switchTab(tab) {
+     function switchTab(tab) {
       const tab1 = document.getElementById('tab1');
       const tab2 = document.getElementById('tab2');
       const tab3 = document.getElementById('tab3');
@@ -1595,8 +1691,9 @@
       const btn2 = document.getElementById('tab2-btn');
       const btn3 = document.getElementById('tab3-btn');
 
-      const activeClass = 'tab-active px-4 py-2 rounded-lg font-semibold text-sm transition-all duration-300 flex items-center gap-2 shadow-md';
-      const inactiveClass = 'tab-inactive px-4 py-2 rounded-lg font-semibold text-sm transition-all duration-300 flex items-center gap-2';
+      const activeClass = 'tab-active px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 flex items-center gap-2 flex-shrink-0';
+      const inactiveClass = 'tab-inactive px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 flex items-center gap-2 flex-shrink-0';
+
 
       // Sembunyikan semua tab & buang aktif dari semua butang
       tab1.classList.add('hidden');
@@ -1833,21 +1930,21 @@
       }).slice(0, 50);
 
       if (sorted.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="7" class="py-6 text-center text-gray-400 italic text-xs">Tiada rekod</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="7" class="py-10 text-center text-gray-400 font-medium bg-transparent shadow-none"><i class="fa-solid fa-folder-open text-3xl mb-2 block opacity-30"></i>Tiada rekod</td></tr>';
         return;
       }
 
       tbody.innerHTML = sorted.map(r => `
-        <tr class="hover:bg-gray-50 transition-colors">
-          <td class="py-2 px-3">${r.tarikh}</td>
-          <td class="py-2 px-3">${r.masa}</td>
-          <td class="py-2 px-3">${r.kelas}</td>
-          <td class="py-2 px-3 font-bold text-red-600">${r.guru_asal}</td>
-          <td class="py-2 px-3 font-medium text-amber-600">${r.sebab}</td>
-          <td class="py-2 px-3 font-bold text-green-600">${r.guru_ganti}</td>
-          <td class="py-2 px-3 text-center">
-            <button onclick="confirmDelete('${r.__backendId}')" class="bg-red-100 hover:bg-red-200 text-red-600 px-2 py-1 rounded text-xs font-semibold transition-colors">
-              🗑️
+        <tr>
+          <td class="font-bold text-indigo-900">${r.tarikh}</td>
+          <td class="font-bold text-indigo-700">${r.masa}</td>
+          <td class="font-semibold text-gray-700">${r.kelas}</td>
+          <td class="font-extrabold text-rose-600">${r.guru_asal}</td>
+          <td class="font-medium text-amber-600">${r.sebab}</td>
+          <td class="font-extrabold text-emerald-600">${r.guru_ganti}</td>
+          <td class="text-center">
+            <button onclick="confirmDelete('${r.__backendId}')" class="w-8 h-8 bg-rose-100 hover:bg-rose-500 text-rose-600 hover:text-white rounded-full transition-all shadow-sm flex items-center justify-center mx-auto" title="Padam">
+              <i class="fa-solid fa-trash-can text-sm"></i>
             </button>
           </td>
         </tr>
