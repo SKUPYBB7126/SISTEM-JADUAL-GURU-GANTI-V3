@@ -1559,7 +1559,7 @@
       }
     }
 
-    // ==========================================
+     // ==========================================
     // LOGIK PAPARAN TV BILIK GURU (KOD BAHARU)
     // ==========================================
     let tvScrollInterval;
@@ -1576,10 +1576,8 @@
 
       // Format pertukaran tarikh sistem (YYYY-MM-DD) kepada format pangkalan data (DD/MM/YYYY)
       const dParts = dateInput.split('-');
-      // Buang sifar di hadapan hari dan bulan supaya padan tepat dengan Google Sheet (Cth: 05 -> 5)
-      const hariInt = parseInt(dParts[2], 10);
-      const bulanInt = parseInt(dParts[1], 10);
-      const tarikhCari = `${hariInt}/${bulanInt}/${dParts[0]}`;
+      // KOD BAHARU: Kekalkan format sifar di hadapan supaya padan tepat dengan rekod pangkalan data (Cth: 05/09/2026)
+      const tarikhCari = `${dParts[2]}/${dParts[1]}/${dParts[0]}`;
 
       // Menyedut senarai data berdasarkan tarikh
       const tvRecords = savedRecords.filter(r => r.tarikh === tarikhCari);
