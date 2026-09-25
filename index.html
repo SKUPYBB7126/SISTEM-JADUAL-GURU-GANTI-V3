@@ -350,11 +350,40 @@
     }
 
     function calculateTeacherWorkload(teacherName, hari) {
-      return jadualInduk.filter(j => {
+      // 1. Kira Beban Hakiki Hari Ini (Dari Jadual Induk)
+      const hakiki = jadualInduk.filter(j => {
         const jHari = (j['HARI'] || '').toUpperCase();
         const jGuru = (j['GURU ASAL'] || j['Guru Asal'] || '').toUpperCase();
         return jHari === hari && jGuru === teacherName.toUpperCase();
       }).length;
+
+      // 2. Kira Beban Ganti Semasa (Jika guru sudah dipilih secara manual dalam sesi ini)
+      const gantiHariIni = cadanganGanti.filter(c => c.guruGanti === teacherName).length;
+
+      return hakiki + gantiHariIni;
+    }
+
+    // Fungsi Keadilan AI 1: Dapatkan sejarah ganti bulanan untuk "Tie-Breaker"
+    function getHistoryBulanIni(teacherName) {
+      if (!currentTarikh) return 0;
+      const parts = currentTarikh.split('/');
+      const bulanCari = parseInt(parts[1], 10);
+      const tahunCari = parseInt(parts[2], 10);
+      
+      return savedRecords.filter(r => 
+        r.guru_ganti === teacherName && 
+        r.bulan === bulanCari && 
+        r.tahun === tahunCari
+      ).length;
+    }
+
+    // Fungsi Keadilan AI 2: Kenal pasti hierarki jawatan
+    function checkIsPentadbir(teacherName) {
+      const name = teacherName.toUpperCase();
+      const isGB = signatureData.guruBesar.nama.toUpperCase() === name;
+      const isPK = signatureData.pkKurikulum.nama.toUpperCase() === name;
+      const hasTitle = name.includes('PK ') || name.includes('PENOLONG KANAN') || name.includes('GURU BESAR');
+      return isGB || isPK || hasTitle;
     }
 
     function getWorkloadColorClass(workload) {
@@ -1221,7 +1250,7 @@
         return;
       }
 
-      showLoading('Menjana slot guru ganti...');
+      showLoading('Menjana slot dengan Algoritma Keadilan AI...');
       cadanganGanti = [];
 
       const hari = currentHari.toUpperCase();
@@ -1251,10 +1280,24 @@
 
           const availableTeachers = guruList.filter(g => !allBusy.includes(g.toUpperCase()));
 
+          // KOD BAHARU: Implementasi Algoritma Keadilan AI Pintar
           const candidatesWithWorkload = availableTeachers.map(teacher => {
             const workload = calculateTeacherWorkload(teacher, hari);
-            return { name: teacher, workload };
-          }).sort((a, b) => a.workload - b.workload);
+            const sejarahBulanan = getHistoryBulanIni(teacher);
+            const isPentadbir = checkIsPentadbir(teacher);
+            return { name: teacher, workload, sejarahBulanan, isPentadbir };
+          }).sort((a, b) => {
+            // 1. Beban Harian Paling Utama (Sikit naik atas)
+            if (a.workload !== b.workload) return a.workload - b.workload;
+            
+            // 2. Pemecah Seri: Sejarah Ganti Bulan Ini (Sikit naik atas)
+            if (a.sejarahBulanan !== b.sejarahBulanan) return a.sejarahBulanan - b.sejarahBulanan;
+            
+            // 3. Hierarki: Pentadbir mengalah ke bawah jika ada guru biasa lapang
+            if (a.isPentadbir !== b.isPentadbir) return a.isPentadbir ? 1 : -1;
+            
+            return 0; // Sama adil
+          });
 
           cadanganGanti.push({
             tarikh: item.tarikh,
@@ -1277,7 +1320,7 @@
       renderCadangan();
       updateButtonStates();
       document.getElementById('jadual-ganti-section').classList.remove('hidden');
-      showToast(`${cadanganGanti.length} slot dijana`);
+      showToast(`${cadanganGanti.length} slot dijana (Mod Keadilan AI)`);
     }
 
     function renderCadangan() {
@@ -1291,11 +1334,14 @@
       tbody.innerHTML = cadanganGanti.map((c, idx) => {
         const optionsHtml = c.candidatesWithWorkload.length > 0 
           ? `<option value="">-- Pilih Guru --</option>` +
-            c.candidatesWithWorkload.map(cand => `
-              <option value="${cand.name}" data-workload="${cand.workload}">
-                ${cand.name} (${cand.workload} masa)
-              </option>
-            `).join('')
+            c.candidatesWithWorkload.map(cand => {
+              // KOD BAHARU: UI Pintar menunjukkan tanda Pentadbir & Sejarah Rekod
+              const tagMasa = cand.isPentadbir ? '🛡️ Pentadbir' : `${cand.workload} masa`;
+              const rekodTeks = cand.sejarahBulanan > 0 ? ` | Rekod: ${cand.sejarahBulanan}x` : '';
+              return `<option value="${cand.name}" data-workload="${cand.workload}">
+                ${cand.name} (${tagMasa}${rekodTeks})
+              </option>`;
+            }).join('')
           : '<option value="">TIADA</option>';
 
         const selectedCand = c.candidatesWithWorkload.find(cand => cand.name === c.guruGanti);
@@ -1314,7 +1360,7 @@
             <td class="py-2 px-2 font-medium text-orange-600">${c.sebab}</td>
             <td class="py-2 px-2">
               <div class="flex items-center gap-2">
-                <span id="badge-${idx}" class="workload-badge ${badgeClass}">${badgeDisplay}</span>
+                <span id="badge-${idx}" class="workload-badge ${badgeClass}" title="Beban Terkini">${badgeDisplay}</span>
                 <select id="select-${idx}" onchange="updateGantiAndBadge(${idx}, this.value)" class="flex-1 px-2 py-1 border rounded text-xs bg-white font-bold text-green-600">
                   ${optionsHtml}
                 </select>
@@ -1337,6 +1383,33 @@
         badge.textContent = badgeDisplay;
         badge.className = `workload-badge ${value ? getWorkloadColorClass(workload) : 'bg-gray-300'}`;
       }
+
+      // KOD BAHARU: Apabila cikgu pilih satu nama, sistem automatik kemas kini beban nama tersebut 
+      // di kotak carian yang lain supaya tidak berlaku pertindihan beban ganti hari yang sama.
+      cadanganGanti.forEach(c => {
+        c.candidatesWithWorkload.forEach(cand => {
+           cand.workload = calculateTeacherWorkload(cand.name, c.hari);
+        });
+      });
+      
+      // Refresh UI options untuk row yang belum dipilih sahaja
+      cadanganGanti.forEach((c, i) => {
+         if(!c.guruGanti && i !== idx) {
+             const sel = document.getElementById(`select-${i}`);
+             if(sel) {
+                 const currVal = sel.value;
+                 sel.innerHTML = `<option value="">-- Pilih Guru --</option>` +
+                  c.candidatesWithWorkload.map(cand => {
+                    const tagMasa = cand.isPentadbir ? '🛡️ Pentadbir' : `${cand.workload} masa`;
+                    const rekodTeks = cand.sejarahBulanan > 0 ? ` | Rekod: ${cand.sejarahBulanan}x` : '';
+                    return `<option value="${cand.name}" data-workload="${cand.workload}">
+                      ${cand.name} (${tagMasa}${rekodTeks})
+                    </option>`;
+                  }).join('');
+                 sel.value = currVal;
+             }
+         }
+      });
 
       updateButtonStates();
     }
