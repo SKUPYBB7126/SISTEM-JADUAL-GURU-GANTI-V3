@@ -1,0 +1,1842 @@
+<!doctype html>
+<html lang="ms" class="h-full">
+ <head><script>window["__codeletBootstrap__"]=JSON.parse('{"A":"A","B":"20260923-01-496072e","C":{"Abril Fatface":"YACgEZbkUVE,0","Alfa Slab One":"YACgEYS9sJU,0","Anton":"YACgEcYqQ-A,0","Archivo":"YACgEZulLoA,0","Arial Narrow":"YAGyDvJ_4Ts,0","Arial Rounded MT Bold":"YAFcfoaHu-s,0","Arial":"YAGyDvJ_4Ts,0","Avenir Next":"YAFcfmNq6UY,0","Baloo 2":"YADK30bC6HQ,0","Bebas Neue":"YACgESME5ew,0","Bricolage Grotesque":"YAFyMcdwzpc,0","Broken Glyph":"YADZ-exUkv0,0","Canva Sans":"YAFdJjTk5UU,1","Caveat":"YALBs2ploWQ,0","Comic Sans MS":"YAFcfvtOAUY,1","Cormorant Garamond":"YAFdJhX-538,0","Courier New":"YAGzXiGs0_8,0","Courier Prime":"YAD1aFjegN8,0","DM Sans":"YAD1aU3sLnI,0","DM Serif Display":"YAD1aYG82rc,0","Forum":"YACgEcnnqB4,0","Fraunces":"YAFdJpU7Kkk,0","Georgia":"YAGzXkO0pEM,0","Ghost Mono":"YAHQutsX00Q,0","Hanken Grotesk":"YAFcfhwp99E,0","Helvetica Neue":"YAFcf6CtJfI,0","Helvetica":"YAFcf6CtJfI,0","IBM Plex Mono":"YAFdJkmvhGI,0","Impact":"YAFcfnjI7Vk,0","Instrument Serif":"YAHFeOnZNEk,0","Inter":"YAFdJvSyp_k,3","Iowan Old Style":"YAGNIFa8j9o,0","Jacques Francois":"YADK3zbC6RM,0","JetBrains Mono":"YAFdJksXcAk,0","Josefin Sans":"YAFdJjvw9Ps,0","Lato":"YAFdJuFCnaw,0","Libre Baskerville":"YACgEUFdPdA,0","Lobster":"YAD8SnSjSFI,0","Lora":"YACgEXvxf8Q,0","Merriweather":"YACgEXvHxxs,0","Montserrat":"YAFdtQi73Xs,0","Nunito":"YAFdJoNRMmU,1","Oleo Script":"YACgEQQ14jI,0","Oswald":"YACgEQY10lw,0","Pacifico":"YADLjORQ1u4,0","Phantom Sans":"YAFdJvgJ5TU,0","Playfair Display":"YAFdJhem5V8,1","Plus Jakarta Sans":"YAGvf3_u0_Q,0","Poppins":"YAFdJjbTu24,1","Press Start 2P":"YAFyGr-8pmQ,0","Quicksand":"YAFdJpYtCxE,1","Raleway":"YAFdJhmxbVQ,1","Roboto Slab":"YAFdJswIKAg,0","Rockwell":"YAFcfyVZnN0,0","Rye":"YACgEdQP21k,0","Segoe UI":"YAHNdRD1Klw,0","Source Sans 3":"YAG4lO1Mj10,0","Source Serif 4":"YACgEfdj394,0","Space Grotesk":"YADZ-dYEmhg,0","Space Mono":"YADW1-vpsoc,0","Times New Roman":"YAGzXW3gftg,0","Times":"YAGzXW3gftg,0","Trebuchet MS":"YAFcfrglpVA,0","UV Display":"YAEdVfSSpYo,0","UV Sans":"YAFdJvgJ5TU,0","Ubuntu":"YACgERDU--Q,0","Verdana":"YAGzXTctYtQ,0","Work Sans":"YAGXhLOKv44,0","Yellowtail":"YACgEYG4kG4,0","ui-monospace":"YAD1aFjegN8,0","ui-sans-serif":"YACkoD1yZN0,0"}}');</script><script src="/_sdk/83d6dfdadcd4750a.telemetry_sdk.js" integrity="sha512-XS4Dvzp6vbagZS9vFErihvr8aO3S0tH78KWUefn06fmL4WYqryBtZj/IOLITYj7dFA4gPVvPg1W/JB1DK3uLNQ=="></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistem Guru Ganti SK Ulu Pelagus</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="/_sdk/3f2f54b34a214371.element_sdk.js" integrity="sha512-8xLF8/URn4B9vwrZpee3n9pRxqtX06GQyyIsX+0KC//ichP5ugyHDkZAIPNrIjpZIGJg7qjrtkCtiwqkjhk1Pw=="></script>
+  <script src="/_sdk/8de366929c5f3b48.data_sdk.js" integrity="sha512-TyQ8k8cZj66xe/aENmn6RyZpdOFZXbAo5+KBG3PeFM+Q4qMTHU8xAqmq4ADClNfPrstgQYV6OzZHwLTnElzB2g=="></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Plus Jakarta Sans', sans-serif; }
+    html, body, #app { height: 100%; }
+    .tab-active { background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); color: white; }
+    .tab-inactive { background: #e0e7ff; color: #4338ca; }
+    .btn-primary { background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); }
+    .btn-primary:hover { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); }
+    .btn-primary:disabled { background: #cbd5e1; cursor: not-allowed; opacity: 0.6; }
+    .btn-success { background: linear-gradient(135deg, #10b981 0%, #059669 100%); }
+    .btn-success:disabled { background: #cbd5e1; cursor: not-allowed; opacity: 0.6; }
+    .btn-print { background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%); }
+    .btn-print:hover { background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%); }
+    .btn-print:disabled { background: #cbd5e1; cursor: not-allowed; opacity: 0.6; }
+    .table-header { background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); }
+    .fade-in { animation: fadeIn 0.3s ease-in-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+    input[type="date"]::-webkit-calendar-picker-indicator { cursor: pointer; }
+    .scroll-container { max-height: 300px; overflow-y: auto; }
+    .scroll-container::-webkit-scrollbar { width: 6px; }
+    .scroll-container::-webkit-scrollbar-thumb { background: #c7d2fe; border-radius: 3px; }
+    .workload-badge { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; font-size: 11px; font-weight: bold; color: white; }
+    .workload-green { background-color: #10b981; }
+    .workload-yellow { background-color: #eab308; color: #1f2937; }
+    .workload-red { background-color: #ef4444; }
+    .conflict-highlight { background-color: #fee2e2 !important; border: 2px solid #ef4444; }
+    .print-content { display: none; }
+    .bar-chart-item { display: flex; align-items: center; gap: 8px; }
+    .bar-chart-label { font-size: 11px; font-weight: 600; color: #1f2937; min-width: 80px; }
+    .bar-chart-bar { flex: 1; height: 20px; border-radius: 4px; }
+    .bar-chart-value { font-size: 11px; font-weight: bold; min-width: 30px; text-align: right; }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+ </head>
+ <body class="h-full bg-gradient-to-br from-slate-50 to-indigo-50">
+  <div id="app" class="h-full w-full overflow-auto flex flex-col"><!-- Header -->
+   <header id="main-header" class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 px-4 shadow-lg flex-shrink-0">
+    <div class="text-center">
+     <h1 id="school-title-main" class="text-base md:text-lg font-bold tracking-wide">SISTEM GURU GANTI</h1>
+     <h2 id="school-title-sub" class="text-xs md:text-sm font-semibold tracking-wide mt-1 opacity-95">SEKOLAH KEBANGSAAN ULU PELAGUS</h2>
+    </div>
+   </header><!-- Tab Navigation -->
+    <nav class="flex justify-center gap-2 p-3 bg-white shadow-sm flex-shrink-0">
+    <button id="tab1-btn" onclick="switchTab(1)" class="tab-active px-4 py-2 rounded-lg font-semibold text-sm transition-all duration-300 flex items-center gap-2"> <span>📝</span> Input Guru Tidak Hadir </button> 
+    <button id="tab2-btn" onclick="switchTab(2)" class="tab-inactive px-4 py-2 rounded-lg font-semibold text-sm transition-all duration-300 flex items-center gap-2"> <span>📊</span> Dashboard Analisis </button>
+    <button id="tab3-btn" onclick="switchTab(3)" class="tab-inactive px-4 py-2 rounded-lg font-semibold text-sm transition-all duration-300 flex items-center gap-2"> <span>📺</span> Paparan TV Live </button>
+   </nav><!-- Main Content -->
+   <main class="flex-1 overflow-auto"><!-- TAB 1: Input Guru Tidak Hadir -->
+    <section id="tab1" class="p-4 fade-in"><!-- Borang Input -->
+     <div class="bg-white rounded-xl shadow-lg p-4 mb-4 border border-indigo-100">
+      <h2 class="text-base font-bold text-indigo-700 mb-3 flex items-center gap-2"><span class="bg-indigo-100 p-1.5 rounded-lg">📋</span> Borang Input Ketidakhadiran</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+       <div><label class="block text-xs font-semibold text-gray-600 mb-1">Tarikh</label> <input type="date" id="input-tarikh" onchange="updateHari()" class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-indigo-300 focus:border-indigo-400 outline-none">
+       </div>
+       <div><label class="block text-xs font-semibold text-gray-600 mb-1">Hari</label> <input type="text" id="input-hari" readonly class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm bg-gray-50 text-gray-700">
+       </div>
+       <div><label class="block text-xs font-semibold text-gray-600 mb-1">Guru Asal</label> <select id="input-guru" class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-indigo-300 focus:border-indigo-400 outline-none"> <option value="">-- Pilih Guru --</option> </select>
+       </div>
+       <div><label class="block text-xs font-semibold text-gray-600 mb-1">Sebab Tidak Hadir</label> <select id="input-sebab" class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-indigo-300 focus:border-indigo-400 outline-none"> <option value="">-- Pilih Sebab --</option> </select>
+       </div>
+      </div><button onclick="tambahKeSenarai()" class="btn-primary mt-4 w-full py-2.5 rounded-lg text-white font-semibold text-sm shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2"> <span>➕</span> Tambah ke Senarai </button>
+     </div><!-- Senarai Guru Tidak Hadir -->
+     <div class="bg-white rounded-xl shadow-lg p-4 mb-4 border border-indigo-100">
+      <h2 class="text-base font-bold text-indigo-700 mb-3 flex items-center gap-2"><span class="bg-red-100 p-1.5 rounded-lg">📑</span> Senarai Guru Tidak Hadir</h2>
+      <div id="senarai-header" class="bg-gradient-to-r from-amber-50 to-orange-50 p-3 rounded-lg mb-3 border border-amber-200 hidden">
+       <p class="text-sm font-semibold text-amber-800"><span id="header-tarikh"></span> | <span id="header-hari"></span></p>
+      </div>
+      <div class="scroll-container">
+       <table class="w-full text-sm">
+        <thead class="table-header text-white sticky top-0">
+         <tr>
+          <th class="py-2 px-3 text-left rounded-tl-lg">Guru Asal</th>
+          <th class="py-2 px-3 text-left">Sebab Tidak Hadir</th>
+          <th class="py-2 px-3 text-center rounded-tr-lg w-20">Tindakan</th>
+         </tr>
+        </thead>
+        <tbody id="senarai-tbody" class="divide-y divide-gray-100">
+         <tr id="empty-row">
+          <td colspan="3" class="py-6 text-center text-gray-400 italic">Tiada rekod</td>
+         </tr>
+        </tbody>
+       </table>
+      </div><button onclick="janaGantiGuru()" id="btn-jana" class="btn-success mt-4 w-full py-3 rounded-lg text-white font-bold text-sm shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed" disabled> <span>⚡</span> JANA CADANGAN GURU GANTI </button>
+     </div><!-- Jadual Guru Ganti -->
+     <div id="jadual-ganti-section" class="bg-white rounded-xl shadow-lg p-4 border border-green-100 hidden">
+      <h2 class="text-base font-bold text-green-700 mb-3 flex items-center gap-2"><span class="bg-green-100 p-1.5 rounded-lg">✅</span> Jadual Guru Ganti (Pilih Manual)</h2><!-- Legend -->
+      <div class="bg-gray-50 p-3 rounded-lg mb-4 border border-gray-200">
+       <p class="text-xs font-semibold text-gray-700 mb-2">Penunjuk Beban Masa:</p>
+       <div class="flex flex-wrap gap-4 text-xs">
+        <div class="flex items-center gap-2">
+         <div class="workload-badge workload-green">
+          0-3
+         </div><span class="text-gray-600">Ringan (0-3 masa)</span>
+        </div>
+        <div class="flex items-center gap-2">
+         <div class="workload-badge workload-yellow">
+          4-5
+         </div><span class="text-gray-600">Sederhana (4-5 masa)</span>
+        </div>
+        <div class="flex items-center gap-2">
+         <div class="workload-badge workload-red">
+          6+
+         </div><span class="text-gray-600">Berat (6+ masa)</span>
+        </div>
+       </div>
+      </div>
+      <div class="overflow-x-auto">
+       <table class="w-full text-xs">
+        <thead class="bg-gradient-to-r from-green-500 to-emerald-500 text-white">
+         <tr>
+          <th class="py-2 px-2 text-left">Tarikh</th>
+          <th class="py-2 px-2 text-left">Hari</th>
+          <th class="py-2 px-2 text-left">Masa</th>
+          <th class="py-2 px-2 text-left">Kelas</th>
+          <th class="py-2 px-2 text-left">Subjek</th>
+          <th class="py-2 px-2 text-left">Guru Asal</th>
+          <th class="py-2 px-2 text-left">Sebab</th>
+          <th class="py-2 px-2 text-left">Guru Ganti (Pilih Manual)</th>
+         </tr>
+        </thead>
+        <tbody id="jadual-ganti-tbody" class="divide-y divide-gray-100"></tbody>
+       </table>
+      </div><!-- Hidden Print Content -->
+      <div class="print-content" id="print-content"></div>
+      <div class="flex gap-3 mt-4"><button onclick="simpanJadual()" id="btn-simpan" class="btn-primary flex-1 py-2.5 rounded-lg text-white font-semibold text-sm shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2" disabled> <span>💾</span> Simpan Jadual Guru Ganti </button> <button onclick="printReportGantiGuru()" id="btn-cetak" class="btn-print flex-1 py-2.5 rounded-lg text-white font-semibold text-sm shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2" disabled> <span>🖨️</span> Cetak Jadual Guru Ganti </button>
+      </div>
+     </div>
+    </section><!-- TAB 2: Dashboard Analisis -->
+    <section id="tab2" class="p-4 fade-in hidden"><!-- Filter Section -->
+     <div class="bg-white rounded-xl shadow-lg p-4 mb-4 border-l-4 border-purple-500">
+      <div class="flex justify-between items-start gap-4 flex-col md:flex-row">
+       <div class="flex-1 w-full">
+        <h3 class="text-xs font-bold text-gray-800 mb-3 uppercase tracking-wide">🔍 Penapis Data</h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+         <div><label class="block text-xs font-semibold text-gray-700 mb-2">Bulan</label> <select id="filter-bulan" onchange="updateDashboard()" class="w-full px-3 py-2 border-2 border-gray-300 rounded-lg text-xs font-semibold text-gray-800 focus:ring-2 focus:ring-purple-400 focus:border-purple-500 outline-none"> <option value="0">Semua Bulan</option> <option value="1">Januari</option> <option value="2">Februari</option> <option value="3">Mac</option> <option value="4">April</option> <option value="5">Mei</option> <option value="6">Jun</option> <option value="7">Julai</option> <option value="8">Ogos</option> <option value="9">September</option> <option value="10">Oktober</option> <option value="11">November</option> <option value="12">Disember</option> </select>
+         </div>
+         <div class="md:col-span-3"><label class="block text-xs font-semibold text-gray-700 mb-2">Tahun</label> <select id="filter-tahun" onchange="updateDashboard()" class="w-full px-3 py-2 border-2 border-gray-300 rounded-lg text-xs font-semibold text-gray-800 focus:ring-2 focus:ring-purple-400 focus:border-purple-500 outline-none"></select>
+         </div>
+        </div>
+       </div><button onclick="printDashboard()" class="btn-print md:mt-6 px-5 py-2.5 rounded-lg text-white font-bold text-sm shadow-md hover:shadow-lg transition-all duration-300 flex items-center gap-2 whitespace-nowrap h-fit"> <span>🖨️</span> Cetak </button>
+      </div>
+     </div><!-- Stats Cards -->
+     <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-4">
+      <div class="bg-white rounded-lg shadow-md p-4 border-t-4 border-indigo-600">
+       <p class="text-xs font-bold text-gray-700 mb-2">JUMLAH KETIDAKHADIRAN</p>
+       <p id="stat-total" class="text-3xl font-bold text-gray-800">0</p>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-4 border-t-4 border-red-500">
+       <p class="text-xs font-bold text-gray-700 mb-2">GURU KERAP TIDAK HADIR</p>
+       <p id="stat-guru-top" class="text-sm font-bold text-gray-800 line-clamp-2">-</p>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-4 border-t-4 border-amber-500">
+       <p class="text-xs font-bold text-gray-700 mb-2">SEBAB UTAMA</p>
+       <p id="stat-sebab-top" class="text-sm font-bold text-gray-800 line-clamp-2">-</p>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-4 border-t-4 border-green-500">
+       <p class="text-xs font-bold text-gray-700 mb-2">GURU GANTI AKTIF</p>
+       <p id="stat-ganti-top" class="text-sm font-bold text-gray-800 line-clamp-2">-</p>
+      </div>
+     </div><!-- Charts Section -->
+     <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-4"><!-- Guru Tidak Hadir -->
+      <div class="bg-white rounded-xl shadow-lg p-4 border-l-4 border-red-500">
+       <h3 class="text-xs font-bold text-gray-800 mb-4 uppercase tracking-wide">📊 Kekerapan Ketidakhadiran Guru (per hari)</h3>
+       <div id="chart-guru" class="space-y-2 max-h-80 overflow-y-auto pr-2">
+        <p class="text-xs text-gray-400 text-center py-8">Pilih bulan dan tahun</p>
+       </div>
+      </div><!-- Sebab Ketidakhadiran -->
+      <div class="bg-white rounded-xl shadow-lg p-4 border-l-4 border-amber-500">
+       <h3 class="text-xs font-bold text-gray-800 mb-4 uppercase tracking-wide">📋 Sebab Ketidakhadiran (per hari)</h3>
+       <div id="chart-sebab" class="space-y-2 max-h-80 overflow-y-auto pr-2">
+        <p class="text-xs text-gray-400 text-center py-8">Pilih bulan dan tahun</p>
+       </div>
+      </div><!-- Guru Ganti Digunakan -->
+      <div class="bg-white rounded-xl shadow-lg p-4 border-l-4 border-green-500">
+       <h3 class="text-xs font-bold text-gray-800 mb-4 uppercase tracking-wide">🔄 Guru Ganti Digunakan</h3>
+       <div id="chart-ganti" class="space-y-2 max-h-80 overflow-y-auto pr-2">
+        <p class="text-xs text-gray-400 text-center py-8">Pilih bulan dan tahun</p>
+       </div>
+      </div>
+     </div><!-- Padam Rekod Terkini Section -->
+     <div class="bg-white rounded-xl shadow-lg p-4 mb-4 border-l-4 border-red-600">
+      <h3 class="text-xs font-bold text-gray-800 mb-3 uppercase tracking-wide">🗑️ Padam Semua Rekod Bulanan</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3 items-end">
+       <div><label class="block text-xs font-semibold text-gray-700 mb-2">Bulan</label> <select id="delete-filter-bulan" class="w-full px-3 py-2 border-2 border-gray-300 rounded-lg text-xs font-semibold text-gray-800 focus:ring-2 focus:ring-red-400 outline-none"> <option value="0">-- Pilih Bulan --</option> <option value="1">Januari</option> <option value="2">Februari</option> <option value="3">Mac</option> <option value="4">April</option> <option value="5">Mei</option> <option value="6">Jun</option> <option value="7">Julai</option> <option value="8">Ogos</option> <option value="9">September</option> <option value="10">Oktober</option> <option value="11">November</option> <option value="12">Disember</option> </select>
+       </div>
+       <div><label class="block text-xs font-semibold text-gray-700 mb-2">Tahun</label> <select id="delete-filter-tahun" class="w-full px-3 py-2 border-2 border-gray-300 rounded-lg text-xs font-semibold text-gray-800 focus:ring-2 focus:ring-red-400 outline-none"></select>
+       </div><button onclick="deleteAllMonthlyRecords()" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg text-xs font-bold transition-all duration-300 flex items-center justify-center gap-2"> <span>🗑️</span> Padam Semua </button>
+      </div>
+     </div><!-- Rekod Terkini Section -->
+     <div class="bg-white rounded-xl shadow-lg p-4 border-l-4 border-blue-500">
+      <h3 class="text-xs font-bold text-gray-800 mb-3 uppercase tracking-wide">📄 Rekod Terkini</h3>
+      <div class="overflow-x-auto max-h-96 overflow-y-auto rounded-lg border border-gray-200">
+       <table class="w-full text-xs">
+        <thead class="bg-gray-800 text-white sticky top-0">
+         <tr>
+          <th class="py-2 px-3 text-left font-bold">Tarikh</th>
+          <th class="py-2 px-3 text-left font-bold">Masa</th>
+          <th class="py-2 px-3 text-left font-bold">Kelas</th>
+          <th class="py-2 px-3 text-left font-bold">Guru Asal</th>
+          <th class="py-2 px-3 text-left font-bold">Sebab</th>
+          <th class="py-2 px-3 text-left font-bold">Guru Ganti</th>
+          <th class="py-2 px-3 text-center font-bold">Tindakan</th>
+         </tr>
+        </thead>
+        <tbody id="rekod-tbody" class="divide-y divide-gray-200">
+         <tr>
+          <td colspan="7" class="py-6 text-center text-gray-400 italic text-xs">Pilih bulan dan tahun untuk melihat rekod</td>
+         </tr>
+        </tbody>
+       </table>
+      </div>
+     </div>
+    </section>
+    
+    <!-- TAB 3: Paparan TV Live (Dark Mode) -->
+    <section id="tab3" class="p-2 md:p-4 fade-in hidden h-[85vh]">
+     <div id="tv-container" class="bg-gray-900 rounded-2xl shadow-2xl p-4 md:p-8 border-4 border-indigo-500 flex flex-col h-full relative">
+      
+      <!-- Kepala TV -->
+      <div class="flex justify-between items-center mb-6 border-b-2 border-gray-700 pb-4 shrink-0">
+       <h2 class="text-2xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400 flex items-center gap-4 uppercase tracking-wider">
+        <span class="text-4xl">📺</span> JADUAL GURU GANTI (LIVE)
+       </h2>
+       <div class="flex items-center gap-4 bg-gray-800 p-2 rounded-xl">
+        <label class="text-gray-400 font-bold text-sm tracking-widest uppercase hidden md:block">Tarikh:</label>
+        <input type="date" id="tv-date" onchange="renderLiveTV()" class="px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white font-bold focus:ring-2 focus:ring-emerald-500 outline-none cursor-pointer">
+        <button onclick="toggleFullscreenTV()" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white px-5 py-2.5 rounded-lg font-bold shadow-lg transition-all flex items-center gap-2">
+         <span class="text-lg">⛶</span> <span class="hidden md:inline">Skrin Penuh</span>
+        </button>
+       </div>
+      </div>
+      
+      <!-- Badan TV (Jadual) -->
+      <div class="flex-1 overflow-hidden relative rounded-xl border border-gray-700 bg-gray-800/30">
+       <div id="tv-scroll-container" class="absolute inset-0 overflow-y-auto" style="scrollbar-width: none;">
+        <table class="w-full text-lg md:text-2xl text-left border-collapse">
+         <thead class="bg-gray-800 text-indigo-300 sticky top-0 z-10 shadow-[0_10px_20px_rgba(0,0,0,0.5)]">
+          <tr>
+           <th class="py-5 px-6 font-extrabold border-b-4 border-indigo-500/50 w-32 text-center uppercase tracking-wider">MASA</th>
+           <th class="py-5 px-6 font-extrabold border-b-4 border-indigo-500/50 w-40 text-center uppercase tracking-wider">KELAS</th>
+           <th class="py-5 px-6 font-extrabold border-b-4 border-indigo-500/50 uppercase tracking-wider text-red-400/80">GURU ASAL</th>
+           <th class="py-5 px-6 font-extrabold border-b-4 border-indigo-500/50 uppercase tracking-wider text-emerald-400">GURU GANTI</th>
+           <th class="py-5 px-6 font-extrabold border-b-4 border-indigo-500/50 uppercase tracking-wider">SUBJEK</th>
+          </tr>
+         </thead>
+         <tbody id="tv-tbody" class="divide-y divide-gray-700/50 bg-transparent">
+          <tr><td colspan="5" class="py-16 text-center text-gray-500 italic text-xl animate-pulse">Memuatkan jadual...</td></tr>
+         </tbody>
+        </table>
+       </div>
+      </div>
+      <!-- Hiasan Bawah -->
+      <div class="mt-4 text-center text-gray-500 text-sm font-semibold tracking-widest shrink-0">
+        SK ULU PELAGUS | PAPARAN DIKEMAS KINI SECARA AUTOMATIK LANSUNG (LIVE)
+      </div>
+     </div>
+    </section>
+   </main><!-- Loading Overlay -->
+
+   <div id="loading" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+    <div class="bg-white rounded-xl p-6 shadow-2xl flex flex-col items-center gap-3">
+     <div class="w-10 h-10 border-4 border-indigo-200 border-t-indigo-600 rounded-full animate-spin"></div>
+     <p id="loading-text" class="text-sm font-semibold text-gray-700">Memproses...</p>
+    </div>
+   </div><!-- Toast -->
+   <div id="toast" class="fixed bottom-4 right-4 bg-green-500 text-white px-4 py-3 rounded-lg shadow-lg text-sm font-semibold hidden z-50 flex items-center gap-2"><span id="toast-icon">✅</span> <span id="toast-msg"></span>
+   </div>
+  </div>
+  <script>
+    let jadualInduk = [];
+    let guruList = [];
+    let sebabList = [];
+    let senaraiTidakHadir = [];
+    let cadanganGanti = [];
+    let savedRecords = [];
+    let currentTarikh = '';
+    let currentHari = '';
+    let currentStats = {};
+    let recordMapByUniqueKey = {};
+    let signatureData = {
+      pkKurikulum: { nama: 'JESSIE AK LIMBANG', jabatan: 'Penolong Kanan Kurikulum' },
+      guruBesar: { nama: 'STEPHEN AK JAMPONG', jabatan: 'Guru Besar' }
+    };
+
+    const defaultConfig = {
+      school_name: 'SISTEM GURU GANTI SEKOLAH KEBANGSAAN ULU PELAGUS',
+      primary_color: '#6366f1',
+      secondary_color: '#8b5cf6',
+      text_color: '#1e293b',
+      bg_color: '#f8fafc',
+      accent_color: '#10b981'
+    };
+
+    const hariMap = {
+      0: 'AHAD', 1: 'ISNIN', 2: 'SELASA', 3: 'RABU', 4: 'KHAMIS', 5: 'JUMAAT', 6: 'SABTU'
+    };
+
+    const bulanMap = {
+      1: 'JANUARI', 2: 'FEBRUARI', 3: 'MAC', 4: 'APRIL', 5: 'MEI', 6: 'JUN',
+      7: 'JULAI', 8: 'OGOS', 9: 'SEPTEMBER', 10: 'OKTOBER', 11: 'NOVEMBER', 12: 'DISEMBER'
+    };
+
+    function generateUniqueKey(tarikh, masa, kelas) {
+      return `${tarikh}|${masa}|${kelas}`.toLowerCase();
+    }
+
+    // KOD BAHARU: Pembolehubah Induk & Enjin Pangkalan Data Google Sheet
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwuRes72v-uhqb6agJrE_KcQumUmMQ0Q2S2pgzs07afH7OHoUJ69UY9BF2pqwtShvgr/exec";
+
+    async function fetchDatabase() {
+      try {
+        const response = await fetch(`${SCRIPT_URL}?action=read`);
+        const result = await response.json();
+        
+        if (result.status === "berjaya") {
+          savedRecords = result.data || [];
+          recordMapByUniqueKey = {};
+          
+          savedRecords.forEach(record => {
+            let key = record.record_key || generateUniqueKey(record.tarikh, record.masa, record.kelas);
+            // Simpan record_key sebagai rujukan backendId
+            recordMapByUniqueKey[key] = record.record_key; 
+            record.__backendId = record.record_key; // Penting untuk rujukan unik fungsi Padam
+          });
+          
+          const tab2 = document.getElementById('tab2');
+          if (tab2 && !tab2.classList.contains('hidden')) {
+            updateDashboard();
+          }
+        }
+      } catch (error) {
+        console.error("Gagal menarik data dari Google Sheet:", error);
+      }
+    }
+
+    function timeToMinutes(timeStr) {
+      if (!timeStr || typeof timeStr !== 'string') return 0;
+      const match = timeStr.match(/(\d{1,2})(\d{2})/);
+      if (!match) return 0;
+      return parseInt(match[1]) * 60 + parseInt(match[2]);
+    }
+
+    function calculateTeacherWorkload(teacherName, hari) {
+      return jadualInduk.filter(j => {
+        const jHari = (j['HARI'] || '').toUpperCase();
+        const jGuru = (j['GURU ASAL'] || j['Guru Asal'] || '').toUpperCase();
+        return jHari === hari && jGuru === teacherName.toUpperCase();
+      }).length;
+    }
+
+    function getWorkloadColorClass(workload) {
+      if (workload >= 6) return 'workload-red';
+      if (workload >= 4) return 'workload-yellow';
+      return 'workload-green';
+    }
+
+    function hasConflicts() {
+      const timeSlots = {};
+      
+      for (let i = 0; i < cadanganGanti.length; i++) {
+        const c = cadanganGanti[i];
+        const key = `${c.hari}-${c.masa}-${c.guruGanti}`;
+        
+        if (!timeSlots[key]) {
+          timeSlots[key] = [];
+        }
+        timeSlots[key].push(i);
+      }
+
+      for (const key in timeSlots) {
+        if (timeSlots[key].length > 1) {
+          const indices = timeSlots[key];
+          const kelas = new Set(indices.map(i => cadanganGanti[i].kelas));
+          if (kelas.size > 1) {
+            return { hasConflict: true, conflictIndices: indices };
+          }
+        }
+      }
+      
+      return { hasConflict: false, conflictIndices: [] };
+    }
+
+    function allGantiSelected() {
+      return cadanganGanti.every(c => c.guruGanti && c.guruGanti !== '');
+    }
+
+    function updateButtonStates() {
+      const btnSimpan = document.getElementById('btn-simpan');
+      const btnCetak = document.getElementById('btn-cetak');
+      const conflict = hasConflicts();
+      const allSelected = allGantiSelected();
+      
+      if (conflict.hasConflict || !allSelected) {
+        btnSimpan.disabled = true;
+        btnCetak.disabled = true;
+      } else {
+        btnSimpan.disabled = false;
+        btnCetak.disabled = false;
+      }
+
+      const tbody = document.getElementById('jadual-ganti-tbody');
+      const rows = tbody.querySelectorAll('tr');
+      rows.forEach((row, idx) => {
+        row.classList.remove('conflict-highlight');
+        if (conflict.conflictIndices.includes(idx)) {
+          row.classList.add('conflict-highlight');
+        }
+      });
+    }
+
+    async function loadSignatureData() {
+      try {
+        const url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSVHsEfF5rJ6M3unRSPNJ_Ie6sRnBowigSD-PB46QShkyY95xRr8oYoKCcTRYQ3ktlP3zaUV_pV4Qka/pub?gid=1320640557&single=true&output=csv';
+        const response = await fetch(url);
+        const text = await response.text();
+        const data = parseCSV(text);
+        
+        data.forEach(row => {
+          const pkKurikulum = (row['Penolong Kanan Kurikulum'] || '').trim();
+          const guruBesar = (row['Guru Besar'] || '').trim();
+          
+          if (pkKurikulum) {
+            signatureData.pkKurikulum = { nama: pkKurikulum, jabatan: 'Penolong Kanan Kurikulum' };
+          }
+          
+          if (guruBesar) {
+            signatureData.guruBesar = { nama: guruBesar, jabatan: 'Guru Besar' };
+          }
+        });
+      } catch (error) {
+        console.error('Error loading signature data:', error);
+      }
+    }
+
+    function printDashboard() {
+      const bulan = parseInt(document.getElementById('filter-bulan').value);
+      const tahun = parseInt(document.getElementById('filter-tahun').value);
+      const bulanDisplay = bulan === 0 ? 'SEMUA BULAN' : bulanMap[bulan];
+
+      const printWindow = window.open('', '_blank');
+      
+      const guruChartHtml = buildChartHTML(currentStats.guruCount || {}, '#dc2626');
+      const sebabChartHtml = buildChartHTML(currentStats.sebabCount || {}, '#f59e0b');
+      const gantiChartHtml = buildChartHTML(currentStats.gantiCount || {}, '#10b981');
+
+      const htmlContent = `
+        <!DOCTYPE html>
+        <html lang="ms">
+        <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Dashboard Analisis Guru Ganti</title>
+          <style>
+            * {
+              margin: 0;
+              padding: 0;
+              box-sizing: border-box;
+              font-family: 'Plus Jakarta Sans', Arial, sans-serif;
+            }
+            body {
+              padding: 20mm;
+              background: white;
+            }
+            .page-container {
+              width: 210mm;
+              min-height: 297mm;
+              background: white;
+              margin: 0 auto;
+              padding: 20mm;
+              box-sizing: border-box;
+              box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            }
+            .header {
+              text-align: center;
+              margin-bottom: 25px;
+              border-bottom: 3px solid #6366f1;
+              padding-bottom: 15px;
+            }
+            .logo {
+              width: 70px;
+              height: 70px;
+              margin: 0 auto 12px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
+            .logo img {
+              width: 100%;
+              height: 100%;
+              object-fit: contain;
+            }
+            .title {
+              font-size: 16px;
+              font-weight: 700;
+              margin: 8px 0;
+              letter-spacing: 0.5px;
+              color: #1f2937;
+            }
+            .subtitle {
+              font-size: 13px;
+              font-weight: 600;
+              margin-bottom: 8px;
+              letter-spacing: 0.3px;
+              color: #374151;
+            }
+            .filter-info {
+              font-size: 11px;
+              font-weight: 600;
+              padding: 8px 12px;
+              background: #f3f4f6;
+              border-left: 4px solid #8b5cf6;
+              margin-bottom: 20px;
+              color: #1f2937;
+            }
+            .stats-grid {
+              display: grid;
+              grid-template-columns: repeat(4, 1fr);
+              gap: 12px;
+              margin-bottom: 20px;
+            }
+            .stat-card {
+              background: white;
+              border: 1px solid #e5e7eb;
+              border-top: 4px solid #6366f1;
+              padding: 12px;
+              border-radius: 6px;
+              box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            }
+            .stat-card.red { border-top-color: #dc2626; }
+            .stat-card.amber { border-top-color: #f59e0b; }
+            .stat-card.green { border-top-color: #10b981; }
+            .stat-label {
+              font-size: 10px;
+              font-weight: 700;
+              color: #6b7280;
+              margin-bottom: 6px;
+              text-transform: uppercase;
+              letter-spacing: 0.5px;
+            }
+            .stat-value {
+              font-size: 20px;
+              font-weight: 700;
+              color: #1f2937;
+            }
+            .stat-value-text {
+              font-size: 10px;
+              font-weight: 600;
+              color: #374151;
+              margin-top: 4px;
+              line-height: 1.3;
+            }
+            .charts-grid {
+              display: grid;
+              grid-template-columns: repeat(3, 1fr);
+              gap: 15px;
+              margin-bottom: 25px;
+            }
+            .chart-container {
+              background: white;
+              border: 1px solid #e5e7eb;
+              border-left: 4px solid #6366f1;
+              padding: 12px;
+              border-radius: 6px;
+              box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            }
+            .chart-container.red { border-left-color: #dc2626; }
+            .chart-container.amber { border-left-color: #f59e0b; }
+            .chart-container.green { border-left-color: #10b981; }
+            .chart-title {
+              font-size: 10px;
+              font-weight: 700;
+              color: #1f2937;
+              margin-bottom: 10px;
+              text-transform: uppercase;
+              letter-spacing: 0.5px;
+            }
+            .chart-item {
+              display: flex;
+              align-items: center;
+              gap: 8px;
+              margin-bottom: 8px;
+              font-size: 9px;
+            }
+            .chart-label {
+              font-weight: 600;
+              color: #374151;
+              min-width: 60px;
+              word-break: break-word;
+            }
+            .chart-bar {
+              flex: 1;
+              height: 16px;
+              border-radius: 2px;
+              min-width: 30px;
+            }
+            .chart-value {
+              font-weight: 700;
+              color: #1f2937;
+              min-width: 25px;
+              text-align: right;
+            }
+            .footer-section {
+              margin-top: 30px;
+              border-top: 2px solid #e5e7eb;
+              padding-top: 20px;
+            }
+            .signature-grid {
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              gap: 40px;
+              margin-top: 20px;
+            }
+            .signature-block {
+              text-align: center;
+            }
+            .signature-label {
+              font-size: 10px;
+              font-weight: 600;
+              color: #6b7280;
+              margin-bottom: 30px;
+            }
+            .signature-line {
+              border-top: 1px solid #374151;
+              padding-top: 8px;
+            }
+            .signature-name {
+              font-size: 11px;
+              font-weight: 700;
+              color: #1f2937;
+            }
+            .signature-title {
+              font-size: 9px;
+              font-weight: 600;
+              color: #4b5563;
+              margin-top: 2px;
+            }
+            .signature-school {
+              font-size: 8px;
+              color: #6b7280;
+              margin-top: 2px;
+            }
+            @media print {
+              body {
+                margin: 0;
+                padding: 0;
+              }
+              .page-container {
+                box-shadow: none;
+                page-break-after: always;
+              }
+            }
+          </style>
+        </head>
+        <body>
+          <div class="page-container">
+            <div class="header">
+              <div class="logo">
+                <img src="https://iili.io/Ky1xH3F.jpg" alt="Logo Sekolah" onerror="this.style.display='none'">
+              </div>
+              <div class="title">DASHBOARD PENGURUSAN GURU GANTI</div>
+              <div class="subtitle">SEKOLAH KEBANGSAAN ULU PELAGUS</div>
+            </div>
+
+            <div class="filter-info">
+              <strong>BULAN:</strong> ${bulanDisplay} | <strong>TAHUN:</strong> ${tahun}
+            </div>
+
+            <div class="stats-grid">
+              <div class="stat-card">
+                <div class="stat-label">Jumlah Ketidakhadiran</div>
+                <div class="stat-value">${currentStats.total || 0}</div>
+              </div>
+              <div class="stat-card red">
+                <div class="stat-label">Guru Kerap Tidak Hadir</div>
+                <div class="stat-value-text">${currentStats.guruTopDisplay || '-'}</div>
+              </div>
+              <div class="stat-card amber">
+                <div class="stat-label">Sebab Utama</div>
+                <div class="stat-value-text">${currentStats.sebabTopDisplay || '-'}</div>
+              </div>
+              <div class="stat-card green">
+                <div class="stat-label">Guru Ganti Aktif</div>
+                <div class="stat-value-text">${currentStats.gantiTopDisplay || '-'}</div>
+              </div>
+            </div>
+
+            <div class="charts-grid">
+              <div class="chart-container red">
+                <div class="chart-title">📊 Kekerapan Ketidakhadiran Guru (per hari)</div>
+                ${guruChartHtml}
+              </div>
+
+              <div class="chart-container amber">
+                <div class="chart-title">📋 Sebab Ketidakhadiran (per hari)</div>
+                ${sebabChartHtml}
+              </div>
+
+              <div class="chart-container green">
+                <div class="chart-title">🔄 Guru Ganti Digunakan</div>
+                ${gantiChartHtml}
+              </div>
+            </div>
+
+            <div class="footer-section">
+              <div class="signature-grid">
+                <div class="signature-block">
+                  <div class="signature-label">Disediakan oleh:</div>
+                  <div class="signature-line">
+                    <div class="signature-name">${signatureData.pkKurikulum.nama}</div>
+                    <div class="signature-title">${signatureData.pkKurikulum.jabatan}</div>
+                    <div class="signature-school">SK Ulu Pelagus</div>
+                  </div>
+                </div>
+                <div class="signature-block">
+                  <div class="signature-label">Disemak Oleh:</div>
+                  <div class="signature-line">
+                    <div class="signature-name">${signatureData.guruBesar.nama}</div>
+                    <div class="signature-title">${signatureData.guruBesar.jabatan}</div>
+                    <div class="signature-school">SK Ulu Pelagus</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </body>
+        </html>
+      `;
+
+      printWindow.document.write(htmlContent);
+      printWindow.document.close();
+      
+      setTimeout(() => {
+        printWindow.print();
+      }, 300);
+    }
+
+    function buildChartHTML(data, color) {
+      const sorted = Object.entries(data).sort((a, b) => b[1] - a[1]).slice(0, 10);
+      const max = sorted[0] ? sorted[0][1] : 1;
+
+      if (sorted.length === 0) {
+        return '<p style="font-size: 9px; color: #9ca3af; text-align: center; padding: 15px 0;">Tiada data</p>';
+      }
+
+      return sorted.map(([name, count]) => {
+        const pct = (count / max) * 100;
+        const opacity = 0.5 + (pct / 100) * 0.5;
+        return `
+          <div class="chart-item">
+            <div class="chart-label">${name}</div>
+            <div class="chart-bar" style="background: ${color}; opacity: ${opacity};"></div>
+            <div class="chart-value" style="color: ${color};">${count}</div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function printReportGantiGuru() {
+      if (cadanganGanti.length === 0) {
+        showToast('Tiada data untuk dicetak', 'error');
+        return;
+      }
+
+      const printWindow = window.open('', '_blank');
+      const tarikhDisplay = cadanganGanti[0].tarikh;
+      
+      let tableRowsHtml = cadanganGanti.map(c => `
+        <tr>
+          <td style="border: 1px solid #000; padding: 8px; text-align: center;">${c.tarikh}</td>
+          <td style="border: 1px solid #000; padding: 8px; text-align: center;">${c.hari}</td>
+          <td style="border: 1px solid #000; padding: 8px; text-align: center; color: #000;">${c.masa}</td>
+          <td style="border: 1px solid #000; padding: 8px; text-align: center;">${c.kelas}</td>
+          <td style="border: 1px solid #000; padding: 8px; text-align: center;">${c.subjek}</td>
+          <td style="border: 1px solid #000; padding: 8px; color: #dc2626; font-weight: bold;">${c.guruAsal}</td>
+          <td style="border: 1px solid #000; padding: 8px; color: #16a34a; font-weight: bold;">${c.guruGanti}</td>
+        </tr>
+      `).join('');
+
+      const htmlContent = `
+        <!DOCTYPE html>
+        <html lang="ms">
+        <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Jadual Guru Ganti</title>
+          <style>
+            * {
+              margin: 0;
+              padding: 0;
+              box-sizing: border-box;
+              font-family: Arial, sans-serif;
+            }
+            body {
+              padding: 20mm;
+              background: white;
+            }
+            .page-container {
+              width: 210mm;
+              min-height: 297mm;
+              background: white;
+              margin: 0 auto;
+              padding: 20mm;
+              box-sizing: border-box;
+            }
+            .header {
+              text-align: center;
+              margin-bottom: 30px;
+            }
+            .logo {
+              width: 80px;
+              height: 80px;
+              margin: 0 auto 15px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
+            .logo img {
+              width: 100%;
+              height: 100%;
+              object-fit: contain;
+            }
+            .title {
+              font-size: 18px;
+              font-weight: bold;
+              margin: 10px 0;
+              letter-spacing: 1px;
+            }
+            .subtitle {
+              font-size: 14px;
+              font-weight: bold;
+              margin-bottom: 15px;
+              letter-spacing: 0.5px;
+            }
+            .date-info {
+              font-size: 12px;
+              margin-bottom: 20px;
+              padding: 10px;
+              background: #f5f5f5;
+              border-radius: 4px;
+            }
+            table {
+              width: 100%;
+              border-collapse: collapse;
+              margin-bottom: 40px;
+              font-size: 11px;
+            }
+            table thead {
+              background: #4b5563;
+              color: white;
+            }
+            table th {
+              border: 1px solid #000;
+              padding: 10px;
+              text-align: center;
+              font-weight: bold;
+            }
+            table td {
+              border: 1px solid #000;
+              padding: 8px;
+              text-align: left;
+            }
+            table tbody tr:nth-child(odd) {
+              background: #f9f9f9;
+            }
+            .signature-section {
+              margin-top: 50px;
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              gap: 40px;
+            }
+            .signature-block {
+              text-align: center;
+            }
+            .signature-label {
+              font-size: 12px;
+              font-weight: normal;
+              margin-bottom: 5px;
+            }
+            .signature-line {
+              border-top: 1px solid #000;
+              margin-top: 50px;
+              padding-top: 5px;
+              font-size: 11px;
+              font-weight: bold;
+            }
+            .signature-title {
+              font-size: 10px;
+              margin-top: 3px;
+              color: #333;
+            }
+            .signature-school {
+              font-size: 9px;
+              margin-top: 2px;
+              color: #666;
+            }
+            @media print {
+              body {
+                margin: 0;
+                padding: 0;
+              }
+              .page-container {
+                box-shadow: none;
+                page-break-after: always;
+              }
+            }
+          </style>
+        </head>
+        <body>
+          <div class="page-container">
+            <div class="header">
+              <div class="logo">
+                <img src="https://iili.io/Ky1xH3F.jpg" alt="Logo Sekolah" onerror="this.style.display='none'">
+              </div>
+              <div class="title">JADUAL GURU GANTI</div>
+              <div class="subtitle">SEKOLAH KEBANGSAAN ULU PELAGUS</div>
+              <div class="date-info">TARIKH: ${tarikhDisplay}</div>
+            </div>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>TARIKH</th>
+                  <th>HARI</th>
+                  <th>MASA</th>
+                  <th>KELAS</th>
+                  <th>SUBJEK</th>
+                  <th>GURU ASAL</th>
+                  <th>GURU GANTI</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${tableRowsHtml}
+              </tbody>
+            </table>
+
+            <div class="signature-section">
+              <div class="signature-block">
+                <div class="signature-label">Disediakan oleh:</div>
+                <div class="signature-line">
+                  <div>${signatureData.pkKurikulum.nama}</div>
+                  <div class="signature-title">${signatureData.pkKurikulum.jabatan}</div>
+                  <div class="signature-school">SK Ulu Pelagus</div>
+                </div>
+              </div>
+              <div class="signature-block">
+                <div class="signature-label">Disemak Oleh:</div>
+                <div class="signature-line">
+                  <div>${signatureData.guruBesar.nama}</div>
+                  <div class="signature-title">${signatureData.guruBesar.jabatan}</div>
+                  <div class="signature-school">SK Ulu Pelagus</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </body>
+        </html>
+      `;
+
+      printWindow.document.write(htmlContent);
+      printWindow.document.close();
+      
+      setTimeout(() => {
+        printWindow.print();
+      }, 250);
+    }
+
+    async function initApp() {
+      showLoading('Memuatkan sistem...');
+      
+      if (window.elementSdk) {
+        window.elementSdk.init({
+          defaultConfig,
+          onConfigChange: async (config) => {
+            const titleMain = document.getElementById('school-title-main');
+            const titleSub = document.getElementById('school-title-sub');
+            if (titleMain) titleMain.textContent = 'SISTEM GURU GANTI';
+            if (titleSub) titleSub.textContent = 'SEKOLAH KEBANGSAAN ULU PELAGUS';
+          },
+          mapToCapabilities: (config) => ({
+            recolorables: [
+              { get: () => config.primary_color || defaultConfig.primary_color, set: (v) => window.elementSdk.setConfig({ primary_color: v }) },
+              { get: () => config.secondary_color || defaultConfig.secondary_color, set: (v) => window.elementSdk.setConfig({ secondary_color: v }) },
+              { get: () => config.text_color || defaultConfig.text_color, set: (v) => window.elementSdk.setConfig({ text_color: v }) },
+              { get: () => config.bg_color || defaultConfig.bg_color, set: (v) => window.elementSdk.setConfig({ bg_color: v }) },
+              { get: () => config.accent_color || defaultConfig.accent_color, set: (v) => window.elementSdk.setConfig({ accent_color: v }) }
+            ],
+            borderables: [],
+            fontEditable: undefined,
+            fontSizeable: undefined
+          }),
+           mapToEditPanelValues: (config) => new Map([
+            ['school_name', config.school_name || defaultConfig.school_name]
+          ])
+        });
+      }
+
+      // KOD BAHARU: Tarik pangkalan data Google Sheet ketika sistem mula
+      await fetchDatabase();
+
+      const yearSelect = document.getElementById('filter-tahun');
+      const deleteYearSelect = document.getElementById('delete-filter-tahun');
+      for (let y = 2025; y <= 2036; y++) {
+        const opt = document.createElement('option');
+        opt.value = y;
+        opt.textContent = y;
+        if (y === new Date().getFullYear()) opt.selected = true;
+        yearSelect.appendChild(opt);
+
+        const opt2 = document.createElement('option');
+        opt2.value = y;
+        opt2.textContent = y;
+        deleteYearSelect.appendChild(opt2);
+      }
+
+      document.getElementById('filter-bulan').value = new Date().getMonth() + 1;
+
+      setupDateInput();
+      
+      await Promise.all([loadJadualInduk(), loadGuruSebab(), loadSignatureData()]);
+      
+      hideLoading();
+    }
+
+    function setupDateInput() {
+      const dateInput = document.getElementById('input-tarikh');
+      dateInput.addEventListener('input', function(e) {
+        const date = new Date(this.value);
+        const day = date.getDay();
+        if (day === 0 || day === 6) {
+          showToast('Sila pilih hari Isnin hingga Jumaat sahaja', 'error');
+          this.value = '';
+          document.getElementById('input-hari').value = '';
+        }
+      });
+    }
+
+    function updateHari() {
+      const dateInput = document.getElementById('input-tarikh');
+      const hariInput = document.getElementById('input-hari');
+      
+      if (dateInput.value) {
+        const date = new Date(dateInput.value);
+        const day = date.getDay();
+        
+        if (day === 0 || day === 6) {
+          showToast('Sila pilih hari Isnin hingga Jumaat sahaja', 'error');
+          dateInput.value = '';
+          hariInput.value = '';
+          return;
+        }
+        
+        hariInput.value = hariMap[day];
+        currentTarikh = formatDate(date);
+        currentHari = hariMap[day];
+      } else {
+        hariInput.value = '';
+      }
+    }
+
+    function formatDate(date) {
+      const d = date.getDate().toString().padStart(2, '0');
+      const m = (date.getMonth() + 1).toString().padStart(2, '0');
+      const y = date.getFullYear();
+      return `${d}/${m}/${y}`;
+    }
+
+    async function loadJadualInduk() {
+      try {
+        const url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSVHsEfF5rJ6M3unRSPNJ_Ie6sRnBowigSD-PB46QShkyY95xRr8oYoKCcTRYQ3ktlP3zaUV_pV4Qka/pub?gid=0&single=true&output=csv';
+        const response = await fetch(url);
+        const text = await response.text();
+        jadualInduk = parseCSV(text);
+      } catch (error) {
+        console.error('Error loading jadual induk:', error);
+        showToast('Gagal memuatkan jadual induk', 'error');
+      }
+    }
+
+    async function loadGuruSebab() {
+      try {
+        const url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSVHsEfF5rJ6M3unRSPNJ_Ie6sRnBowigSD-PB46QShkyY95xRr8oYoKCcTRYQ3ktlP3zaUV_pV4Qka/pub?gid=941392614&single=true&output=csv';
+        const response = await fetch(url);
+        const text = await response.text();
+        const data = parseCSV(text);
+        
+        guruList = [...new Set(data.map(r => r['Guru Asal'] || r['GURU ASAL']).filter(Boolean))];
+        sebabList = [...new Set(data.map(r => r['Sebab Tidak Hadir'] || r['SEBAB TIDAK HADIR']).filter(Boolean))];
+        
+        populateDropdown('input-guru', guruList, '-- Pilih Guru --');
+        populateDropdown('input-sebab', sebabList, '-- Pilih Sebab --');
+      } catch (error) {
+        console.error('Error loading guru/sebab:', error);
+        showToast('Gagal memuatkan senarai guru', 'error');
+      }
+    }
+
+    function parseCSV(text) {
+      const lines = text.trim().split('\n');
+      if (lines.length < 2) return [];
+      
+      const headers = parseCSVLine(lines[0]);
+      const data = [];
+      
+      for (let i = 1; i < lines.length; i++) {
+        const values = parseCSVLine(lines[i]);
+        const obj = {};
+        headers.forEach((h, idx) => {
+          obj[h.trim()] = values[idx] ? values[idx].trim() : '';
+        });
+        data.push(obj);
+      }
+      return data;
+    }
+
+    function parseCSVLine(line) {
+      const result = [];
+      let current = '';
+      let inQuotes = false;
+      
+      for (let i = 0; i < line.length; i++) {
+        const char = line[i];
+        if (char === '"') {
+          inQuotes = !inQuotes;
+        } else if (char === ',' && !inQuotes) {
+          result.push(current);
+          current = '';
+        } else {
+          current += char;
+        }
+      }
+      result.push(current);
+      return result;
+    }
+
+    function populateDropdown(id, items, placeholder) {
+      const select = document.getElementById(id);
+      select.innerHTML = `<option value="">${placeholder}</option>`;
+      items.forEach(item => {
+        const opt = document.createElement('option');
+        opt.value = item;
+        opt.textContent = item;
+        select.appendChild(opt);
+      });
+    }
+
+    function tambahKeSenarai() {
+      const tarikh = document.getElementById('input-tarikh').value;
+      const hari = document.getElementById('input-hari').value;
+      const guru = document.getElementById('input-guru').value;
+      const sebab = document.getElementById('input-sebab').value;
+
+      if (!tarikh || !hari || !guru || !sebab) {
+        showToast('Sila lengkapkan semua maklumat', 'error');
+        return;
+      }
+
+      if (senaraiTidakHadir.some(s => s.guru === guru)) {
+        showToast('Guru ini sudah dalam senarai', 'error');
+        return;
+      }
+
+      currentTarikh = formatDate(new Date(tarikh));
+      currentHari = hari;
+
+      senaraiTidakHadir.push({ guru, sebab, tarikh: currentTarikh, hari: currentHari });
+      renderSenarai();
+      showToast('Guru ditambah ke senarai');
+
+      document.getElementById('input-guru').value = '';
+      document.getElementById('input-sebab').value = '';
+    }
+
+    function renderSenarai() {
+      const tbody = document.getElementById('senarai-tbody');
+      const header = document.getElementById('senarai-header');
+      const btnJana = document.getElementById('btn-jana');
+
+      if (senaraiTidakHadir.length === 0) {
+        tbody.innerHTML = '<tr id="empty-row"><td colspan="3" class="py-6 text-center text-gray-400 italic">Tiada rekod</td></tr>';
+        header.classList.add('hidden');
+        btnJana.disabled = true;
+        return;
+      }
+
+      header.classList.remove('hidden');
+      document.getElementById('header-tarikh').textContent = currentTarikh;
+      document.getElementById('header-hari').textContent = currentHari;
+      btnJana.disabled = false;
+
+      tbody.innerHTML = senaraiTidakHadir.map((item, idx) => `
+        <tr class="hover:bg-indigo-50 transition-colors">
+          <td class="py-2 px-3 font-medium text-gray-800">${item.guru}</td>
+          <td class="py-2 px-3 text-gray-600">${item.sebab}</td>
+          <td class="py-2 px-3 text-center">
+            <button onclick="hapusItem(${idx})" class="bg-red-100 hover:bg-red-200 text-red-600 px-2 py-1 rounded text-xs font-semibold transition-colors">
+              🗑️
+            </button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function hapusItem(idx) {
+      senaraiTidakHadir.splice(idx, 1);
+      renderSenarai();
+      showToast('Rekod dipadam');
+    }
+
+    async function janaGantiGuru() {
+      if (senaraiTidakHadir.length === 0) {
+        showToast('Tiada guru dalam senarai', 'error');
+        return;
+      }
+
+      showLoading('Menjana slot guru ganti...');
+      cadanganGanti = [];
+
+      const hari = currentHari.toUpperCase();
+
+      for (const item of senaraiTidakHadir) {
+        const slots = jadualInduk.filter(j => {
+          const jHari = (j['HARI'] || '').toUpperCase();
+          const jGuru = (j['GURU ASAL'] || j['Guru Asal'] || '').toUpperCase();
+          return jHari === hari && jGuru === item.guru.toUpperCase();
+        });
+
+        for (const slot of slots) {
+          const masa = slot['MASA'] || slot['Masa'] || '';
+          const kelas = slot['KELAS'] || slot['Kelas'] || '';
+          const subjek = slot['SUBJEK'] || slot['Subjek'] || '';
+
+          const busyTeachers = jadualInduk
+            .filter(j => {
+              const jHari = (j['HARI'] || '').toUpperCase();
+              const jMasa = j['MASA'] || j['Masa'] || '';
+              return jHari === hari && jMasa === masa;
+            })
+            .map(j => (j['GURU ASAL'] || j['Guru Asal'] || '').toUpperCase());
+
+          const absentTeachers = senaraiTidakHadir.map(s => s.guru.toUpperCase());
+          const allBusy = [...new Set([...busyTeachers, ...absentTeachers])];
+
+          const availableTeachers = guruList.filter(g => !allBusy.includes(g.toUpperCase()));
+
+          const candidatesWithWorkload = availableTeachers.map(teacher => {
+            const workload = calculateTeacherWorkload(teacher, hari);
+            return { name: teacher, workload };
+          }).sort((a, b) => a.workload - b.workload);
+
+          cadanganGanti.push({
+            tarikh: item.tarikh,
+            hari: item.hari,
+            masa,
+            kelas,
+            subjek,
+            guruAsal: item.guru,
+            sebab: item.sebab,
+            candidatesWithWorkload,
+            guruGanti: '',
+            timeSort: timeToMinutes(masa)
+          });
+        }
+      }
+
+      cadanganGanti.sort((a, b) => a.timeSort - b.timeSort);
+
+      hideLoading();
+      renderCadangan();
+      updateButtonStates();
+      document.getElementById('jadual-ganti-section').classList.remove('hidden');
+      showToast(`${cadanganGanti.length} slot dijana`);
+    }
+
+    function renderCadangan() {
+      const tbody = document.getElementById('jadual-ganti-tbody');
+      
+      if (cadanganGanti.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="8" class="py-4 text-center text-gray-400">Tiada data</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = cadanganGanti.map((c, idx) => {
+        const optionsHtml = c.candidatesWithWorkload.length > 0 
+          ? `<option value="">-- Pilih Guru --</option>` +
+            c.candidatesWithWorkload.map(cand => `
+              <option value="${cand.name}" data-workload="${cand.workload}">
+                ${cand.name} (${cand.workload} masa)
+              </option>
+            `).join('')
+          : '<option value="">TIADA</option>';
+
+        const selectedCand = c.candidatesWithWorkload.find(cand => cand.name === c.guruGanti);
+        const selectedWorkload = selectedCand ? selectedCand.workload : 0;
+        const badgeClass = getWorkloadColorClass(selectedWorkload);
+        const badgeDisplay = c.guruGanti ? selectedWorkload : '-';
+
+        return `
+          <tr id="row-${idx}" class="hover:bg-green-50 transition-colors">
+            <td class="py-2 px-2">${c.tarikh}</td>
+            <td class="py-2 px-2">${c.hari}</td>
+            <td class="py-2 px-2">${c.masa}</td>
+            <td class="py-2 px-2">${c.kelas}</td>
+            <td class="py-2 px-2">${c.subjek}</td>
+            <td class="py-2 px-2 font-bold text-red-600">${c.guruAsal}</td>
+            <td class="py-2 px-2 font-medium text-orange-600">${c.sebab}</td>
+            <td class="py-2 px-2">
+              <div class="flex items-center gap-2">
+                <span id="badge-${idx}" class="workload-badge ${badgeClass}">${badgeDisplay}</span>
+                <select id="select-${idx}" onchange="updateGantiAndBadge(${idx}, this.value)" class="flex-1 px-2 py-1 border rounded text-xs bg-white font-bold text-green-600">
+                  ${optionsHtml}
+                </select>
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function updateGantiAndBadge(idx, value) {
+      cadanganGanti[idx].guruGanti = value;
+      
+      const selectedCand = cadanganGanti[idx].candidatesWithWorkload.find(c => c.name === value);
+      const workload = selectedCand ? selectedCand.workload : 0;
+      const badge = document.getElementById(`badge-${idx}`);
+      const badgeDisplay = value ? workload : '-';
+      
+      if (badge) {
+        badge.textContent = badgeDisplay;
+        badge.className = `workload-badge ${value ? getWorkloadColorClass(workload) : 'bg-gray-300'}`;
+      }
+
+      updateButtonStates();
+    }
+
+     async function simpanJadual() {
+      const conflict = hasConflicts();
+      const allSelected = allGantiSelected();
+
+      if (conflict.hasConflict || !allSelected) {
+        return;
+      }
+
+      if (cadanganGanti.length === 0) {
+        showToast('Tiada data untuk disimpan', 'error');
+        return;
+      }
+
+      showLoading('Menyimpan jadual...');
+      const btnSimpan = document.getElementById('btn-simpan');
+      btnSimpan.disabled = true;
+
+      let successCount = 0;
+      let updateCount = 0;
+      let failCount = 0;
+
+      for (const c of cadanganGanti) {
+        const dateParts = c.tarikh.split('/');
+        const bulan = parseInt(dateParts[1]);
+        const tahun = parseInt(dateParts[2]);
+
+        const uniqueKey = generateUniqueKey(c.tarikh, c.masa, c.kelas);
+        const existingBackendId = recordMapByUniqueKey[uniqueKey];
+
+        const record = {
+          tarikh: c.tarikh,
+          hari: c.hari,
+          masa: c.masa,
+          kelas: c.kelas,
+          subjek: c.subjek,
+          guru_asal: c.guruAsal,
+          sebab: c.sebab,
+          guru_ganti: c.guruGanti,
+          bulan: bulan,
+          tahun: tahun,
+          created_at: new Date().toISOString(),
+          record_key: uniqueKey
+        };
+
+         try {
+          const response = await fetch(SCRIPT_URL, {
+            method: 'POST',
+            redirect: 'follow',
+            body: JSON.stringify({ action: 'save', ...record })
+          });
+          const result = await response.json()
+          
+          if (result.status === "berjaya") {
+            if (result.action === "update") {
+              updateCount++;
+            } else {
+              successCount++;
+            }
+          } else {
+            failCount++;
+          }
+        } catch (error) {
+          failCount++;
+          console.error("Ralat menyimpan ke Google Sheet:", error);
+        }
+      }
+
+      hideLoading();
+      btnSimpan.disabled = false;
+
+      const totalMsg = successCount + updateCount;
+      if (totalMsg > 0) {
+        let msg = `${totalMsg} rekod berjaya disimpan`;
+        if (successCount > 0 && updateCount > 0) {
+          msg = `${successCount} baru + ${updateCount} diperbarui`;
+        } else if (updateCount > 0) {
+          msg = `${updateCount} rekod diperbarui`;
+        }
+        showToast(msg);
+        senaraiTidakHadir = [];
+        cadanganGanti = [];
+        renderSenarai();
+        document.getElementById('jadual-ganti-section').classList.add('hidden');
+        document.getElementById('input-tarikh').value = '';
+        document.getElementById('input-hari').value = '';
+        fetchDatabase(); 
+      } else {
+        showToast(`Gagal menyimpan rekod (${failCount} ralat)`, 'error');
+      }
+    }
+
+    function deleteAllMonthlyRecords() {
+      const bulan = parseInt(document.getElementById('delete-filter-bulan').value);
+      const tahun = parseInt(document.getElementById('delete-filter-tahun').value);
+
+      if (bulan === 0 || tahun === 0) {
+        showToast('Sila pilih bulan dan tahun', 'error');
+        return;
+      }
+
+      const filtered = savedRecords.filter(r => r.bulan === bulan && r.tahun === tahun);
+      if (filtered.length === 0) {
+        showToast('Tiada rekod untuk tarikh ini', 'error');
+        return;
+      }
+
+      const bulanName = bulanMap[bulan];
+      const confirmDiv = document.createElement('div');
+      confirmDiv.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+      confirmDiv.innerHTML = `
+        <div class="bg-white rounded-xl shadow-2xl p-6 max-w-sm mx-4">
+          <div class="flex items-start gap-3 mb-4">
+            <div class="bg-red-100 p-2 rounded-lg flex-shrink-0">
+              <span class="text-2xl">⚠️</span>
+            </div>
+            <div>
+              <h3 class="font-bold text-gray-800 text-lg">Pengesahan Pemadaman</h3>
+              <p class="text-sm text-gray-600 mt-2">Anda pasti ingin PADAM SEMUA <strong>${filtered.length} rekod</strong> untuk <strong>${bulanName} ${tahun}</strong>?</p>
+              <p class="text-xs text-red-600 mt-3 font-semibold">⚠️ Tindakan ini TIDAK BOLEH dibatalkan!</p>
+            </div>
+          </div>
+          <div class="flex gap-3 justify-end">
+            <button onclick="this.closest('.fixed').remove()" class="px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-lg font-semibold text-sm transition-colors">
+              Batal
+            </button>
+            <button onclick="this.closest('.fixed').remove(); proceedDeleteAllMonthly(${bulan}, ${tahun}, ${filtered.length})" class="px-4 py-2 bg-red-50 hover:bg-red-600 text-white rounded-lg font-semibold text-sm transition-colors flex items-center gap-2">
+              <span>🗑️</span> Ya, Padam Semua
+            </button>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(confirmDiv);
+    }
+
+    async function proceedDeleteAllMonthly(bulan, tahun, count) {
+      showLoading(`Memadam ${count} rekod...`);
+      const filtered = savedRecords.filter(r => r.bulan === bulan && r.tahun === tahun);
+      
+      let successCount = 0;
+      let failCount = 0;
+
+       try {
+        const response = await fetch(SCRIPT_URL, {
+          method: 'POST',
+          redirect: 'follow',
+          body: JSON.stringify({ action: 'deleteMonth', bulan: bulan, tahun: tahun })
+        });
+        const result = await response.json();
+        
+        if (result.status === "berjaya") {
+          successCount = filtered.length;
+        } else {
+          failCount = filtered.length;
+        }
+      } catch (error) {
+        failCount = filtered.length;
+        console.error("Ralat padam pukal:", error);
+      }
+
+      hideLoading();
+      
+      const bulanName = bulanMap[bulan];
+      if (successCount > 0) {
+        showToast(`${successCount} rekod berjaya dipadam untuk ${bulanName} ${tahun}`);
+        document.getElementById('delete-filter-bulan').value = '0';
+        fetchDatabase(); 
+      }
+      
+      if (failCount > 0) {
+        showToast(`${failCount} rekod gagal dipadam`, 'error');
+      }
+    }
+
+    function switchTab(tab) {
+      const tab1 = document.getElementById('tab1');
+      const tab2 = document.getElementById('tab2');
+      const tab3 = document.getElementById('tab3');
+      const btn1 = document.getElementById('tab1-btn');
+      const btn2 = document.getElementById('tab2-btn');
+      const btn3 = document.getElementById('tab3-btn');
+
+      const activeClass = 'tab-active px-4 py-2 rounded-lg font-semibold text-sm transition-all duration-300 flex items-center gap-2 shadow-md';
+      const inactiveClass = 'tab-inactive px-4 py-2 rounded-lg font-semibold text-sm transition-all duration-300 flex items-center gap-2';
+
+      // Sembunyikan semua tab & buang aktif dari semua butang
+      tab1.classList.add('hidden');
+      tab2.classList.add('hidden');
+      if (tab3) tab3.classList.add('hidden');
+      
+      btn1.className = inactiveClass;
+      btn2.className = inactiveClass;
+      if (btn3) btn3.className = inactiveClass;
+
+      // Paparkan tab yang ditekan
+      if (tab === 1) {
+        tab1.classList.remove('hidden');
+        btn1.className = activeClass;
+      } else if (tab === 2) {
+        tab2.classList.remove('hidden');
+        btn2.className = activeClass;
+        updateDashboard();
+      } else if (tab === 3) {
+        if (tab3) tab3.classList.remove('hidden');
+        if (btn3) btn3.className = activeClass;
+        
+        // Tetapkan kalendar paparan TV pada tarikh hari ini secara lalai (default)
+        const tvDateInput = document.getElementById('tv-date');
+        if (!tvDateInput.value) {
+          const today = new Date();
+          const yyyy = today.getFullYear();
+          const mm = String(today.getMonth() + 1).padStart(2, '0');
+          const dd = String(today.getDate()).padStart(2, '0');
+          tvDateInput.value = `${yyyy}-${mm}-${dd}`;
+        }
+        renderLiveTV();
+      }
+    }
+
+    // ==========================================
+    // LOGIK PAPARAN TV BILIK GURU (KOD BAHARU)
+    // ==========================================
+    let tvScrollInterval;
+
+    function renderLiveTV() {
+      const tbody = document.getElementById('tv-tbody');
+      if(!tbody) return;
+      
+      const dateInput = document.getElementById('tv-date').value;
+      if (!dateInput) {
+        tbody.innerHTML = '<tr><td colspan="5" class="py-16 text-center text-gray-500 italic text-xl">Sila pilih tarikh pada menu di atas</td></tr>';
+        return;
+      }
+
+      // Format pertukaran tarikh sistem (YYYY-MM-DD) kepada format pangkalan data (DD/MM/YYYY)
+      const dParts = dateInput.split('-');
+      // Buang sifar di hadapan hari dan bulan supaya padan tepat dengan Google Sheet (Cth: 05 -> 5)
+      const hariInt = parseInt(dParts[2], 10);
+      const bulanInt = parseInt(dParts[1], 10);
+      const tarikhCari = `${hariInt}/${bulanInt}/${dParts[0]}`;
+
+      // Menyedut senarai data berdasarkan tarikh
+      const tvRecords = savedRecords.filter(r => r.tarikh === tarikhCari);
+      
+      // Susun mengikut waktu terkini
+      tvRecords.sort((a, b) => timeToMinutes(a.masa) - timeToMinutes(b.masa));
+
+      if (tvRecords.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="5" class="py-24 text-center text-gray-500 text-3xl font-bold uppercase tracking-widest">Tiada kelas ganti pada tarikh ini<br><span class="text-lg font-normal text-gray-600 mt-4 block">(${tarikhCari})</span></td></tr>`;
+        return;
+      }
+
+      // Cetak UI Jadual Bersaiz Besar
+      tbody.innerHTML = tvRecords.map(r => `
+        <tr class="hover:bg-gray-700/80 transition-colors group">
+          <td class="py-6 px-6 text-center">
+            <span class="text-yellow-400 font-bold text-2xl md:text-3xl drop-shadow-md">${r.masa}</span>
+          </td>
+          <td class="py-6 px-6 text-center">
+            <span class="bg-indigo-600/80 group-hover:bg-indigo-500 border border-indigo-400 text-white font-extrabold text-2xl md:text-3xl px-4 py-2 rounded-xl shadow-[0_4px_10px_rgba(0,0,0,0.5)] block transition-colors">${r.kelas}</span>
+          </td>
+          <td class="py-6 px-6">
+            <span class="text-red-400 font-bold text-xl md:text-2xl line-through decoration-red-500/50 opacity-90">${r.guru_asal}</span>
+            <span class="block text-gray-400 text-sm md:text-base font-medium mt-1">Sebab: ${r.sebab}</span>
+          </td>
+          <td class="py-6 px-6 text-emerald-400 font-extrabold text-2xl md:text-3xl uppercase drop-shadow-md">
+            ${r.guru_ganti}
+          </td>
+          <td class="py-6 px-6 text-gray-200 font-semibold text-xl md:text-2xl">
+            ${r.subjek}
+          </td>
+        </tr>
+      `).join('');
+
+      // Fungsi Auto-Scroll untuk Skrin TV (Jadual akan turun ke bawah secara auto jika panjang)
+      const container = document.getElementById('tv-scroll-container');
+      clearInterval(tvScrollInterval);
+      
+      setTimeout(() => {
+        // Semak jika jadual terlebih panjang dari skrin
+        if (container.scrollHeight > container.clientHeight) {
+          let scrollPos = 0;
+          let scrollDir = 1; // 1 = Scroll Bawah, -1 = Scroll Atas
+          
+          tvScrollInterval = setInterval(() => {
+            scrollPos += (1 * scrollDir);
+            container.scrollTo(0, scrollPos);
+            
+            // Apabila skrol berlanggar dengan lantai bawah
+            if (scrollPos >= (container.scrollHeight - container.clientHeight)) {
+              scrollDir = 0; // Berhenti seketika
+              setTimeout(() => { scrollDir = -1; }, 5000); // Tunggu 5 saat untuk tetamu baca rekod terbawah
+            }
+            // Apabila skrol berlanggar dengan siling atas
+            else if (scrollPos <= 0 && scrollDir === -1) {
+              scrollDir = 0;
+              setTimeout(() => { scrollDir = 1; }, 5000); // Tunggu 5 saat untuk tetamu baca rekod teratas
+            }
+          }, 40); // Kelajuan skrol (Lagi rendah = Lagi Laju)
+        }
+      }, 1000);
+    }
+
+    // Fungsi jadikan skrin penuh tanpa sempadan putih
+    function toggleFullscreenTV() {
+      const tvContainer = document.getElementById('tv-container');
+      if (!document.fullscreenElement) {
+        if (tvContainer.requestFullscreen) tvContainer.requestFullscreen();
+        else if (tvContainer.webkitRequestFullscreen) tvContainer.webkitRequestFullscreen();
+        else if (tvContainer.msRequestFullscreen) tvContainer.msRequestFullscreen();
+      } else {
+        if (document.exitFullscreen) document.exitFullscreen();
+      }
+    }
+
+    function updateDashboard() {
+
+      let bulan = parseInt(document.getElementById('filter-bulan').value);
+      const tahun = parseInt(document.getElementById('filter-tahun').value);
+
+      let filtered = savedRecords;
+      
+      if (bulan !== 0) {
+        filtered = filtered.filter(r => r.bulan === bulan && r.tahun === tahun);
+      } else {
+        filtered = filtered.filter(r => r.tahun === tahun);
+      }
+
+      const uniqueAbsences = new Map();
+
+      filtered.forEach(r => {
+        const key = `${r.tarikh}|${r.guru_asal}`;
+        if (!uniqueAbsences.has(key)) {
+          uniqueAbsences.set(key, { guru: r.guru_asal, sebab: r.sebab });
+        }
+      });
+
+      const guruCount = {};
+      const sebabCount = {};
+      const gantiCount = {};
+
+      uniqueAbsences.forEach((data, key) => {
+        guruCount[data.guru] = (guruCount[data.guru] || 0) + 1;
+        sebabCount[data.sebab] = (sebabCount[data.sebab] || 0) + 1;
+      });
+
+      filtered.forEach(r => {
+        if (r.guru_ganti && r.guru_ganti !== 'TIADA') {
+          gantiCount[r.guru_ganti] = (gantiCount[r.guru_ganti] || 0) + 1;
+        }
+      });
+
+      const topGuruArr = Object.entries(guruCount).sort((a, b) => b[1] - a[1]);
+      const maxGuruCount = topGuruArr[0] ? topGuruArr[0][1] : 0;
+      const topGuruList = topGuruArr.filter(g => g[1] === maxGuruCount).map(g => `${g[0]} (${g[1]}x)`);
+
+      const topSebabArr = Object.entries(sebabCount).sort((a, b) => b[1] - a[1]);
+      const maxSebabCount = topSebabArr[0] ? topSebabArr[0][1] : 0;
+      const topSebabList = topSebabArr.filter(s => s[1] === maxSebabCount).map(s => `${s[0]} (${s[1]}x)`);
+
+      const topGantiArr = Object.entries(gantiCount).sort((a, b) => b[1] - a[1]);
+      const maxGantiCount = topGantiArr[0] ? topGantiArr[0][1] : 0;
+      const topGantiList = topGantiArr.filter(g => g[1] === maxGantiCount).map(g => `${g[0]} (${g[1]}x)`);
+
+      currentStats = {
+        total: filtered.length,
+        guruCount,
+        sebabCount,
+        gantiCount,
+        guruTopDisplay: topGuruList.length > 0 ? topGuruList.join(', ') : '-',
+        sebabTopDisplay: topSebabList.length > 0 ? topSebabList.join(', ') : '-',
+        gantiTopDisplay: topGantiList.length > 0 ? topGantiList.join(', ') : '-'
+      };
+
+      document.getElementById('stat-total').textContent = filtered.length;
+      document.getElementById('stat-guru-top').textContent = currentStats.guruTopDisplay;
+      document.getElementById('stat-sebab-top').textContent = currentStats.sebabTopDisplay;
+      document.getElementById('stat-ganti-top').textContent = currentStats.gantiTopDisplay;
+
+      renderBarChart('chart-guru', guruCount, '#dc2626');
+      renderBarChart('chart-sebab', sebabCount, '#f59e0b');
+      renderBarChart('chart-ganti', gantiCount, '#10b981');
+
+      renderRecentRecords(filtered);
+    }
+
+    function renderBarChart(containerId, data, color) {
+      const container = document.getElementById(containerId);
+      const sorted = Object.entries(data).sort((a, b) => b[1] - a[1]).slice(0, 15);
+      const max = sorted[0] ? sorted[0][1] : 1;
+
+      if (sorted.length === 0) {
+        container.innerHTML = '<p class="text-xs text-gray-400 text-center py-8">Tiada data</p>';
+        return;
+      }
+
+      container.innerHTML = sorted.map(([name, count]) => {
+        const pct = (count / max) * 100;
+        return `
+          <div class="bar-chart-item">
+            <div class="bar-chart-label">${name}</div>
+            <div class="bar-chart-bar" style="background: ${color}; opacity: ${0.6 + (pct / 100) * 0.4}"></div>
+            <div class="bar-chart-value" style="color: ${color}">${count}</div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function renderRecentRecords(data) {
+      const tbody = document.getElementById('rekod-tbody');
+      const sorted = [...data].sort((a, b) => {
+        const dateA = new Date(a.tarikh.split('/').reverse().join('-'));
+        const dateB = new Date(b.tarikh.split('/').reverse().join('-'));
+        if (dateA !== dateB) {
+          return dateB - dateA;
+        }
+        const timeA = timeToMinutes(a.masa);
+        const timeB = timeToMinutes(b.masa);
+        return timeA - timeB;
+      }).slice(0, 50);
+
+      if (sorted.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="7" class="py-6 text-center text-gray-400 italic text-xs">Tiada rekod</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = sorted.map(r => `
+        <tr class="hover:bg-gray-50 transition-colors">
+          <td class="py-2 px-3">${r.tarikh}</td>
+          <td class="py-2 px-3">${r.masa}</td>
+          <td class="py-2 px-3">${r.kelas}</td>
+          <td class="py-2 px-3 font-bold text-red-600">${r.guru_asal}</td>
+          <td class="py-2 px-3 font-medium text-amber-600">${r.sebab}</td>
+          <td class="py-2 px-3 font-bold text-green-600">${r.guru_ganti}</td>
+          <td class="py-2 px-3 text-center">
+            <button onclick="confirmDelete('${r.__backendId}')" class="bg-red-100 hover:bg-red-200 text-red-600 px-2 py-1 rounded text-xs font-semibold transition-colors">
+              🗑️
+            </button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function confirmDelete(id) {
+      const record = savedRecords.find(r => r.__backendId === id);
+      if (!record) {
+        showToast('Rekod tidak dijumpai', 'error');
+        return;
+      }
+
+      showLoading('Memadam rekod...');
+      
+      fetch(SCRIPT_URL, {
+        method: 'POST',
+        redirect: 'follow',
+        body: JSON.stringify({ action: 'delete', record_key: id })
+      })
+      .then(res => res.json())
+      .then(result => {
+        hideLoading();
+        if (result.status === "berjaya") {
+          showToast('Satu rekod berjaya dipadam');
+          fetchDatabase(); 
+        } else {
+          showToast('Gagal memadam rekod', 'error');
+        }
+      })
+      .catch(error => {
+        hideLoading();
+        showToast('Ralat sambungan pangkalan data', 'error');
+      });
+    }
+
+    function showLoading(text = 'Memproses...') {
+      document.getElementById('loading-text').textContent = text;
+      document.getElementById('loading').classList.remove('hidden');
+    }
+
+    function hideLoading() {
+      document.getElementById('loading').classList.add('hidden');
+    }
+
+    function showToast(msg, type = 'success') {
+      const toast = document.getElementById('toast');
+      const icon = document.getElementById('toast-icon');
+      const msgEl = document.getElementById('toast-msg');
+
+      msgEl.textContent = msg;
+      icon.textContent = type === 'success' ? '✅' : '❌';
+      toast.className = `fixed bottom-4 right-4 ${type === 'success' ? 'bg-green-500' : 'bg-red-500'} text-white px-4 py-3 rounded-lg shadow-lg text-sm font-semibold z-50 flex items-center gap-2 fade-in`;
+
+      setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 3000);
+    }
+
+    initApp();
+  </script>
+ </body>
+</html>
