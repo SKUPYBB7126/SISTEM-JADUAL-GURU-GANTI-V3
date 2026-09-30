@@ -752,7 +752,7 @@
     // KOD BAHARU: Pembolehubah Induk & Enjin Pangkalan Data Google Sheet
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwuRes72v-uhqb6agJrE_KcQumUmMQ0Q2S2pgzs07afH7OHoUJ69UY9BF2pqwtShvgr/exec";
 
-    async function fetchDatabase() {
+   async function fetchDatabase() {
       try {
         const response = await fetch(`${SCRIPT_URL}?action=read`);
         const result = await response.json();
@@ -762,10 +762,19 @@
           recordMapByUniqueKey = {};
           
           savedRecords.forEach(record => {
+            // KOD BAHARU: Membetulkan ralat tarikh terbalik dari Pangkalan Data (Google Sheets US Locale)
+            if (record.tarikh && record.tarikh.includes('T')) {
+                const d = new Date(record.tarikh);
+                // Google Sheets US membaca 01/10 sebagai Jan 10. Jadi kita 'swap' balik Bulan dan Hari ke format asal Malaysia (DD/MM/YYYY)
+                const dDayOriginal = (d.getMonth() + 1).toString().padStart(2, '0'); 
+                const dMonthOriginal = d.getDate().toString().padStart(2, '0');
+                const dYear = d.getFullYear();
+                record.tarikh = `${dDayOriginal}/${dMonthOriginal}/${dYear}`;
+            }
+
             let key = record.record_key || generateUniqueKey(record.tarikh, record.masa, record.kelas);
-            // Simpan record_key sebagai rujukan backendId
             recordMapByUniqueKey[key] = record.record_key; 
-            record.__backendId = record.record_key; // Penting untuk rujukan unik fungsi Padam
+            record.__backendId = record.record_key; 
           });
           
           const tab2 = document.getElementById('tab2');
@@ -1388,6 +1397,133 @@
               <div class="title">JADUAL GURU GANTI</div>
               <div class="subtitle">SEKOLAH KEBANGSAAN ULU PELAGUS</div>
               <div class="date-info">TARIKH: ${tarikhDisplay}</div>
+            </div>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>TARIKH</th>
+                  <th>HARI</th>
+                  <th>MASA</th>
+                  <th>KELAS</th>
+                  <th>SUBJEK</th>
+                  <th>GURU ASAL</th>
+                  <th>GURU GANTI</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${tableRowsHtml}
+              </tbody>
+            </table>
+
+            <div class="signature-section">
+              <div class="signature-block">
+                <div class="signature-label">Disediakan oleh:</div>
+                <div class="signature-line">
+                  <div>${signatureData.pkKurikulum.nama}</div>
+                  <div class="signature-title">${signatureData.pkKurikulum.jabatan}</div>
+                  <div class="signature-school">SK Ulu Pelagus</div>
+                </div>
+              </div>
+              <div class="signature-block">
+                <div class="signature-label">Disemak Oleh:</div>
+                <div class="signature-line">
+                  <div>${signatureData.guruBesar.nama}</div>
+                  <div class="signature-title">${signatureData.guruBesar.jabatan}</div>
+                  <div class="signature-school">SK Ulu Pelagus</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </body>
+        </html>
+      `;
+
+      printWindow.document.write(htmlContent);
+      printWindow.document.close();
+      
+      setTimeout(() => {
+        printWindow.print();
+      }, 250);
+    }
+
+    // KOD BAHARU: Fungsi Mencetak Semula Data Guru Ganti Berdasarkan Tarikh
+    function cetakSemulaHariIni() {
+      const dateInput = document.getElementById('cetak-semula-tarikh').value;
+      if (!dateInput) {
+        showToast('Sila pilih tarikh untuk dicetak!', 'error');
+        return;
+      }
+
+      // Format pertukaran tarikh sistem (YYYY-MM-DD) kepada format (DD/MM/YYYY)
+      const dParts = dateInput.split('-');
+      const tarikhCari = `${dParts[2]}/${dParts[1]}/${dParts[0]}`;
+
+      // Menyedut senarai data berdasarkan tarikh
+      const recordsHariIni = savedRecords.filter(r => r.tarikh === tarikhCari);
+      
+      if (recordsHariIni.length === 0) {
+        showToast(`Tiada rekod guru ganti dijumpai untuk tarikh ${tarikhCari}`, 'error');
+        return;
+      }
+
+      // Susun mengikut waktu terkini
+      recordsHariIni.sort((a, b) => timeToMinutes(a.masa) - timeToMinutes(b.masa));
+
+      const printWindow = window.open('', '_blank');
+      
+      let tableRowsHtml = recordsHariIni.map(c => `
+        <tr>
+          <td style="border: 1px solid #000; padding: 8px; text-align: center;">${c.tarikh}</td>
+          <td style="border: 1px solid #000; padding: 8px; text-align: center;">${c.hari || '-'}</td>
+          <td style="border: 1px solid #000; padding: 8px; text-align: center; color: #000;">${c.masa}</td>
+          <td style="border: 1px solid #000; padding: 8px; text-align: center;">${c.kelas}</td>
+          <td style="border: 1px solid #000; padding: 8px; text-align: center;">${c.subjek}</td>
+          <td style="border: 1px solid #000; padding: 8px; color: #dc2626; font-weight: bold;">${c.guru_asal}</td>
+          <td style="border: 1px solid #000; padding: 8px; color: #16a34a; font-weight: bold;">${c.guru_ganti}</td>
+        </tr>
+      `).join('');
+
+      const htmlContent = `
+        <!DOCTYPE html>
+        <html lang="ms">
+        <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Cetakan Semula - Jadual Guru Ganti</title>
+          <style>
+            * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+            body { padding: 20mm; background: white; }
+            .page-container { width: 210mm; min-height: 297mm; background: white; margin: 0 auto; padding: 20mm; box-sizing: border-box; }
+            .header { text-align: center; margin-bottom: 30px; }
+            .logo { width: 80px; height: 80px; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; }
+            .logo img { width: 100%; height: 100%; object-fit: contain; }
+            .title { font-size: 18px; font-weight: bold; margin: 10px 0; letter-spacing: 1px; }
+            .subtitle { font-size: 14px; font-weight: bold; margin-bottom: 15px; letter-spacing: 0.5px; }
+            .date-info { font-size: 12px; margin-bottom: 20px; padding: 10px; background: #f5f5f5; border-radius: 4px; }
+            table { width: 100%; border-collapse: collapse; margin-bottom: 40px; font-size: 11px; }
+            table thead { background: #4b5563; color: white; }
+            table th { border: 1px solid #000; padding: 10px; text-align: center; font-weight: bold; }
+            table td { border: 1px solid #000; padding: 8px; text-align: left; }
+            table tbody tr:nth-child(odd) { background: #f9f9f9; }
+            .signature-section { margin-top: 50px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+            .signature-block { text-align: center; }
+            .signature-label { font-size: 12px; font-weight: normal; margin-bottom: 5px; }
+            .signature-line { border-top: 1px solid #000; margin-top: 50px; padding-top: 5px; font-size: 11px; font-weight: bold; }
+            .signature-title { font-size: 10px; margin-top: 3px; color: #333; }
+            .signature-school { font-size: 9px; margin-top: 2px; color: #666; }
+            @media print { body { margin: 0; padding: 0; } .page-container { box-shadow: none; page-break-after: always; } }
+          </style>
+        </head>
+        <body>
+          <div class="page-container">
+            <div class="header">
+              <div class="logo">
+                <img src="https://iili.io/Ky1xH3F.jpg" alt="Logo Sekolah" onerror="this.style.display='none'">
+              </div>
+              <div class="title">JADUAL GURU GANTI (CETAKAN SEMULA)</div>
+              <div class="subtitle">SEKOLAH KEBANGSAAN ULU PELAGUS</div>
+              <div class="date-info">TARIKH KELAS GANTI: ${tarikhCari}</div>
             </div>
 
             <table>
