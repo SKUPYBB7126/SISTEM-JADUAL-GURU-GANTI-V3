@@ -154,13 +154,13 @@
             </div>
           </div>
 
-          <!-- Accordion 2: Sistem Pengurusan Jadual -->
+           <!-- Accordion 2: Sistem Pengurusan Jadual -->
           <div class="bg-emerald-50/50 rounded-2xl border border-emerald-100 overflow-hidden shadow-sm">
             <button onclick="toggleSubMenu('menu-jadual', 'icon-jadual')" class="w-full flex items-center justify-between p-4 text-left focus:outline-none hover:bg-emerald-100/50 transition-colors">
               <span class="font-extrabold text-sm text-emerald-900 flex items-center gap-3"><i class="fa-solid fa-calendar-days text-emerald-500 text-lg w-5"></i> Jadual PdP</span>
-              <i id="icon-jadual" class="fa-solid fa-chevron-down text-emerald-400 transition-transform duration-300"></i>
+              <i id="icon-jadual" class="fa-solid fa-chevron-down text-emerald-400 transition-transform duration-300 rotate-180"></i>
             </button>
-            <div id="menu-jadual" class="px-3 pb-3 space-y-1 hidden">
+            <div id="menu-jadual" class="px-3 pb-3 space-y-1 block">
               <button id="tab4-btn" onclick="switchTab(4)" class="w-full tab-inactive px-4 py-3 rounded-xl font-bold text-xs transition-all duration-300 flex items-center gap-3 justify-start"><i class="fa-solid fa-cogs w-4 text-center"></i> 1. Tetapan Waktu</button>
               <button id="tab5-btn" onclick="switchTab(5)" class="w-full tab-inactive px-4 py-3 rounded-xl font-bold text-xs transition-all duration-300 flex items-center gap-3 justify-start"><i class="fa-solid fa-clipboard-user w-4 text-center"></i> 2. Agihan Tugas Guru</button>
             </div>
@@ -423,9 +423,10 @@
           
           <div class="bg-blue-50/50 p-3 rounded-lg border border-blue-100">
            <p class="text-[10px] font-extrabold text-blue-800 mb-2 uppercase tracking-wide">Isnin</p>
-           <div class="flex justify-between items-center bg-white p-2.5 rounded shadow-sm border border-gray-100 text-xs">
+          <div class="flex justify-between items-center bg-white p-2.5 rounded shadow-sm border border-gray-100 text-xs">
             <span>Semua Tahap (Tahun 1 - 6)</span>
-            <div class="flex items-center gap-2"><input type="time" value="07:30" class="border rounded p-1 text-xs font-bold outline-none focus:ring-2 focus:ring-blue-300 text-gray-700"> hingga <input type="time" id="waktu-isnin-tamat" value="13:15" class="border rounded p-1 text-xs font-bold outline-none focus:ring-2 focus:ring-blue-300 text-gray-700"></div>
+            <!-- KOD BAHARU: Tambah id="waktu-mula-sekolah" -->
+            <div class="flex items-center gap-2"><input type="time" id="waktu-mula-sekolah" value="07:30" class="border rounded p-1 text-xs font-bold outline-none focus:ring-2 focus:ring-blue-300 text-gray-700"> hingga <input type="time" id="waktu-isnin-tamat" value="13:15" class="border rounded p-1 text-xs font-bold outline-none focus:ring-2 focus:ring-blue-300 text-gray-700"></div>
            </div>
           </div>
 
@@ -476,17 +477,35 @@
              </div>
           </div>
 
-          <div class="flex flex-col gap-2 pt-2">
-            <div class="flex justify-between items-center bg-indigo-50 p-3 rounded-lg border border-indigo-100 shadow-sm text-indigo-900 text-xs">
-             <span class="font-bold"><i class="fa-solid fa-bullhorn text-indigo-500 mr-1.5"></i> Perhimpunan (Rabu)</span>
-             <div class="flex items-center gap-2"><input type="time" value="07:30" class="border rounded p-1.5 text-xs font-black outline-none focus:ring-2 focus:ring-indigo-400 text-indigo-700"> hingga <input type="time" value="08:00" class="border rounded p-1.5 text-xs font-black outline-none focus:ring-2 focus:ring-indigo-400 text-indigo-700"></div>
+          <div class="flex flex-col gap-3 pt-3 border-t border-blue-100 mt-2">
+            <div class="flex flex-col gap-2 bg-indigo-50 p-3 rounded-lg border border-indigo-100 shadow-sm text-indigo-900 text-xs">
+             <div class="flex justify-between items-center font-bold">
+              <span><i class="fa-solid fa-bullhorn text-indigo-500 mr-1.5"></i> Waktu Perhimpunan</span>
+              <select id="tetapan-perhimpunan" class="border border-indigo-200 rounded p-1 text-xs font-bold outline-none focus:ring-2 focus:ring-indigo-400 text-indigo-700 bg-white shadow-sm cursor-pointer">
+                <option value="ISNIN">Hari Isnin</option>
+                <option value="SELASA">Hari Selasa</option>
+                <option value="RABU" selected>Hari Rabu</option>
+                <option value="KHAMIS">Hari Khamis</option>
+                <option value="JUMAAT">Hari Jumaat</option>
+              </select>
+             </div>
+             <div class="flex justify-end items-center gap-2 mt-1"><input type="time" value="07:30" class="border rounded p-1 text-xs font-black outline-none focus:ring-2 focus:ring-indigo-400 text-indigo-700 bg-white"> hingga <input type="time" value="08:00" class="border rounded p-1 text-xs font-black outline-none focus:ring-2 focus:ring-indigo-400 text-indigo-700 bg-white"></div>
             </div>
             
-            <div class="flex justify-between items-center bg-amber-50 p-3 rounded-lg border border-amber-100 shadow-sm text-amber-900 text-xs">
-             <span class="font-bold"><i class="fa-solid fa-mug-hot text-amber-500 mr-1.5"></i> Rehat (Isnin - Khamis)</span>
-             <div class="flex items-center gap-2"><input type="time" value="10:00" class="border rounded p-1.5 text-xs font-black outline-none focus:ring-2 focus:ring-amber-400 text-amber-700"> hingga <input type="time" value="10:15" class="border rounded p-1.5 text-xs font-black outline-none focus:ring-2 focus:ring-amber-400 text-amber-700"></div>
+           <div class="flex justify-between items-center font-bold">
+              <span><i class="fa-solid fa-mug-hot text-amber-500 mr-1.5"></i> Hari & Waktu Rehat</span>
+              <!-- KOD BAHARU: Tambah id waktu rehat -->
+              <div class="flex items-center gap-2"><input type="time" id="waktu-rehat-mula" value="10:00" class="border rounded p-1 text-xs font-black outline-none focus:ring-2 focus:ring-amber-400 text-amber-700 bg-white"> hingga <input type="time" id="waktu-rehat-tamat" value="10:15" class="border rounded p-1 text-xs font-black outline-none focus:ring-2 focus:ring-amber-400 text-amber-700 bg-white"></div>
+             </div>
+             <div class="flex flex-wrap gap-3 mt-1 justify-end font-bold">
+                <label class="flex items-center gap-1 cursor-pointer"><input type="checkbox" id="rehat-isnin" checked class="w-4 h-4 text-amber-500 rounded focus:ring-amber-400 cursor-pointer"> Isn</label>
+                <label class="flex items-center gap-1 cursor-pointer"><input type="checkbox" id="rehat-selasa" checked class="w-4 h-4 text-amber-500 rounded focus:ring-amber-400 cursor-pointer"> Sel</label>
+                <label class="flex items-center gap-1 cursor-pointer"><input type="checkbox" id="rehat-rabu" checked class="w-4 h-4 text-amber-500 rounded focus:ring-amber-400 cursor-pointer"> Rab</label>
+                <label class="flex items-center gap-1 cursor-pointer"><input type="checkbox" id="rehat-khamis" checked class="w-4 h-4 text-amber-500 rounded focus:ring-amber-400 cursor-pointer"> Kha</label>
+                <label class="flex items-center gap-1 cursor-pointer"><input type="checkbox" id="rehat-jumaat" class="w-4 h-4 text-amber-500 rounded focus:ring-amber-400 cursor-pointer"> Jum</label>
+             </div>
             </div>
-            <p class="text-[9px] text-gray-400 font-bold italic ml-2 mt-1">* Nota: Hari Jumaat tiada waktu rehat.</p>
+            <p class="text-[9px] text-gray-400 font-bold italic ml-1 mt-1">* Nota: Tanda kotak bagi hari yang ada sesi rehat.</p>
           </div>
 
          </div>
@@ -643,24 +662,9 @@
             <div class="overflow-x-auto rounded-lg border border-gray-300 mt-4" style="scrollbar-width: thin; max-height: 800px;">
                <table class="w-full text-[10px] md:text-xs border-collapse text-center min-w-[1200px] bg-white shadow-sm">
                  <thead class="bg-indigo-50/90 sticky top-0 z-10 shadow-sm backdrop-blur">
-                     <tr>
-                        <th class="border border-gray-300 p-2 text-indigo-900 font-black w-20">HARI</th>
-                        <th class="border border-gray-300 p-2 text-indigo-900 font-black w-24">KELAS</th>
-                        <th class="border border-gray-300 p-2 text-gray-700 font-bold whitespace-nowrap">07:30<br>08:00</th>
-                        <th class="border border-gray-300 p-2 text-gray-700 font-bold whitespace-nowrap">08:00<br>08:30</th>
-                        <th class="border border-gray-300 p-2 text-gray-700 font-bold whitespace-nowrap">08:30<br>09:00</th>
-                        <th class="border border-gray-300 p-2 text-gray-700 font-bold whitespace-nowrap">09:00<br>09:30</th>
-                        <th class="border border-gray-300 p-2 text-gray-700 font-bold whitespace-nowrap">09:30<br>10:00</th>
-                        <!-- KOD BAHARU: Tambahan nota jam Jumaat di bawah header Rehat -->
-                        <th class="border border-gray-300 p-2 bg-amber-100 text-amber-800 font-black whitespace-nowrap">10:00<br>10:15<br><span class="text-[9px] text-emerald-700 block mt-1">JUM: 10:00-10:30</span></th>
-                        <th class="border border-gray-300 p-2 text-gray-700 font-bold whitespace-nowrap">10:15<br>10:45</th>
-                        <th class="border border-gray-300 p-2 text-gray-700 font-bold whitespace-nowrap">10:45<br>11:15</th>
-                        <th class="border border-gray-300 p-2 text-gray-700 font-bold whitespace-nowrap">11:15<br>11:45</th>
-                        <th class="border border-gray-300 p-2 text-gray-700 font-bold whitespace-nowrap">11:45<br>12:15</th>
-                        <th class="border border-gray-300 p-2 text-gray-700 font-bold whitespace-nowrap">12:15<br>12:45</th>
-                        <th class="border border-gray-300 p-2 text-gray-700 font-bold whitespace-nowrap">12:45<br>13:15</th>
-                        <th class="border border-gray-300 p-2 text-gray-700 font-bold whitespace-nowrap">13:15<br>13:45</th>
-                        <th class="border border-gray-300 p-2 text-gray-700 font-bold whitespace-nowrap">13:45<br>14:15</th>
+                     <!-- KOD BAHARU: ID untuk disuntik waktu secara dinamik -->
+                     <tr id="jadual-header-masa">
+                        <!-- Akan dilukis oleh Javascript renderJadualUI -->
                      </tr>
                   </thead>
                   <tbody id="jadual-kelas-tbody">
@@ -2303,23 +2307,22 @@
       }
     }
 
-     // ==========================================
-    // LOGIK SIDEBAR & MENU ACCORDION (KOD BAHARU)
+    // ==========================================
+    // LOGIK SIDEBAR & MENU ACCORDION (KOD KEBAL)
     // ==========================================
     function toggleSidebar() {
       const sidebar = document.getElementById('main-sidebar');
       const overlay = document.getElementById('sidebar-overlay');
       
-      if (sidebar.classList.contains('w-0')) {
-        // Buka Sidebar
-        sidebar.classList.remove('w-0', 'md:w-0');
-        sidebar.classList.add('w-64', 'md:w-72');
-        overlay.classList.remove('hidden');
+      // Memeriksa saiz fizikal sebenar (offsetWidth) untuk memintas ralat Tailwind CDN
+      if (sidebar.offsetWidth === 0) {
+          // Jika sedang tertutup, kita PAKSA BUKA (288px untuk Laptop, 256px untuk Telefon)
+          sidebar.style.width = window.innerWidth >= 768 ? '288px' : '256px';
+          if (window.innerWidth < 768) overlay.classList.remove('hidden');
       } else {
-        // Tutup Sidebar
-        sidebar.classList.remove('w-64', 'md:w-72');
-        sidebar.classList.add('w-0', 'md:w-0');
-        overlay.classList.add('hidden');
+          // Jika sedang terbuka, kita PAKSA TUTUP (Jadikan 0px)
+          sidebar.style.width = '0px';
+          overlay.classList.add('hidden');
       }
     }
 
@@ -2343,12 +2346,12 @@
       const tab2 = document.getElementById('tab2');
       const tab3 = document.getElementById('tab3');
       const tab4 = document.getElementById('tab4'); 
-      const tab5 = document.getElementById('tab5'); // KOD BAHARU
+      const tab5 = document.getElementById('tab5'); 
       const btn1 = document.getElementById('tab1-btn');
       const btn2 = document.getElementById('tab2-btn');
       const btn3 = document.getElementById('tab3-btn');
       const btn4 = document.getElementById('tab4-btn'); 
-      const btn5 = document.getElementById('tab5-btn'); // KOD BAHARU
+      const btn5 = document.getElementById('tab5-btn'); 
 
       const activeClass = 'w-full tab-active px-4 py-3 rounded-xl font-bold text-xs transition-all duration-300 flex items-center gap-3 justify-start shadow-sm';
       const inactiveClass = 'w-full tab-inactive px-4 py-3 rounded-xl font-bold text-xs transition-all duration-300 flex items-center gap-3 justify-start';
@@ -2358,13 +2361,13 @@
       tab2.classList.add('hidden');
       if (tab3) tab3.classList.add('hidden');
       if (tab4) tab4.classList.add('hidden'); 
-      if (tab5) tab5.classList.add('hidden'); // KOD BAHARU
+      if (tab5) tab5.classList.add('hidden'); 
       
       btn1.className = inactiveClass;
       btn2.className = inactiveClass;
       if (btn3) btn3.className = inactiveClass;
       if (btn4) btn4.className = inactiveClass; 
-      if (btn5) btn5.className = inactiveClass; // KOD BAHARU
+      if (btn5) btn5.className = inactiveClass; 
 
       // Paparkan tab yang ditekan
       if (tab === 1) {
@@ -2390,16 +2393,19 @@
       } else if (tab === 4) { 
         if (tab4) tab4.classList.remove('hidden');
         if (btn4) btn4.className = activeClass;
-      } else if (tab === 5) { // KOD BAHARU
+      } else if (tab === 5) {
         if (tab5) tab5.classList.remove('hidden');
         if (btn5) btn5.className = activeClass;
       }
 
+      // Tutup Sidebar Automatik HANYA Di Skrin Telefon
       if (window.innerWidth < 768) {
-         toggleSidebar();
+          const sidebar = document.getElementById('main-sidebar');
+          const overlay = document.getElementById('sidebar-overlay');
+          sidebar.style.width = '0px';
+          overlay.classList.add('hidden');
       }
     }
-
 
      // ==========================================
     // LOGIK PAPARAN TV BILIK GURU (KOD BAHARU)
@@ -2723,10 +2729,13 @@
     function simpanLocalState() {
         const state = {
             f1_waktu: {
+                mula: document.getElementById('waktu-mula-sekolah').value,
                 isnin: document.getElementById('waktu-isnin-tamat').value,
                 selKha1: document.getElementById('waktu-selkha-t1-tamat').value,
                 selKha2: document.getElementById('waktu-selkha-t2-tamat').value,
-                jumaat: document.getElementById('waktu-jum-tamat').value
+                jumaat: document.getElementById('waktu-jum-tamat').value,
+                rehatMula: document.getElementById('waktu-rehat-mula').value,
+                rehatTamat: document.getElementById('waktu-rehat-tamat').value
             },
             f1_tasmik: {
                 isnin: document.getElementById('tasmik-isnin').checked,
@@ -2734,6 +2743,14 @@
                 rabu: document.getElementById('tasmik-rabu').checked,
                 khamis: document.getElementById('tasmik-khamis').checked,
                 jumaat: document.getElementById('tasmik-jumaat').checked
+            },
+            f1_perhimpunan: document.getElementById('tetapan-perhimpunan').value,
+            f1_rehat: {
+                isnin: document.getElementById('rehat-isnin').checked,
+                selasa: document.getElementById('rehat-selasa').checked,
+                rabu: document.getElementById('rehat-rabu').checked,
+                khamis: document.getElementById('rehat-khamis').checked,
+                jumaat: document.getElementById('rehat-jumaat').checked
             },
             f1_hadBeban: {
                 gb: parseInt(document.getElementById('max-gb').value) || 7,
@@ -2753,10 +2770,14 @@
             const state = JSON.parse(savedData);
             
             if(state.f1_waktu && document.getElementById('waktu-isnin-tamat')) {
+                if(state.f1_waktu.mula) document.getElementById('waktu-mula-sekolah').value = state.f1_waktu.mula;
                 document.getElementById('waktu-isnin-tamat').value = state.f1_waktu.isnin;
                 document.getElementById('waktu-selkha-t1-tamat').value = state.f1_waktu.selKha1;
                 document.getElementById('waktu-selkha-t2-tamat').value = state.f1_waktu.selKha2;
                 document.getElementById('waktu-jum-tamat').value = state.f1_waktu.jumaat;
+                
+                if(state.f1_waktu.rehatMula) document.getElementById('waktu-rehat-mula').value = state.f1_waktu.rehatMula;
+                if(state.f1_waktu.rehatTamat) document.getElementById('waktu-rehat-tamat').value = state.f1_waktu.rehatTamat;
             }
             
             if(state.f1_tasmik && document.getElementById('tasmik-isnin')) {
@@ -2766,6 +2787,15 @@
                 document.getElementById('tasmik-khamis').checked = state.f1_tasmik.khamis;
                 document.getElementById('tasmik-jumaat').checked = state.f1_tasmik.jumaat;
                 hadkanTasmik();
+            }
+
+            if(state.f1_perhimpunan && document.getElementById('tetapan-perhimpunan')) {
+                document.getElementById('tetapan-perhimpunan').value = state.f1_perhimpunan;
+                document.getElementById('rehat-isnin').checked = state.f1_rehat.isnin;
+                document.getElementById('rehat-selasa').checked = state.f1_rehat.selasa;
+                document.getElementById('rehat-rabu').checked = state.f1_rehat.rabu;
+                document.getElementById('rehat-khamis').checked = state.f1_rehat.khamis;
+                document.getElementById('rehat-jumaat').checked = state.f1_rehat.jumaat;
             }
 
             if(state.f1_hadBeban && document.getElementById('max-gb')) {
@@ -2785,13 +2815,13 @@
                 renderGridGuru();
             }
         }
-        renderSubjekFasa1(); // Lukis subjek ke skrin tak kira memori ada atau takde
+        renderSubjekFasa1(); 
     }
 
+    // --- BERMULA FUNGSI YANG TERPADAM ---
     function simpanFasa1() {
        showLoading('Menyimpan Pangkalan Fasa 1...');
        
-       // KOD BAHARU: Menyedut nilai nama dan waktu terkini dari Borang
        hadBebanJawatan = {
            gb: parseInt(document.getElementById('max-gb').value) || 7,
            pk: parseInt(document.getElementById('max-pk').value) || 12,
@@ -2811,16 +2841,15 @@
            if(inputWaktu) s.waktu = parseInt(inputWaktu.value) || 0;
        });
 
-       simpanLocalState(); // Kunci dalam memori PC/Phone
+       simpanLocalState(); 
 
        setTimeout(() => {
            hideLoading();
            showToast('Fasa 1 Berjaya Disimpan!');
-           switchTab(5); // Auto lompat ke Fasa 2
+           switchTab(5); 
        }, 1500);
     }
 
-    // Fungsi 1: Had Maksimum Auto-Isi (Tarik Dari Array Fasa 1)
     function kemaskiniHadWaktu() {
       const jawatan = document.getElementById('f2-jawatan').value;
       const spanMax = document.getElementById('f2-max-waktu');
@@ -2833,7 +2862,6 @@
       kiraTotalWaktu();
     }
 
-    // Fungsi 2: Tambah Barisan Kelas
     function tambahBarisKelas() {
       f2_currentRows++;
       const rowId = f2_currentRows;
@@ -2870,7 +2898,6 @@
        kiraTotalWaktu();
     }
 
-    // Fungsi 3: Apabila Tahun Dipilih, Subjek Keluar Mengikut Tahap (Tarik Dari Array Fasa 1)
     function kemaskiniSubjekDropdown(rowId) {
       const selTahun = document.getElementById(`f2-tahun-${rowId}`);
       const selSubjek = document.getElementById(`f2-subjek-${rowId}`);
@@ -2899,7 +2926,6 @@
       kiraTotalWaktu();
     }
 
-    // Fungsi 4: Apabila Subjek Dipilih, Tarik Waktu Seminggu Dari Fasa 1 (Tarik Dari Array)
     function kemaskiniWaktu(rowId) {
       const selTahun = document.getElementById(`f2-tahun-${rowId}`);
       const selSubjek = document.getElementById(`f2-subjek-${rowId}`);
@@ -2908,9 +2934,7 @@
       const tahap = selTahun.options[selTahun.selectedIndex].getAttribute('data-tahap');
       const namaSubjek = selSubjek.value;
       
-      // KOD BAHARU: Semakan Pertindihan Kelas & Subjek Mutlak
       if (namaSubjek && selTahun.value) {
-          // Semakan 1: Pertindihan di dalam borang guru yang SEDANG diisi
           let isDuplicate = false;
           for (let i = 1; i <= f2_currentRows; i++) {
               if (i === rowId) continue; 
@@ -2932,7 +2956,6 @@
               return; 
           }
 
-          // Semakan 2: Pertindihan dengan GURU LAIN yang telah disave dalam Pangkalan Data
           let isTakenByOthers = false;
           let takenByName = "";
           for (let g = 0; g < f2_senaraiGuruPenuh.length; g++) {
@@ -2965,7 +2988,6 @@
       kiraTotalWaktu();
     }
 
-    // Fungsi 5: Pengiraan Matematik Waktu Keseluruhan + Amaran
     function kiraTotalWaktu() {
       let total = 0;
       for (let i = 1; i <= f2_currentRows; i++) {
@@ -2988,7 +3010,6 @@
       }
     }
 
-    // Fungsi 6: Simpan Kad Profil Guru Ke Dalam Pangkalan Data Visual
     function simpanProfilGuru() {
       const nama = document.getElementById('f2-nama').value.toUpperCase();
       const kod = document.getElementById('f2-kod').value.toUpperCase();
@@ -3003,10 +3024,9 @@
           return;
       }
 
-      // KOD BAHARU: Pengawal Pintu Identiti Guru (Halang Ciptaan Klon)
       let isIdentityDuplicate = false;
       for (let g = 0; g < f2_senaraiGuruPenuh.length; g++) {
-          if (f2_editGuruIndex === g) continue; // Abaikan semakan pada diri sendiri jika sedang edit
+          if (f2_editGuruIndex === g) continue; 
           let existing = f2_senaraiGuruPenuh[g];
           if (existing.nama === nama || existing.kod === kod) {
               isIdentityDuplicate = true;
@@ -3016,10 +3036,9 @@
       
       if (isIdentityDuplicate) {
           showToast(`AMARAN: Guru bernama ${nama} (atau kod ${kod}) telah wujud! Sila Kemaskini kad di bawah.`, 'error');
-          return; // ⛔ Hentikan proses simpan
+          return; 
       }
 
-      // Kumpul senarai kelas
       let senaraiTugas = [];
       for (let i = 1; i <= f2_currentRows; i++) {
           const selTahun = document.getElementById(`f2-tahun-${i}`);
@@ -3040,14 +3059,13 @@
           return;
       }
 
-      // Pengawal Pintu Utama Pada Butang Simpan (Mutlak)
       for (let t = 0; t < senaraiTugas.length; t++) {
           let task = senaraiTugas[t];
           let takenByName = "";
           let isTaken = false;
           
           for (let g = 0; g < f2_senaraiGuruPenuh.length; g++) {
-              if (f2_editGuruIndex === g) continue; // Abaikan semakan pertindihan pada diri sendiri
+              if (f2_editGuruIndex === g) continue; 
               let guruTersimpan = f2_senaraiGuruPenuh[g];
               let jumpa = guruTersimpan.senaraiTugas.find(x => x.tahun === task.tahun && x.subjek.toUpperCase() === task.subjek.toUpperCase());
               
@@ -3070,10 +3088,9 @@
           nama, kod, jawatan, totalWaktu, maxWaktu: spanMax, senaraiTugas, isLebih
       };
 
-      // KOD BAHARU: Kemaskini kad asal ATAU cipta kad baharu
       if (f2_editGuruIndex !== -1) {
           f2_senaraiGuruPenuh[f2_editGuruIndex] = dataGuruBaru;
-          f2_editGuruIndex = -1; // Reset memori
+          f2_editGuruIndex = -1; 
       } else {
           f2_senaraiGuruPenuh.push(dataGuruBaru);
       }
@@ -3083,7 +3100,6 @@
       
       showToast('Profil Cikgu ' + nama + ' berjaya disimpan!');
       
-      // Kosongkan Borang
       document.getElementById('f2-nama').value = '';
       document.getElementById('f2-kod').value = '';
       document.getElementById('f2-jawatan').value = '';
@@ -3094,7 +3110,6 @@
       f2_currentRows = 0;
     }
 
-    // Fungsi 7: Paparkan Kad-Kad Guru
     function renderGridGuru() {
       const grid = document.getElementById('f2-grid-guru');
       if (f2_senaraiGuruPenuh.length === 0) {
@@ -3133,22 +3148,17 @@
     function padamGuruFasa2(idx) {
        f2_senaraiGuruPenuh.splice(idx, 1);
        renderGridGuru();
-       // KOD BAHARU: Kemas kini local storage selepas padam supaya memori disegerakkan
        simpanLocalState();
     }
 
-   // KOD BAHARU: Fungsi Menarik Semula Data Ke Borang Untuk Dikemaskini
     function kemaskiniGuruFasa2(idx) {
-        // Tandakan sistem sedang dalam mod kemaskini
         f2_editGuruIndex = idx;
         
         let guruEdit = f2_senaraiGuruPenuh[idx];
         
-        // 1. Tulis maklumat asas
         document.getElementById('f2-nama').value = guruEdit.nama;
         document.getElementById('f2-kod').value = guruEdit.kod;
         
-        // Pilih jawatan yang betul
         let selJawatan = document.getElementById('f2-jawatan');
         for(let i=0; i<selJawatan.options.length; i++) {
             if(selJawatan.options[i].text === guruEdit.jawatan) {
@@ -3158,11 +3168,9 @@
         }
         kemaskiniHadWaktu(); 
         
-        // 2. Kosongkan senarai kelas sedia ada di borang
         document.getElementById('f2-senarai-kelas').innerHTML = '';
         f2_currentRows = 0;
         
-        // 3. Bina semula baris kelas berdasarkan memori kad
         guruEdit.senaraiTugas.forEach(tugas => {
             tambahBarisKelas();
             let rowId = f2_currentRows;
@@ -3173,7 +3181,6 @@
             
             let selSubjek = document.getElementById(`f2-subjek-${rowId}`);
             
-            // Cari padanan yang tepat dari dalam dropdown
             let optionFound = Array.from(selSubjek.options).find(opt => opt.value.toUpperCase() === tugas.subjek.toUpperCase());
             if (optionFound) {
                 selSubjek.value = optionFound.value;
@@ -3187,30 +3194,46 @@
         
         kiraTotalWaktu();
         
-        // KOD BAHARU: KITA TIDAK LAGI MEMADAM KAD DI SINI
-        // Data lama masih kekal terselamat dalam grid selagi butang Simpan belum ditekan.
-        
-        // 4. Autoscroll ke borang atas
         document.getElementById('f2-nama').scrollIntoView({ behavior: 'smooth', block: 'center' });
         showToast('Mod Kemaskini Aktif: Data di bawah selamat. Sila edit dan tekan Simpan.');
     }
+    // --- TAMAT FUNGSI YANG TERPADAM ---
 
-   // Fungsi Matematik Mengira Jumlah Slot Daripada Input Masa Cikgu di Fasa 1
+    // Fungsi Matematik Mengira Jumlah Slot (Dinamik)
     function kiraMaxSlotDinamik(timeValId, tolakRehat) {
         let inputMasa = document.getElementById(timeValId);
         let timeStr = inputMasa ? inputMasa.value : "";
-        if (!timeStr) return 11; // Balik 13:15 (Lalai)
+        if (!timeStr) return 11; 
         
         let parts = timeStr.split(':');
         if(parts.length !== 2) return 11;
         
         let endMins = parseInt(parts[0]) * 60 + parseInt(parts[1]);
-        let startMins = 7 * 60 + 30; // Mula wajib 07:30 pagi
+        
+        // KOD BAHARU: Ambil waktu mula sekolah yang dinamik
+        let mulaSekolahInput = document.getElementById('waktu-mula-sekolah');
+        let mulaStr = mulaSekolahInput ? mulaSekolahInput.value : '07:30';
+        let mulaParts = mulaStr.split(':');
+        let startMins = parseInt(mulaParts[0]) * 60 + parseInt(mulaParts[1]); 
+        
         let diff = endMins - startMins;
         
-        // Tolak 15 minit rehat jika waktu balik melangkaui jam 10:00 pagi
-        if (tolakRehat && endMins > 600) { 
-            diff -= 15;
+        // KOD BAHARU: Ambil tempoh rehat yang dinamik
+        let rehatMulaInput = document.getElementById('waktu-rehat-mula');
+        let rehatTamatInput = document.getElementById('waktu-rehat-tamat');
+        let rehatDurasi = 15; 
+        
+        if (rehatMulaInput && rehatTamatInput) {
+            let rMulaMins = parseInt(rehatMulaInput.value.split(':')[0]) * 60 + parseInt(rehatMulaInput.value.split(':')[1]);
+            let rTamatMins = parseInt(rehatTamatInput.value.split(':')[0]) * 60 + parseInt(rehatTamatInput.value.split(':')[1]);
+            rehatDurasi = rTamatMins - rMulaMins;
+        }
+
+        // Tolak tempoh rehat jika waktu balik melangkaui jam rehat mula
+        let limitRehat = rehatMulaInput ? (parseInt(rehatMulaInput.value.split(':')[0]) * 60 + parseInt(rehatMulaInput.value.split(':')[1])) : 600;
+        
+        if (tolakRehat && endMins > limitRehat) { 
+            diff -= rehatDurasi;
         }
         
         return Math.floor(diff / 30);
@@ -3247,7 +3270,7 @@
 
        showLoading('Enjin AI Membaca Pangkalan Data & Menyusun Jadual...');
 
-       // 1. Dapatkan senarai semua kelas dari senarai tugas cikgu
+       // 1. Dapatkan senarai semua kelas
        let kelasSet = new Set();
        f2_senaraiGuruPenuh.forEach(guru => {
            guru.senaraiTugas.forEach(tugas => {
@@ -3262,13 +3285,13 @@
            return;
        }
 
-       // Ambil bacaan slot terus daripada Fasa 1 supaya 100% tepat dengan ubahan admin
+       // 2. Bacaan Kapasiti Harian
        const slotIsnin = kiraMaxSlotDinamik('waktu-isnin-tamat', true);
        const slotSelKhaT1 = kiraMaxSlotDinamik('waktu-selkha-t1-tamat', true);
        const slotSelKhaT2 = kiraMaxSlotDinamik('waktu-selkha-t2-tamat', true);
        const slotJum = kiraMaxSlotDinamik('waktu-jum-tamat', false);
        
-       // Baca Mod Tasmik Hari Yang Dibenarkan (Max 2 Hari)
+       // Baca Mod Tasmik
        const hariTasmikBoleh = {
            'ISNIN': document.getElementById('tasmik-isnin').checked,
            'SELASA': document.getElementById('tasmik-selasa').checked,
@@ -3278,10 +3301,22 @@
        };
        let hariTasmikPilihan = Object.keys(hariTasmikBoleh).filter(h => hariTasmikBoleh[h]);
 
+       // KOD BAHARU (LOKASI 1): Baca Tetapan Dinamik Perhimpunan & Rehat
+       let elemenPerhimpunan = document.getElementById('tetapan-perhimpunan');
+       const hariPerhimpunan = elemenPerhimpunan ? elemenPerhimpunan.value : 'RABU';
+       
+       const hariAdaRehat = {
+           'ISNIN': document.getElementById('rehat-isnin') ? document.getElementById('rehat-isnin').checked : true,
+           'SELASA': document.getElementById('rehat-selasa') ? document.getElementById('rehat-selasa').checked : true,
+           'RABU': document.getElementById('rehat-rabu') ? document.getElementById('rehat-rabu').checked : true,
+           'KHAMIS': document.getElementById('rehat-khamis') ? document.getElementById('rehat-khamis').checked : true,
+           'JUMAAT': document.getElementById('rehat-jumaat') ? document.getElementById('rehat-jumaat').checked : false
+       };
+
        f2_jadualSediaAda = {};
        const hariHari = ['ISNIN', 'SELASA', 'RABU', 'KHAMIS', 'JUMAAT'];
        
-       // 2. Sediakan templat kosong untuk grid jadual setiap kelas (13 Waktu memuatkan Gerabak Tambahan Tasmik)
+       // Sediakan templat kosong untuk grid jadual setiap kelas
        f2_senaraiKelasUnik.forEach(kelas => {
            f2_jadualSediaAda[kelas] = {
                'ISNIN': new Array(13).fill(null),
@@ -3290,11 +3325,11 @@
                'KHAMIS': new Array(13).fill(null),
                'JUMAAT': new Array(13).fill(null) 
            };
-           // Kunci waktu perhimpunan pagi Rabu
-           f2_jadualSediaAda[kelas]['RABU'][0] = { subjek: 'PERHIMPUNAN', kodGuru: '-', warna: 'text-indigo-800' };
+           // Kunci waktu perhimpunan ikut Hari Dinamik
+           f2_jadualSediaAda[kelas][hariPerhimpunan][0] = { subjek: 'PERHIMPUNAN', kodGuru: '-', warna: 'text-indigo-800' };
        });
 
-       // 3. Kumpul Semua Tugas & Cantumkan (Pairing) Kelas Serentak PI dan PM
+       // 3. Cantuman Kelas Serentak (PI & PM)
        let semuaTugas = [];
        f2_senaraiGuruPenuh.forEach(guru => {
            guru.senaraiTugas.forEach(tugas => {
@@ -3312,7 +3347,6 @@
        let tugasSelepasGabung = [];
        let skipIndeks = new Set();
 
-       // Enjin AI Mengesan Kembar PI & PM
        for (let i = 0; i < semuaTugas.length; i++) {
            if (skipIndeks.has(i)) continue;
            let t1 = semuaTugas[i];
@@ -3347,21 +3381,20 @@
            tugasSelepasGabung.push(t1);
        }
 
-       // KOD BAHARU: Pengawal Pintu (Gatekeeper) - Semakan Matematik Kapasiti Jadual (Kesan LEBIH atau KURANG)
-       let kapasitiMaxT1 = slotIsnin + (slotSelKhaT1 * 3) + slotJum - 1; // tolak 1 petak wajib Perhimpunan Rabu
+       // 4. Semakan Matematik Kapasiti Jadual
+       let kapasitiMaxT1 = slotIsnin + (slotSelKhaT1 * 3) + slotJum - 1; 
        let kapasitiMaxT2 = slotIsnin + (slotSelKhaT2 * 3) + slotJum - 1; 
 
        let ralatKapasiti = null;
        for (let i = 0; i < f2_senaraiKelasUnik.length; i++) {
            let kelas = f2_senaraiKelasUnik[i];
            let isTahap1 = kelas.includes('1 ') || kelas.includes('2 ') || kelas.includes('3 ');
-           let maxKapasiti = isTahap1 ? kapasitiMaxT1 : kapasitiMaxT2; // Cth: 46 atau 49
+           let maxKapasiti = isTahap1 ? kapasitiMaxT1 : kapasitiMaxT2; 
            
            let totalWaktuKelas = 0;
            let tugasKelasIni = tugasSelepasGabung.filter(t => t.kelas === kelas);
            
            tugasKelasIni.forEach(tugas => {
-               // Kira semua beban kelas TERMASUK Pendidikan Islam/Moral. HANYA Tasmik dikecualikan.
                let namaSubj = tugas.subjek.toUpperCase();
                if (!namaSubj.includes('TSMK')) {
                    totalWaktuKelas += parseInt(tugas.waktu) || 0;
@@ -3377,7 +3410,6 @@
            }
        }
 
-       // Jika wujud sebarang kelas yang lebih atau kurang kapasiti, Paparkan Modal Amaran Kecemasan & HALANG PENJANAAN!
        if (ralatKapasiti) {
            hideLoading();
            
@@ -3386,10 +3418,7 @@
            let ayatAmaran = ralatKapasiti.jenis === 'LEBIH' 
                 ? 'mempunyai <strong class="text-rose-600">LEBIHAN</strong> beban waktu mengajar'
                 : 'mengalami <strong class="text-rose-600">KEKURANGAN</strong> waktu mengajar yang akan menyebabkan jadual berlubang/lompong';
-           let tindakanAmaran = ralatKapasiti.jenis === 'LEBIH'
-                ? '<span class="text-indigo-600 font-bold">padam atau kurangkan peruntukan masa subjek</span>'
-                : '<span class="text-indigo-600 font-bold">tambah atau cukupkan peruntukan masa subjek</span>';
-
+           
            const modalDiv = document.createElement('div');
            modalDiv.className = 'fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-[100] fade-in';
            modalDiv.innerHTML = `
@@ -3403,76 +3432,67 @@
                    <h3 class="text-lg font-black text-gray-800 uppercase tracking-tight">${tajukAmaran}</h3>
                  </div>
                  <p class="text-sm font-semibold text-gray-600 mb-2 leading-relaxed">
-                   Penjanaan dibatalkan secara automatik. Kelas <span class="text-rose-600 font-black">${ralatKapasiti.kelas}</span> ${ayatAmaran}.
+                   Penjanaan dibatalkan secara automatik. Kelas <span class="text-rose-600 font-black">${ralatKapasiti.kelas}</span>${ayatAmaran}.
                  </p>
                  <div class="bg-gray-50 border border-gray-200 rounded-lg p-3 mb-4 text-xs font-medium text-gray-700 space-y-1">
                    <div class="flex justify-between text-indigo-700"><span>Kapasiti Jadual (Wajib Diisi):</span> <strong class="font-black text-sm">${ralatKapasiti.max} waktu</strong></div>
                    <div class="flex justify-between text-rose-600 pt-1 border-t border-rose-100 mt-1"><span>Status Dimasukkan (Terkini):</span> <strong class="font-black text-sm">${ralatKapasiti.masuk} waktu</strong></div>
                  </div>
-                 <p class="text-[10px] text-gray-400 font-bold italic mb-6">*Nota: Kiraan di atas melibatkan semua subjek termasuk gabungan Agama/Moral. Hanya waktu Tasmik dikecualikan.</p>
                  <button onclick="this.closest('.fixed').remove()" class="w-full bg-rose-600 hover:bg-rose-700 text-white font-bold py-3 rounded-xl transition-colors shadow-md shadow-rose-200 uppercase tracking-widest text-xs">Saya Faham & Baiki</button>
                </div>
              </div>
            `;
            document.body.appendChild(modalDiv);
-           return; // ⛔ BATALKAN PENJANAAN DI SINI
+           return; 
        }
-       // TAMAT LOGIK PENGAWAL PINTU (GATEKEEPER)
 
-       // 4. ALGORITMA AI - HIERARKI KASTA & ROMBAKAN RAWAK
+       // 5. ALGORITMA AI PENYUSUNAN
        tugasSelepasGabung.forEach(t => {
            let subj = t.subjek;
-           if (subj === "PJ") t.kasta = 1; // VVIP Wajib Pagi
-           else if (["BM", "BI", "MT", "SN", "SEJ"].includes(subj)) t.kasta = 2; // Teras Utama
-           else t.kasta = 3; // Elektif/Lain-lain
+           if (subj === "PJ") t.kasta = 1; 
+           else if (["BM", "BI", "MT", "SN", "SEJ"].includes(subj)) t.kasta = 2; 
+           else t.kasta = 3; 
            
-           t.rawak = Math.random(); // Rombakan kocok guru (Shuffle)
+           t.rawak = Math.random(); 
        });
 
        tugasSelepasGabung.sort((a, b) => {
-           if (a.kasta !== b.kasta) return a.kasta - b.kasta; // Susun ikut Kasta 1 > 2 > 3
-           
-           // KOD BAHARU: Hukum "Waktu panjang didahulukan" DIBUANG sepenuhnya di sini!
-           // Mesin kini 100% membiarkan subjek Teras (Kasta 2) berebut petak pagi secara rawak.
+           if (a.kasta !== b.kasta) return a.kasta - b.kasta; 
            return a.rawak - b.rawak; 
        });
 
-       // KOD BAHARU: Fungsi Radar Mencegah Cikgu Dwi-Lokasi (Pertindihan Guru)
+       // RADAR KESELAMATAN: Anti Pertindihan Guru (Wajib dipatuhi semua lapisan AI)
        const isTeacherFree = (guruStr, checkHari, checkSlot, ignoreKelas) => {
            if (!guruStr || guruStr === '-') return true;
-           // Kes 2 nama (Pendidikan Islam / Moral bergabung)
            let gurus = guruStr.split(' / ').map(g => g.trim());
            
            for (let c = 0; c < f2_senaraiKelasUnik.length; c++) {
                let kelasLain = f2_senaraiKelasUnik[c];
-               if (kelasLain === ignoreKelas) continue; // Jangan scan kelas yang sama
+               if (kelasLain === ignoreKelas) continue; 
                
                let checkObj = f2_jadualSediaAda[kelasLain][checkHari][checkSlot];
                if (checkObj && checkObj.kodGuru) {
                    let otherGurus = checkObj.kodGuru.split(' / ').map(g => g.trim());
-                   // Jika ada nama cikgu yang sedang bertugas pada waktu dan hari ini di kelas lain
                    if (gurus.some(g => otherGurus.includes(g))) return false; // Cikgu ini bertembung!
                }
            }
-           return true; // Selamat, cikgu free waktu ini
+           return true; 
        };
 
        f2_senaraiKelasUnik.forEach(kelas => {
            let isTahap1 = kelas.includes('1 ') || kelas.includes('2 ') || kelas.includes('3 ');
            let tugasKelas = tugasSelepasGabung.filter(t => t.kelas === kelas);
 
-           // KOD BAHARU: LOGIK PECAHAN MASA TASMIK
+           // Pecahan Slot Tasmik
            let tsmkTask = tugasKelas.find(t => t.subjek === "TSMK");
            if (tsmkTask && tsmkTask.waktu > 0) {
                if (hariTasmikPilihan.length === 1) {
-                   // 1 Hari Dipilih: Tasmik 2 Waktu Sekaligus di hujung hari
                    let hTasmik = hariTasmikPilihan[0];
                    let slotMula = (hTasmik === 'ISNIN') ? slotIsnin : (hTasmik === 'JUMAAT' ? slotJum : (isTahap1 ? slotSelKhaT1 : slotSelKhaT2));
                    f2_jadualSediaAda[kelas][hTasmik][slotMula] = { subjek: "TSMK", kodGuru: tsmkTask.kodGuru, warna: "text-cyan-600" };
                    f2_jadualSediaAda[kelas][hTasmik][slotMula + 1] = { subjek: "TSMK", kodGuru: tsmkTask.kodGuru, warna: "text-cyan-600" };
                    tsmkTask.waktu -= 2; 
                } else if (hariTasmikPilihan.length === 2) {
-                   // 2 Hari Dipilih: Tasmik dipecahkan 1 Waktu setiap hari
                    let h1 = hariTasmikPilihan[0];
                    let h2 = hariTasmikPilihan[1];
                    
@@ -3492,10 +3512,8 @@
                let kasta = tugas.kasta;
                let bakiWaktu = tugas.waktu;
                let namaGuru = tugas.kodGuru; 
-               
                let warna = "text-emerald-600";
                
-               // Hukum Tetap Taburan Masa (Strict Block Sizing Rule)
                let chunks = [];
                if (bakiWaktu >= 10 && (subjek.includes("BM") || subjek.includes("BI"))) {
                    if (bakiWaktu === 12) chunks = [3, 3, 2, 2, 2];
@@ -3513,6 +3531,7 @@
                    let placed = false;
                    let cubaHari = ['ISNIN', 'SELASA', 'RABU', 'KHAMIS', 'JUMAAT'].sort(() => Math.random() - 0.5);
 
+                   // ALGORITMA PENYUSUNAN BIASA
                    const cubaSumbat = (startMasa, endMasa, ignoreSpread = false) => {
                        for (let h = 0; h < cubaHari.length; h++) {
                            let hariAktif = cubaHari[h];
@@ -3525,7 +3544,6 @@
 
                            let limitMasa = Math.min(endMasa, hadSlotSemasa);
 
-                           // Had 2 atau 3 masa sehari maksimum
                            let maxDibenarkanSehari = (subjek.includes("BM") || subjek.includes("BI")) ? 3 : 2;
                            let existCount = slots.slice(0, hadSlotSemasa).filter(s => s && s.subjek === subjek).length;
                            if (existCount + chunkSize > maxDibenarkanSehari) continue; 
@@ -3534,12 +3552,11 @@
                            for (let s = startMasa; s <= limitMasa - chunkSize; s++) {
                                if (hariAktif === 'JUMAAT' && s >= slotJum && subjek !== "TSMK") continue;
                                
-                               // Halang blok merentasi rehat
-                               if (s <= 4 && (s + chunkSize - 1) >= 5) continue;
+                               // KOD BAHARU (LOKASI 2): Halang blok merentasi rehat dinamik
+                               if (hariAdaRehat[hariAktif] && s <= 4 && (s + chunkSize - 1) >= 5) continue;
 
                                let canFit = true;
                                for (let j = 0; j < chunkSize; j++) {
-                                   // KOD BAHARU: Petak mesti kosong DAN guru mesti tidak bertindih dengan kelas lain!
                                    if (slots[s+j] !== null || !isTeacherFree(namaGuru, hariAktif, s+j, kelas)) { 
                                        canFit = false; break; 
                                    }
@@ -3570,12 +3587,12 @@
                        if (!placed) placed = cubaSumbat(0, 11, true);
                    }
 
-                   // PELAN KECEMASAN 3-LAPIS JIKA GAGAL DIMASUKKAN
+                   // ALGORITMA PELAN KECEMASAN 3-LAPIS JIKA GAGAL DIMASUKKAN
                    if (!placed) {
                        for(let k = 0; k < chunkSize; k++) {
                            let berjayaSumbat = false;
                            
-                           // Langkah 1: Sumbat 1 jam (Patuh kuota subjek & Guru Free)
+                           // LAPIS 1: Sumbat Paksa Jadi 1 Jam
                            for (let h = 0; h < 5; h++) {
                                let hariAktif = cubaHari[h];
                                let slots = f2_jadualSediaAda[kelas][hariAktif];
@@ -3591,7 +3608,6 @@
 
                                let sf = -1;
                                for(let s = 0; s < hadSlotSemasa; s++){
-                                   // Petak mesti kosong DAN Cikgu tak bertindih
                                    if(slots[s] === null && isTeacherFree(namaGuru, hariAktif, s, kelas)){ sf = s; break; }
                                }
                                if(sf !== -1){
@@ -3601,7 +3617,7 @@
                                }
                            }
 
-                           // Langkah 2: ALGORITMA "SMART SWAP" (Tukar Ganti)
+                           // LAPIS 2: Smart Swap (Tukar Ganti)
                            if (!berjayaSumbat) {
                                let berjayaSwap = false;
                                let semuaHari = ['ISNIN', 'SELASA', 'RABU', 'KHAMIS', 'JUMAAT'];
@@ -3612,7 +3628,6 @@
                                    let maxEmpty = (hariEmpty === 'ISNIN') ? slotIsnin : (hariEmpty === 'JUMAAT' ? slotJum : (isTahap1 ? slotSelKhaT1 : slotSelKhaT2));
                                    
                                    for(let sEmpty = 0; sEmpty < maxEmpty; sEmpty++) {
-                                       // Cari petak lompong yang Cikgu KITA free nak masuk
                                        if (slotsEmpty[sEmpty] === null && isTeacherFree(namaGuru, hariEmpty, sEmpty, kelas)) {
                                            
                                            for (let hCari = 0; hCari < 5; hCari++) {
@@ -3629,16 +3644,17 @@
 
                                                        let limitMangsa = (mangsa.subjek.includes("BM") || mangsa.subjek.includes("BI")) ? 3 : 2;
                                                        let currMangsa = slotsEmpty.slice(0, maxEmpty).filter(s => s && s.subjek === mangsa.subjek).length;
-                                                       // Adakah mangsa selamat dipindahkan & gurunya TAK BERTINDIH?
+                                                       
+                                                       // PASTIKAN GURU MANGSA FREE UNTUK DIPINDAHKAN
                                                        let isMangsaFree = isTeacherFree(mangsa.kodGuru, hariEmpty, sEmpty, kelas);
                                                        
                                                        let limitKita = (subjek.includes("BM") || subjek.includes("BI")) ? 3 : 2;
                                                        let currKita = slotsCari.slice(0, maxCari).filter(s => s && s.subjek === subjek).length;
-                                                       // Adakah subjek kita selamat masuk ke tempat mangsa & guru TAK BERTINDIH?
+                                                       
+                                                       // PASTIKAN GURU KITA FREE UNTUK AMBIL ALIH TEMPAT MANGSA
                                                        let isKitaFree = isTeacherFree(namaGuru, hariCari, sCari, kelas);
                                                        
                                                        if ((currMangsa + 1 <= limitMangsa) && (currKita + 1 <= limitKita) && isMangsaFree && isKitaFree) {
-                                                           // BERJAYA SWAP!
                                                            slotsEmpty[sEmpty] = mangsa;
                                                            slotsCari[sCari] = { subjek: subjek, kodGuru: namaGuru, warna: warna };
                                                            berjayaSwap = true;
@@ -3656,13 +3672,12 @@
                                }
                            }
 
-                           // Langkah 3: JARING TERAKHIR (Force Fill Darurat)
+                           // LAPIS 3: Sumbat Darurat
                            if (!berjayaSumbat) {
                                let semuaHari = ['ISNIN', 'SELASA', 'RABU', 'KHAMIS', 'JUMAAT'];
                                let forceIndex = -1;
                                let forceHari = '';
                                
-                               // Cuba cari petak kosong di mana cikgu itu TIDAK bertindih (walaupun langgar kuota subjek sehari)
                                for (let hForce = 0; hForce < 5; hForce++) {
                                    let hariForce = semuaHari[hForce];
                                    let slotsForce = f2_jadualSediaAda[kelas][hariForce];
@@ -3678,7 +3693,6 @@
                                    if (forceIndex !== -1) break;
                                }
                                
-                               // Pusingan Buntu Maksimum: Sumbat je mana-mana kosong yg ada supaya jadual tak berlubang!
                                if (forceIndex === -1) {
                                   for (let hForce = 0; hForce < 5; hForce++) {
                                      let hariForce = semuaHari[hForce];
@@ -3719,28 +3733,73 @@
        }, 2000);
     }
 
-   // Mencetak Visual UI Jadual Waktu Mengikut Nilai Fasa 1
+  // 6. FUNGSI MELUKIS UI JADUAL (RENDERER)
     function renderJadualUI() {
         const slotIsnin = kiraMaxSlotDinamik('waktu-isnin-tamat', true);
         const slotSelKhaT1 = kiraMaxSlotDinamik('waktu-selkha-t1-tamat', true);
         const slotSelKhaT2 = kiraMaxSlotDinamik('waktu-selkha-t2-tamat', true);
         const slotJum = kiraMaxSlotDinamik('waktu-jum-tamat', false);
 
+        // KOD BAHARU: Tarik Tetapan Dinamik untuk UI Render
+        let elemenPerhimpunan = document.getElementById('tetapan-perhimpunan');
+        const hariPerhimpunan = elemenPerhimpunan ? elemenPerhimpunan.value : 'RABU';
+        
+        const hariAdaRehat = {
+           'ISNIN': document.getElementById('rehat-isnin') ? document.getElementById('rehat-isnin').checked : true,
+           'SELASA': document.getElementById('rehat-selasa') ? document.getElementById('rehat-selasa').checked : true,
+           'RABU': document.getElementById('rehat-rabu') ? document.getElementById('rehat-rabu').checked : true,
+           'KHAMIS': document.getElementById('rehat-khamis') ? document.getElementById('rehat-khamis').checked : true,
+           'JUMAAT': document.getElementById('rehat-jumaat') ? document.getElementById('rehat-jumaat').checked : false
+        };
+
+        // BINA HEADER MASA SECARA DINAMIK!
+        const waktuMula = document.getElementById('waktu-mula-sekolah') ? document.getElementById('waktu-mula-sekolah').value : '07:30';
+        const waktuRehatMula = document.getElementById('waktu-rehat-mula') ? document.getElementById('waktu-rehat-mula').value : '10:00';
+        const waktuRehatTamat = document.getElementById('waktu-rehat-tamat') ? document.getElementById('waktu-rehat-tamat').value : '10:15';
+
+        const addMinutes = (timeStr, mins) => {
+            let [h, m] = timeStr.split(':').map(Number);
+            m += mins;
+            h += Math.floor(m / 60);
+            m = m % 60;
+            return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`;
+        };
+
+        let thHtml = `<th class="border border-gray-300 p-2 text-indigo-900 font-black w-20">HARI</th>
+                      <th class="border border-gray-300 p-2 text-indigo-900 font-black w-24">KELAS</th>`;
+        
+        let currentMasa = waktuMula;
+        for(let i = 0; i < 5; i++) {
+            let nextMasa = addMinutes(currentMasa, 30);
+            thHtml += `<th class="border border-gray-300 p-2 text-gray-700 font-bold whitespace-nowrap">${currentMasa}<br>${nextMasa}</th>`;
+            currentMasa = nextMasa;
+        }
+        
+        thHtml += `<th class="border border-gray-300 p-2 bg-amber-100 text-amber-800 font-black whitespace-nowrap">${waktuRehatMula}<br>${waktuRehatTamat}<br><span class="text-[9px] text-emerald-700 block mt-1">JUM: ${waktuRehatMula}-${addMinutes(waktuRehatMula, 30)}</span></th>`;
+        
+        currentMasa = waktuRehatTamat;
+        for(let i = 5; i < 13; i++) {
+            let nextMasa = addMinutes(currentMasa, 30);
+            thHtml += `<th class="border border-gray-300 p-2 text-gray-700 font-bold whitespace-nowrap">${currentMasa}<br>${nextMasa}</th>`;
+            currentMasa = nextMasa;
+        }
+        
+        const headerTr = document.getElementById('jadual-header-masa');
+        if(headerTr) headerTr.innerHTML = thHtml;
+
         const tbody = document.getElementById('jadual-kelas-tbody');
         let html = '';
 
-        // KOD BAHARU: Palet Warna Hex yang sangat berbeza dan jelas (Pastel 200/300)
         let bgGuruMap = {};
         let hexColors = ['#fecaca', '#bfdbfe', '#bbf7d0', '#fef08a', '#e9d5ff', '#fbcfe8', '#fed7aa', '#a5f3fc', '#c7d2fe', '#d9f99d', '#f5d0fe', '#fecdd3'];
         let colorIdx = 0;
 
         const renderSlot = (slot) => {
             if(!slot) return `<td class="border border-gray-300 p-2"><div class="text-xs text-gray-300">-</div></td>`;
-            if(slot.subjek === 'PERHIMPUNAN') return `<td class="border border-gray-300 p-2 bg-indigo-50 font-black text-black text-xs uppercase tracking-wider">PERH</td>`;
+            if(slot.subjek === 'PERHIMPUNAN') return ``; // Diabaikan sebab kita guna rowspan khas di bawah
             
             let bgColorStyle = '';
             
-            // KOD BAHARU: Jika subjek PI/PM bergabung, pecahkan warna latar belakang 2 guru!
             if (slot.kodGuru.includes(' / ')) {
                 let gurus = slot.kodGuru.split(' / ');
                 let g1 = gurus[0].trim();
@@ -3776,14 +3835,12 @@
 
                 html += `<tr class="hover:bg-indigo-50/50 transition-colors">`;
                 
-                // 1. Kolum Paling Kiri: Hari
                 if (isFirstClass) {
                     html += `<td class="border border-gray-300 p-2 font-black bg-indigo-100 text-indigo-900 tracking-widest uppercase align-middle" rowspan="${f2_senaraiKelasUnik.length}">
                         ${hari}
                     </td>`;
                 }
                 
-                // 2. Kolum Kedua: Nama Kelas
                 html += `<td class="border border-gray-300 p-2 font-extrabold bg-white text-gray-800 whitespace-nowrap text-xs text-left px-3">${kelas.toUpperCase()}</td>`;
                 
                 let slots = f2_jadualSediaAda[kelas][hari];
@@ -3791,21 +3848,24 @@
                 let tasmikSlot1 = slots[hadSlotTertinggi]; 
                 let tasmikSlot2 = slots[hadSlotTertinggi + 1]; 
                 
-                // 3. Susunan Masa & Rehat
-                if (hari === 'JUMAAT') {
+                if (!hariAdaRehat[hari]) { 
                     for(let i=0; i<5; i++) {
-                        if (i < hadSlotTertinggi) html += renderSlot(slots[i]);
-                        else html += `<td class="border border-gray-300 p-2 bg-gray-200 text-gray-400 font-bold text-[10px]">TAMAT</td>`;
+                        if (hari === hariPerhimpunan && i === 0) {
+                            if (isFirstClass) {
+                                html += `<td class="border border-gray-300 p-2 bg-indigo-50 font-black text-indigo-900 tracking-widest uppercase align-middle" rowspan="${f2_senaraiKelasUnik.length}">PERH</td>`;
+                            }
+                        } else {
+                            if (i < hadSlotTertinggi) html += renderSlot(slots[i]);
+                            else html += `<td class="border border-gray-300 p-2 bg-gray-200 text-gray-400 font-bold text-[10px]">TAMAT</td>`;
+                        }
                     }
                     
-                    // KOD BAHARU: Membetulkan saiz petak Jumaat 10:00-10:30 (colspan dibuang, ia sejajar lajur Rehat)
                     if (5 < hadSlotTertinggi) {
                         html += renderSlot(slots[5]);
                     } else {
                         html += `<td class="border border-gray-300 p-2 bg-gray-200 text-gray-400 font-bold text-[10px]">TAMAT</td>`;
                     }
                     
-                    // Slot Gerabak Lebihan Tasmik Jumaat
                     if (tasmikSlot1 && tasmikSlot2) {
                          html += renderSlot(tasmikSlot1);
                          html += renderSlot(tasmikSlot2);
@@ -3817,10 +3877,9 @@
                     } else {
                          html += `<td class="border border-gray-300 p-2 bg-gray-200 align-middle font-bold text-gray-500 text-xs tracking-widest" colspan="8">TAMAT</td>`;
                     }
-                } else {
+                } else { 
                     for(let i=0; i<5; i++) {
-                        // KOD BAHARU: Gabungkan kotak PERHIMPUNAN pada hari RABU (seperti REHAT)
-                        if (hari === 'RABU' && i === 0) {
+                        if (hari === hariPerhimpunan && i === 0) {
                             if (isFirstClass) {
                                 html += `<td class="border border-gray-300 p-2 bg-indigo-50 font-black text-indigo-900 tracking-widest uppercase align-middle" rowspan="${f2_senaraiKelasUnik.length}">PERH</td>`;
                             }
@@ -3838,9 +3897,9 @@
                         if (i < hadSlotTertinggi) {
                             html += renderSlot(slots[i]);
                         } else if (i === hadSlotTertinggi && tasmikSlot1) {
-                            html += renderSlot(slots[i]); // Tasmik 1
+                            html += renderSlot(slots[i]); 
                         } else if (i === hadSlotTertinggi + 1 && tasmikSlot2) {
-                            html += renderSlot(slots[i]); // Tasmik 2
+                            html += renderSlot(slots[i]); 
                         } else {
                             html += `<td class="border border-gray-300 p-2 bg-gray-200 text-gray-400 font-bold text-[10px]">TAMAT</td>`;
                         }
